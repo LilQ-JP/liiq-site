@@ -48,7 +48,11 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
    - 各フォームのURLが `https://formspree.io/f/xxxxx` の形式
    - `xxxxx` の部分がフォームID
 
-5. **`.env.local` を作成**（ルートに配置）
+5. **GitHub Secrets に `NEXT_PUBLIC_BASE_PATH` を追加**
+   - 独自ドメイン利用時: 空文字（または設定しない）
+   - github.io/liiq-site 利用時: `/liiq-site`
+
+6. **`.env.local` を作成**（ルートに配置）
    ```bash
    cp .env.example .env.local
    ```
@@ -56,10 +60,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
    ```bash
    NEXT_PUBLIC_FORMSPREE_APPLY_ID=お申し込みフォームのID
    NEXT_PUBLIC_FORMSPREE_CONTACT_ID=お問い合わせフォームのID
-   NEXT_PUBLIC_SITE_URL=https://lilq-jp.github.io/liiq-site
+   NEXT_PUBLIC_SITE_URL=https://lilq.jp
    ```
 
-6. **GitHub Pages デプロイ時に環境変数を設定**
+7. **GitHub Pages デプロイ時に環境変数を設定**
    - リポジトリ → Settings → Secrets and variables → Actions
    - `NEXT_PUBLIC_FORMSPREE_APPLY_ID`、`NEXT_PUBLIC_FORMSPREE_CONTACT_ID`、`NEXT_PUBLIC_SITE_URL` を追加
 

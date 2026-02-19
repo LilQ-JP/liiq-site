@@ -13,8 +13,9 @@
 - 失敗している場合、赤い×をクリックしてエラー内容を確認
 
 ### 3. 正しい URL でアクセス
-- ✅ **https://lilq-jp.github.io/liiq-site/**
-- ⚠️ https://github.com/LilQ-JP/liiq-site はリポジトリページ（README が表示される）
+- ✅ **https://lilq.jp**（独自ドメイン）
+- ✅ https://lilq-jp.github.io/liiq-site/（サブパス運用時）
+- ⚠️ https://github.com/LilQ-JP/liiq-site はリポジトリページ
 - ⚠️ 初回デプロイ後、反映に 1〜2 分かかる場合あり
 
 ### 4. github-pages 環境の初回承認
@@ -22,5 +23,10 @@
 - Settings → Environments → github-pages
 - 「Required reviewers」の承認待ちになっていないか確認
 
-### 5. ブラウザのキャッシュ
+### 5. 独自ドメイン（lilq.jp など）利用時：basePath を空に
+- `NEXT_PUBLIC_BASE_PATH` は **追加しない**（または値は空）
+- `NEXT_PUBLIC_SITE_URL` に `https://lilq.jp` を設定
+- これで CSS・画像・JS が正しく読み込まれます
+
+### 6. ブラウザのキャッシュ
 - シークレットモードで開くか、ハードリロード（Cmd+Shift+R）を試す

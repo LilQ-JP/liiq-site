@@ -32,6 +32,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          NEXT_PUBLIC_BASE_PATH: ${{ secrets.NEXT_PUBLIC_BASE_PATH }}
           NEXT_PUBLIC_FORMSPREE_APPLY_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_APPLY_ID }}
           NEXT_PUBLIC_FORMSPREE_CONTACT_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_CONTACT_ID }}
           NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}

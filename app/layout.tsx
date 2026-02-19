@@ -35,7 +35,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: "LilQ（リルク）",
   description: "VTuber・ゲーム実況者・雑談配信者向けの動画編集・切り抜きサービス",
-  url: "https://lilq-official.com",
+  url: "https://lilq.jp",
   telephone: "080-9838-5540",
   email: "contact@lilq-official.com",
   address: {

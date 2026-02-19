@@ -12,7 +12,7 @@ const items = [
   { label: "所在地", value: "〒252-0304 神奈川県相模原市南区旭町3番9号リブリコーポ樹103" },
   { label: "電話番号", value: "080-9838-5540（メール・X対応のみ）" },
   { label: "メールアドレス", value: "contact@lilq-official.com" },
-  { label: "販売URL", value: "https://lilq-official.com" },
+  { label: "販売URL", value: "https://lilq.jp" },
   { label: "事業形態", value: "個人事業主" },
   { label: "販売価格", value: "ショート動画制作 500円〜 / 切り抜き動画制作 3,000円〜 / カスタム動画制作 要相談（各サービスページに記載）" },
   { label: "代金の支払方法", value: "銀行振込・クレジットカード・PayPal" },

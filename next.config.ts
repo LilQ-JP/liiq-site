@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
-const basePath = "/liiq-site";
+// 独自ドメイン利用時は "" を設定。未設定または "/liiq-site" なら github.io 用
+const envBase = process.env.NEXT_PUBLIC_BASE_PATH;
+const basePath = envBase === "" || envBase === "/" ? "" : (envBase || "/liiq-site");
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath,
-  assetPrefix: `${basePath}/`,
+  basePath: basePath || undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
