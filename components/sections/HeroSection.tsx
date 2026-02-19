@@ -25,7 +25,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.15 }}
         >
-          <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-base sm:text-lg font-extrabold px-6 py-3 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
+          <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-lg sm:text-xl font-extrabold px-8 py-3.5 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
           <h1 className="mt-4 text-[37px] sm:text-[44px] lg:text-5xl font-extrabold font-['Hiragino_Sans'] text-black leading-tight tracking-tight">
@@ -34,7 +34,10 @@ export default function HeroSection() {
           </h1>
           <p className="mt-4 text-base sm:text-lg text-black/60 leading-relaxed">
             VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜きサービス。
-            最短24時間納品、修正2回無料。まずは1本、気軽に試せます。
+            <br />
+            最短24時間納品、修正2回無料。
+            <br />
+            まずは1本、気軽に試せます。
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">

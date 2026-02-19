@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedHeader } from "@/components/ui/animated-section";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import { Send, Check } from "lucide-react";
 import { formspreeApplyId, basePath } from "@/lib/constants";
 
@@ -31,6 +32,7 @@ export default function ApplySection() {
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -72,7 +74,11 @@ export default function ApplySection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             お申し込みフォーム
           </h2>
-          <p className="text-muted-foreground">まずは気軽にご依頼ください。相談だけでも大歓迎です。</p>
+          <p className="text-muted-foreground">
+            まずは気軽にご依頼ください。
+            <br className="sm:hidden" />
+            相談だけでも大歓迎です。
+          </p>
         </AnimatedHeader>
 
         <AnimatedSection>
@@ -175,7 +181,11 @@ export default function ApplySection() {
               </div>
 
               <div className="min-w-0">
-                <Label htmlFor="streamUrl">配信URL（素材となる配信アーカイブ）</Label>
+                <Label htmlFor="streamUrl">
+                配信URL
+                <br className="sm:hidden" />
+                （素材となる配信アーカイブ）
+              </Label>
                 <Input
                   id="streamUrl"
                   type="url"
@@ -200,13 +210,24 @@ export default function ApplySection() {
                 />
               </div>
 
-              <p className="text-xs text-muted-foreground">
-                入力情報はサービス提供のみに使用します。
-                <a href="/privacy-policy" className="text-primary hover:underline ml-1">プライバシーポリシー</a>
-                に同意の上、送信してください。
-              </p>
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={privacyAgreed}
+                  onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 rounded border-input accent-primary"
+                />
+                <span className="text-xs text-muted-foreground">
+                  入力情報はサービス提供のみに使用します。
+                  <br className="sm:hidden" />
+                  <Link href="/privacy-policy" className="text-primary hover:underline">
+                    プライバシーポリシー
+                  </Link>
+                  に同意の上、送信してください。
+                </span>
+              </label>
 
-              <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting}>
+              <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed}>
                 <Send className="w-5 h-5 mr-2" />
                 {submitting ? "送信中…" : "依頼する・相談する（無料）"}
               </Button>

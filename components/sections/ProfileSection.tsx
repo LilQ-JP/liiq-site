@@ -56,7 +56,9 @@ export default function ProfileSection() {
 
             <div className="lg:col-span-3">
               <h3 className="text-2xl font-bold text-foreground mb-4 leading-tight">
-                動画編集で、配信者の可能性を広げたい
+                動画編集で、
+                <br className="sm:hidden" />
+                配信者の可能性を広げたい
               </h3>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">

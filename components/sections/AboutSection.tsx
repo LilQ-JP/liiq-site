@@ -39,10 +39,13 @@ export default function AboutSection() {
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜き特化サービスです。
+              <br className="sm:hidden" />
               プロ品質の映像を、圧倒的な低価格で提供します。
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              伝えたい瞬間を、最短で、最良の形に。配信に集中できる環境をつくります。
+              伝えたい瞬間を、最短で、最良の形に。
+              <br className="sm:hidden" />
+              配信に集中できる環境をつくります。
             </p>
             <div className="flex flex-wrap gap-2 mt-5">
               {[

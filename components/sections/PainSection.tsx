@@ -36,7 +36,9 @@ export default function PainSection() {
             よくある悩み
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">
-            配信者の課題を整理しました
+            配信者の課題を
+            <br className="sm:hidden" />
+            整理しました
           </h2>
           <p className="text-muted-foreground mt-3">
             LilQはこの悩みを最短距離で解決します。

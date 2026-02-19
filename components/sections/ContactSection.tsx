@@ -8,6 +8,7 @@ import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStag
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import { Send, Mail } from "lucide-react";
 import { XLogo } from "@/components/ui/x-logo";
 import { formspreeContactId, basePath } from "@/lib/constants";
@@ -18,6 +19,7 @@ export default function ContactSection() {
   const router = useRouter();
   const [form, setForm] = useState<ContactForm>({ name: "", email: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -58,7 +60,11 @@ export default function ContactSection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             お問い合わせ
           </h2>
-          <p className="text-muted-foreground">依頼前の相談・ご質問など、何でもお気軽にどうぞ。</p>
+          <p className="text-muted-foreground">
+            依頼前の相談・ご質問など、
+            <br className="sm:hidden" />
+            何でもお気軽にどうぞ。
+          </p>
         </AnimatedHeader>
 
         <AnimatedStaggerContainer className="grid sm:grid-cols-2 gap-5 mb-8">
@@ -138,7 +144,22 @@ export default function ContactSection() {
                 className="mt-2"
               />
             </div>
-            <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting}>
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                checked={privacyAgreed}
+                onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                className="mt-0.5 h-4 w-4 rounded border-input accent-primary"
+              />
+              <span className="text-xs text-muted-foreground">
+                入力情報はサービス提供のみに使用します。
+                <Link href="/privacy-policy" className="text-primary hover:underline ml-1">
+                  プライバシーポリシー
+                </Link>
+                に同意の上、送信してください。
+              </span>
+            </label>
+            <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed}>
               <Send className="w-5 h-5 mr-2" />
               {submitting ? "送信中…" : "送信する"}
             </Button>

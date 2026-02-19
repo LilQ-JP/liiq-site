@@ -15,7 +15,9 @@ export default function CTABanner() {
         <div className="card-surface p-8 text-center">
           <Badge variant="secondary" className="mb-4">モニター価格で受付中</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
-            まずは1本だけ、試してみませんか？
+            <span className="whitespace-nowrap sm:whitespace-normal">まずは1本だけ、</span>
+            <br className="sm:hidden" />
+            試してみませんか？
           </h2>
           <p className="text-muted-foreground mb-6">
             相談だけでも大歓迎。全額返金保証付きなので、リスクゼロで始められます。

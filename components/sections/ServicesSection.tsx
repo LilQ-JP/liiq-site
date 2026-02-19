@@ -68,7 +68,9 @@ export default function ServicesSection() {
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">サービスと料金</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            サービス内容と料金プラン
+            サービス内容と
+            <br className="sm:hidden" />
+            料金プラン
           </h2>
           <p className="text-muted-foreground">
             全プラン修正2回無料・全額返金保証付き。
@@ -113,9 +115,9 @@ export default function ServicesSection() {
             <div className="space-y-3">
               {options.map((o) => (
                 <div key={o.name} className="card-soft px-4 py-3">
-                  <div className="flex items-center justify-between">
-                    <div className="font-semibold text-foreground text-sm">{o.name}</div>
-                    <div className="text-sm font-bold text-foreground">{o.price}</div>
+                  <div className="flex items-center justify-between gap-3 min-w-0">
+                    <div className="font-semibold text-foreground text-sm min-w-0 break-keep">{o.name}</div>
+                    <div className="text-sm font-bold text-foreground shrink-0 whitespace-nowrap">{o.price}</div>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">{o.desc}</p>
                 </div>

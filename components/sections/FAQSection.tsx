@@ -24,7 +24,11 @@ export default function FAQSection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             よくある質問
           </h2>
-          <p className="text-muted-foreground">ご不明な点はお気軽にお問い合わせください。</p>
+          <p className="text-muted-foreground">
+            ご不明な点は
+            <br className="sm:hidden" />
+            お気軽にお問い合わせください。
+          </p>
         </AnimatedHeader>
 
         <AnimatedStaggerContainer>
