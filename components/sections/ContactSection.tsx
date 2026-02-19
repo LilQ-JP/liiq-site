@@ -7,7 +7,8 @@ import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStag
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle, Twitter, Mail } from "lucide-react";
+import { Send, CheckCircle, Mail } from "lucide-react";
+import { XLogo } from "@/components/ui/x-logo";
 
 type ContactForm = { name: string; email: string; message: string };
 
@@ -61,7 +62,7 @@ export default function ContactSection() {
             className="card-surface p-5 flex items-center gap-4 hover:translate-y-[-2px] transition-transform"
           >
             <div className="w-12 h-12 rounded-md bg-muted flex items-center justify-center">
-              <Twitter className="w-5 h-5" />
+              <XLogo className="w-5 h-5 text-foreground" />
             </div>
             <div>
               <div className="font-bold text-foreground">X (Twitter) でDM</div>

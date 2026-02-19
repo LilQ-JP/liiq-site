@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Twitter, Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
+import { XLogo } from "@/components/ui/x-logo";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 export default function ProfileSection() {
@@ -40,7 +41,7 @@ export default function ProfileSection() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs text-foreground/80 hover:text-foreground"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <XLogo className="w-4 h-4 text-foreground" />
                   @LilQ_officialJP
                 </a>
                 <a

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Twitter, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { XLogo } from "@/components/ui/x-logo";
 import { logoPath } from "@/lib/constants";
 
 const navLinks = [
@@ -43,7 +44,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-md border border-border flex items-center justify-center hover:bg-muted transition-colors"
               >
-                <Twitter className="w-4 h-4" />
+                <XLogo className="w-4 h-4" />
               </a>
               <a
                 href="mailto:contact@lilq-official.com"
