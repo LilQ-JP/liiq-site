@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 export default function CTABanner() {
   const go = (href: string) =>
@@ -10,6 +11,7 @@ export default function CTABanner() {
   return (
     <section className="section section-alt section-pattern pattern-grid">
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
+        <AnimatedSection>
         <div className="card-surface p-8 text-center">
           <Badge variant="secondary" className="mb-4">モニター価格で受付中</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -43,6 +45,7 @@ export default function CTABanner() {
             <span>最短24時間納品</span>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

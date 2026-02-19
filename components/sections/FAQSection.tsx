@@ -2,6 +2,7 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 const faqs = [
   { q: "どんな配信でも対応できますか？", a: "はい、VTuber・ゲーム実況・雑談配信など、ほとんどのジャンルに対応しています。まずはお気軽にご相談ください。" },
@@ -18,18 +19,19 @@ export default function FAQSection() {
   return (
     <section id="faq" className="section section-base">
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-10">
+        <AnimatedHeader className="text-center mb-10">
           <Badge variant="secondary" className="mb-3">FAQ</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             よくある質問
           </h2>
           <p className="text-muted-foreground">ご不明な点はお気軽にお問い合わせください。</p>
-        </div>
+        </AnimatedHeader>
 
+        <AnimatedStaggerContainer>
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((f, i) => (
+            <AnimatedStaggerItem key={i}>
             <AccordionItem
-              key={i}
               value={`item-${i}`}
               className="card-surface px-6"
             >
@@ -40,8 +42,10 @@ export default function FAQSection() {
                 {f.a}
               </AccordionContent>
             </AccordionItem>
+            </AnimatedStaggerItem>
           ))}
         </Accordion>
+        </AnimatedStaggerContainer>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 const steps = [
   {
@@ -29,17 +30,18 @@ export default function FlowSection() {
   return (
     <section className="section section-base section-pattern pattern-dots">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12">
+        <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">ご利用の流れ</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             たった3ステップで完了
           </h2>
           <p className="text-muted-foreground">最短24時間で納品します。</p>
-        </div>
+        </AnimatedHeader>
 
-        <div className="grid lg:grid-cols-3 gap-5 mb-10">
+        <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-5 mb-10">
           {steps.map((s) => (
-            <div key={s.step} className="card-surface p-6 card-hover">
+            <AnimatedStaggerItem key={s.step}>
+            <div className="card-surface p-6 card-hover h-full">
               <div className="text-xs text-black/70 font-semibold">STEP {s.step}</div>
               <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">
                 {s.title}
@@ -48,9 +50,11 @@ export default function FlowSection() {
                 {s.desc}
               </p>
             </div>
+            </AnimatedStaggerItem>
           ))}
-        </div>
+        </AnimatedStaggerContainer>
 
+        <AnimatedSection>
         <div className="text-center">
           <Button
             onClick={() => go("#apply")}
@@ -61,6 +65,7 @@ export default function FlowSection() {
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

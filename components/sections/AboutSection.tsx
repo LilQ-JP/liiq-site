@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Zap, DollarSign, MessageCircle } from "lucide-react";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 const reasons = [
   {
@@ -29,6 +30,7 @@ export default function AboutSection() {
   return (
     <section id="services" className="section section-alt section-pattern pattern-dots">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <AnimatedSection>
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <Badge variant="secondary" className="mb-3">LilQについて</Badge>
@@ -81,18 +83,19 @@ export default function AboutSection() {
         </div>
 
         <div>
-          <div className="text-center mb-10">
+          <AnimatedHeader className="text-center mb-10">
             <Badge variant="secondary" className="mb-3">選ばれる理由</Badge>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
               選ばれる3つの理由
             </h2>
-          </div>
+          </AnimatedHeader>
 
-          <div className="grid lg:grid-cols-3 gap-5">
+          <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-5">
             {reasons.map((r) => {
               const Icon = r.icon;
               return (
-                <div key={r.title} className="card-surface p-6 card-hover">
+                <AnimatedStaggerItem key={r.title}>
+                <div className="card-surface p-6 card-hover h-full">
                   <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-foreground" />
                   </div>
@@ -104,10 +107,12 @@ export default function AboutSection() {
                     {r.highlight}
                   </Badge>
                 </div>
+                </AnimatedStaggerItem>
               );
             })}
-          </div>
+          </AnimatedStaggerContainer>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

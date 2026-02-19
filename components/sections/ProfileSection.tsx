@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Twitter, Mail, ArrowRight } from "lucide-react";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 export default function ProfileSection() {
   const go = (href: string) =>
@@ -11,13 +12,14 @@ export default function ProfileSection() {
   return (
     <section className="section section-alt">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12">
+        <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">代表プロフィール</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
             代表プロフィール
           </h2>
-        </div>
+        </AnimatedHeader>
 
+        <AnimatedSection>
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-10 items-start">
             <div className="lg:col-span-2 flex flex-col items-center">
@@ -95,6 +97,7 @@ export default function ProfileSection() {
             </div>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

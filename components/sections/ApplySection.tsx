@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { AnimatedSection, AnimatedHeader } from "@/components/ui/animated-section";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Send, CheckCircle, Check } from "lucide-react";
@@ -41,6 +42,7 @@ export default function ApplySection() {
     return (
       <section id="apply" className="section section-alt section-pattern pattern-dots">
         <div className="max-w-2xl mx-auto px-5 text-center">
+          <AnimatedSection>
           <div className="card-surface p-12">
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-primary" />
@@ -53,6 +55,7 @@ export default function ApplySection() {
               急ぎの場合は X @LilQ_officialJP までDMください。
             </p>
           </div>
+          </AnimatedSection>
         </div>
       </section>
     );
@@ -61,14 +64,15 @@ export default function ApplySection() {
   return (
     <section id="apply" className="section section-alt section-pattern pattern-dots">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12">
+        <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">お申し込み</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             お申し込みフォーム
           </h2>
           <p className="text-muted-foreground">まずは気軽にご依頼ください。相談だけでも大歓迎です。</p>
-        </div>
+        </AnimatedHeader>
 
+        <AnimatedSection>
         <div className="grid lg:grid-cols-5 gap-10 items-start max-w-5xl mx-auto">
           <div className="lg:col-span-2 space-y-5">
             <div className="card-surface p-6">
@@ -206,6 +210,7 @@ export default function ApplySection() {
             </form>
           </div>
         </div>
+        </AnimatedSection>
       </div>
     </section>
   );

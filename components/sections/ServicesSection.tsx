@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 const services = [
   {
@@ -64,7 +65,7 @@ export default function ServicesSection() {
   return (
     <section id="pricing" className="section section-base section-pattern pattern-grid">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12">
+        <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">サービスと料金</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             サービス内容と料金プラン
@@ -72,11 +73,12 @@ export default function ServicesSection() {
           <p className="text-muted-foreground">
             全プラン修正2回無料・全額返金保証付き。
           </p>
-        </div>
+        </AnimatedHeader>
 
-        <div className="grid lg:grid-cols-3 gap-5 mb-8">
+        <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-5 mb-8">
           {services.map((s) => (
-            <div key={s.title} className={`card-surface p-6 card-hover ${s.highlight ? "ring-1 ring-primary/20" : ""}`}>
+            <AnimatedStaggerItem key={s.title}>
+            <div className={`card-surface p-6 card-hover h-full ${s.highlight ? "ring-1 ring-primary/20" : ""}`}>
               <div className="flex items-center justify-between mb-4">
                 <Badge variant="outline" className="text-xs">
                   {s.badge}
@@ -100,11 +102,13 @@ export default function ServicesSection() {
                 このプランで依頼する
               </Button>
             </div>
+            </AnimatedStaggerItem>
           ))}
-        </div>
+        </AnimatedStaggerContainer>
 
-        <div className="grid lg:grid-cols-2 gap-5">
-          <div className="card-surface p-6 card-hover">
+        <AnimatedStaggerContainer className="grid lg:grid-cols-2 gap-5" delayIndex={1}>
+          <AnimatedStaggerItem>
+          <div className="card-surface p-6 card-hover h-full">
             <h3 className="text-lg font-semibold text-foreground mb-4">オプションサービス</h3>
             <div className="space-y-3">
               {options.map((o) => (
@@ -118,8 +122,10 @@ export default function ServicesSection() {
               ))}
             </div>
           </div>
+          </AnimatedStaggerItem>
 
-          <div className="card-surface p-6 card-hover">
+          <AnimatedStaggerItem>
+          <div className="card-surface p-6 card-hover h-full">
             <h3 className="text-lg font-semibold text-foreground mb-4">支払い・返金</h3>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div>
@@ -143,7 +149,8 @@ export default function ServicesSection() {
               </div>
             </div>
           </div>
-        </div>
+          </AnimatedStaggerItem>
+        </AnimatedStaggerContainer>
       </div>
     </section>
   );

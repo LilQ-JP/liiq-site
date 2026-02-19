@@ -1,9 +1,12 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
 import { heroImagePath } from "@/lib/constants";
+
+const cinematic = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const };
 
 export default function HeroSection() {
   const go = (href: string) =>
@@ -15,7 +18,12 @@ export default function HeroSection() {
       <div className="absolute -bottom-40 right-0 w-[420px] h-[420px] rounded-full bg-white/70 blur-2xl" />
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-16">
-        <div className="text-center max-w-3xl mx-auto relative z-10">
+        <motion.div
+          className="text-center max-w-3xl mx-auto relative z-10"
+          initial={{ opacity: 0, y: 48 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...cinematic, delay: 0.15 }}
+        >
           <Badge variant="outline" className="bg-gradient-to-r from-amber-400 to-orange-500 text-white border-0 text-base sm:text-lg font-bold px-6 py-3 shadow-[0_4px_14px_rgba(251,146,60,0.5)] hover:from-amber-500 hover:to-orange-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
@@ -49,10 +57,15 @@ export default function HeroSection() {
             <span className="w-1 h-1 rounded-full bg-black/20 self-center" />
             <span>全額返金保証</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* カード（背面）＋ 画像（手前） */}
-        <div className="relative -mt-24 sm:-mt-32 flex justify-center">
+        <motion.div
+          className="relative -mt-24 sm:-mt-32 flex justify-center"
+          initial={{ opacity: 0, y: 64, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ ...cinematic, delay: 0.35 }}
+        >
           <div className="relative w-full max-w-[min(950px,95vw)]">
             {/* 小さなコンパクトカード：背面 z-0 */}
             <div className="hidden lg:flex absolute right-2 top-2 xl:right-4 xl:top-4 flex-col gap-2 w-[200px] xl:w-[220px] z-0">
@@ -91,26 +104,35 @@ export default function HeroSection() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* モバイル：カードを下に横並び（コンパクト） */}
-        <div className="relative mt-8 lg:hidden">
-          <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto">
+        {/* モバイル：3枚のカードを画像の下に整列（画像に隠れない） */}
+        <motion.div
+          className="relative mt-12 lg:hidden"
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...cinematic, delay: 0.5 }}
+        >
+          <div className="grid grid-cols-3 gap-3 max-w-lg mx-auto">
             {heroCards.map((card) => {
               const isPrice = card.label === "料金";
               return (
                 <div
                   key={card.label}
                   className={`
-                    px-4 py-2.5 rounded-lg border text-center min-w-[140px]
+                    flex flex-col items-center justify-center px-3 py-4 rounded-xl border text-center
+                    shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300
+                    min-h-[88px]
                     ${isPrice
-                      ? "bg-black/90 border-black/20 text-white"
-                      : "bg-white border-black/10 text-black"
+                      ? "bg-black/90 border-black/20 text-white shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
+                      : "bg-white border-black/10 text-black hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] active:scale-[0.98]"
                     }
                   `}
                 >
-                  <p className={`text-[10px] font-medium mb-0.5 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
-                  <p className="text-xs font-semibold leading-tight m-0">
+                  <p className={`text-[10px] font-semibold uppercase tracking-wider mb-1.5 ${isPrice ? "text-white/80" : "text-black/50"}`}>
+                    {card.label}
+                  </p>
+                  <p className="text-[11px] font-semibold leading-tight m-0">
                     {card.segments.map((seg, i) => (
                       <span key={i} className={seg.style === "price" ? "text-sm font-bold" : ""}>
                         {seg.text}
@@ -121,7 +143,7 @@ export default function HeroSection() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

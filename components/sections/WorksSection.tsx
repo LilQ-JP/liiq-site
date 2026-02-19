@@ -3,12 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 import { works } from "@/content/works";
+import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 export default function WorksSection() {
   return (
     <section id="works" className="section section-alt">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12">
+        <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">制作実績</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
             制作実績
@@ -16,11 +17,12 @@ export default function WorksSection() {
           <p className="text-muted-foreground">
             実際に制作した動画をご覧ください。
           </p>
-        </div>
+        </AnimatedHeader>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <AnimatedStaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {works.map((w) => (
-            <div key={w.youtubeId} className="card-surface p-4 card-hover group">
+            <AnimatedStaggerItem key={w.youtubeId}>
+            <div className="card-surface p-4 card-hover group h-full">
               <a
                 href={`https://www.youtube.com/shorts/${w.youtubeId}`}
                 target="_blank"
@@ -61,12 +63,15 @@ export default function WorksSection() {
                 </a>
               </div>
             </div>
+            </AnimatedStaggerItem>
           ))}
-        </div>
+        </AnimatedStaggerContainer>
 
+        <AnimatedSection>
         <p className="text-center text-xs text-muted-foreground mt-8">
           モニター期間中のため実績数は少ないですが、随時更新します。
         </p>
+        </AnimatedSection>
       </div>
     </section>
   );
