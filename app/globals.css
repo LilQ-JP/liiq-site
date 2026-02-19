@@ -234,6 +234,48 @@ html[data-theme="playful"] {
 .pattern-dots { --pattern-image: radial-gradient(rgba(17, 24, 39, 0.06) 1px, transparent 1px); }
 .pattern-grid { --pattern-image: linear-gradient(rgba(17, 24, 39, 0.05) 1px, transparent 1px),
   linear-gradient(90deg, rgba(17, 24, 39, 0.06) 1px, transparent 1px); }
+
+/* ── Hero 幾何学模様（六角形ハニカム風 + アクセント） ── */
+.hero-geo-pattern {
+  position: relative;
+}
+.hero-geo-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* 斜めストライプ 1 */
+    repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 24px,
+      rgba(17, 24, 39, 0.04) 24px,
+      rgba(17, 24, 39, 0.04) 25px
+    ),
+    /* 斜めストライプ 2 */
+    repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 24px,
+      rgba(17, 24, 39, 0.04) 24px,
+      rgba(17, 24, 39, 0.04) 25px
+    ),
+    /* 横線グリッド */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 47px,
+      rgba(17, 24, 39, 0.03) 47px,
+      rgba(17, 24, 39, 0.03) 48px
+    ),
+    /* 左下の青いアクセント */
+    radial-gradient(ellipse 80% 50% at 0% 100%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+    /* 右上の紫アクセント */
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139, 92, 246, 0.06) 0%, transparent 55%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 .hero-surface { background: var(--hero-bg); }
 .hero-blue { background: var(--hero-bg); }
 .hero-blue-text { color: #ffffff; }

@@ -4,16 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
 import { heroImagePath } from "@/lib/constants";
-import { Zap, Users2, Banknote } from "lucide-react";
-
-const cardIcons = [Zap, Users2, Banknote] as const;
 
 export default function HeroSection() {
   const go = (href: string) =>
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative overflow-hidden bg-[#eef2f6]">
+    <section className="relative overflow-hidden bg-[#eef2f6] hero-geo-pattern">
       <div className="absolute -top-28 -left-24 w-[320px] h-[320px] rounded-full bg-white/70 blur-2xl" />
       <div className="absolute -bottom-40 right-0 w-[420px] h-[420px] rounded-full bg-white/70 blur-2xl" />
 
@@ -54,119 +51,72 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* 画像 + 右上に重なる縦並びカード */}
-        <div className="relative z-0 -mt-24 sm:-mt-32 flex justify-center">
+        {/* カード（背面）＋ 画像（手前） */}
+        <div className="relative -mt-24 sm:-mt-32 flex justify-center">
           <div className="relative w-full max-w-[min(950px,95vw)]">
-            <img
-              src={heroImagePath}
-              alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-              className="w-full h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
-              loading="eager"
-            />
-            {/* フローチャート風：縦並び、画像の右上に少しかぶる */}
-            <div className="hidden lg:flex absolute right-4 top-4 xl:right-8 xl:top-6 flex-col gap-3 w-[300px] xl:w-[320px] z-20">
-            {heroCards.map((card, idx) => {
-              const Icon = cardIcons[idx];
-              const isPrice = card.label === "料金";
-              const isLast = idx === heroCards.length - 1;
-              return (
-                <div key={card.label} className="flex flex-col items-stretch">
+            {/* 小さなコンパクトカード：背面 z-0 */}
+            <div className="hidden lg:flex absolute right-2 top-2 xl:right-4 xl:top-4 flex-col gap-2 w-[200px] xl:w-[220px] z-0">
+              {heroCards.map((card, idx) => {
+                const isPrice = card.label === "料金";
+                return (
                   <div
+                    key={card.label}
                     className={`
-                      group overflow-hidden rounded-2xl
-                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5
+                      px-3 py-2.5 rounded-lg border text-left
                       ${isPrice
-                        ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)]"
-                        : "bg-white shadow-[0_16px_40px_-10px_rgba(0,0,0,0.12)] hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.18)]"
+                        ? "bg-black/90 border-black/20 text-white"
+                        : "bg-white/95 backdrop-blur border-black/10 text-black"
                       }
                     `}
                   >
-                    <div className="px-5 py-4 sm:px-6 sm:py-5 flex items-center gap-4">
-                      <div className={`
-                        flex items-center justify-center w-10 h-10 rounded-xl shrink-0
-                        ${isPrice ? "bg-white/15" : "bg-black/5"}
-                      `}>
-                        <Icon className={`w-5 h-5 shrink-0 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
-                      </div>
-                      <div className="min-w-0">
-                        <p className={`
-                          text-xs font-bold uppercase tracking-wider mb-1
-                          ${isPrice ? "text-white/80" : "text-black/50"}
-                        `}>
-                          {card.label}
-                        </p>
-                        <h3 className={`
-                          m-0 leading-tight font-extrabold tracking-tight text-base sm:text-lg
-                          ${isPrice ? "text-white" : "text-black"}
-                        `}>
-                          {card.segments.map((seg, i) => (
-                            <span
-                              key={i}
-                              className={
-                                seg.style === "price"
-                                  ? "text-xl sm:text-2xl font-black"
-                                  : seg.style === "highlight"
-                                    ? "font-black"
-                                    : ""
-                              }
-                            >
-                              {seg.text}
-                            </span>
-                          ))}
-                        </h3>
-                      </div>
-                    </div>
+                    <p className={`text-[10px] font-medium mb-0.5 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
+                    <p className="text-xs font-semibold leading-tight m-0">
+                      {card.segments.map((seg, i) => (
+                        <span key={i} className={seg.style === "price" ? "text-sm font-bold" : ""}>
+                          {seg.text}
+                        </span>
+                      ))}
+                    </p>
                   </div>
-                  {!isLast && (
-                    <div className="flex justify-center py-1">
-                      <div className="w-0.5 h-3 bg-blue-400/50 rounded-full" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            {/* 画像：手前 z-10 */}
+            <div className="relative z-10">
+              <img
+                src={heroImagePath}
+                alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+                className="w-full max-w-[200px] max-h-[56px] h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                loading="eager"
+              />
             </div>
           </div>
         </div>
 
-        {/* モバイル：カードを下に縦並び */}
-        <div className="relative mt-10 lg:hidden">
-          <div className="flex flex-col items-center gap-4 max-w-[340px] mx-auto">
-            {heroCards.map((card, idx) => {
-              const Icon = cardIcons[idx];
+        {/* モバイル：カードを下に横並び（コンパクト） */}
+        <div className="relative mt-8 lg:hidden">
+          <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto">
+            {heroCards.map((card) => {
               const isPrice = card.label === "料金";
-              const isLast = idx === heroCards.length - 1;
               return (
-                <div key={card.label} className="relative w-full">
-                  <div
-                    className={`
-                      group overflow-hidden rounded-2xl w-full
-                      transition-all duration-300 hover:scale-[1.02]
-                      ${isPrice
-                        ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)]"
-                        : "bg-white shadow-[0_16px_40px_-10px_rgba(0,0,0,0.12)]"
-                      }
-                    `}
-                  >
-                    <div className="px-6 py-5 flex items-center gap-4">
-                      <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${isPrice ? "bg-white/15" : "bg-black/5"}`}>
-                        <Icon className={`w-5 h-5 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
-                      </div>
-                      <div>
-                        <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${isPrice ? "text-white/80" : "text-black/50"}`}>
-                          {card.label}
-                        </p>
-                        <h3 className={`m-0 leading-tight font-extrabold ${isPrice ? "text-white text-lg" : "text-black"}`}>
-                          {card.segments.map((seg, i) => (
-                            <span key={i} className={seg.style === "price" ? "text-xl font-black" : seg.style === "highlight" ? "font-black" : ""}>
-                              {seg.text}
-                            </span>
-                          ))}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                  {!isLast && <div className="w-0.5 h-3 bg-blue-400/60 mx-auto my-1" />}
+                <div
+                  key={card.label}
+                  className={`
+                    px-4 py-2.5 rounded-lg border text-center min-w-[140px]
+                    ${isPrice
+                      ? "bg-black/90 border-black/20 text-white"
+                      : "bg-white border-black/10 text-black"
+                    }
+                  `}
+                >
+                  <p className={`text-[10px] font-medium mb-0.5 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
+                  <p className="text-xs font-semibold leading-tight m-0">
+                    {card.segments.map((seg, i) => (
+                      <span key={i} className={seg.style === "price" ? "text-sm font-bold" : ""}>
+                        {seg.text}
+                      </span>
+                    ))}
+                  </p>
                 </div>
               );
             })}
