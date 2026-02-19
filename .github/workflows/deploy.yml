@@ -31,6 +31,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_FORMSPREE_APPLY_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_APPLY_ID }}
+          NEXT_PUBLIC_FORMSPREE_CONTACT_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_CONTACT_ID }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
       - name: Verify build output
         run: ls -la out/ && head -c 500 out/index.html

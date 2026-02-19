@@ -6,27 +6,29 @@
  * {
  *   title: string;      // 動画タイトル
  *   channel: string;    // チャンネル名
- *   youtubeId: string;  // YouTubeの動画ID（ShortsのURLの最後の部分）
+ *   url: string;        // YouTubeのURL（watch?v=、youtu.be/、shorts/ いずれも対応）
  *   tags: string[];     // タグ（例: ["Shorts"], ["切り抜き", "長尺"]）
  * }
+ *
+ * サムネイルはURLから自動取得されます。
  */
 export const works = [
   {
     title: "【伊達鍵は眠らない】冒頭でもう笑いとツッコミが止まらない【AIソムニウムファイル】",
     channel: "ココマルハピー",
-    youtubeId: "gMeXmGt84ho",
+    url: "https://www.youtube.com/shorts/gMeXmGt84ho",
     tags: ["Shorts"],
   },
   {
     title: "【#limbuscompany 】9章で気付く指の良さ【ネタバレ無し】",
     channel: "ココマルハピー",
-    youtubeId: "iT6OrySspBk",
+    url: "https://www.youtube.com/shorts/iT6OrySspBk",
     tags: ["Shorts"],
   },
   {
     title: "【学マスガシャ】Atmosphere 葛城リーリヤ 担当が回した結果",
     channel: "とみたけかれる / Tomitake karel",
-    youtubeId: "a1tT9K_7d1U",
+    url: "https://www.youtube.com/shorts/a1tT9K_7d1U",
     tags: ["Shorts"],
   },
 ];

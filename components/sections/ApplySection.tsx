@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { AnimatedSection, AnimatedHeader } from "@/components/ui/animated-section";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle, Check } from "lucide-react";
+import { Send, Check } from "lucide-react";
+import { formspreeApplyId, basePath } from "@/lib/constants";
 
 type FormData = {
   name: string;
@@ -19,6 +21,7 @@ type FormData = {
 };
 
 export default function ApplySection() {
+  const router = useRouter();
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -27,39 +30,32 @@ export default function ApplySection() {
     streamUrl: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-  };
+    setSubmitting(true);
 
-  if (submitted) {
-    return (
-      <section id="apply" className="section section-alt section-pattern pattern-dots">
-        <div className="max-w-2xl mx-auto px-5 text-center">
-          <AnimatedSection>
-          <div className="card-surface p-12">
-            <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-2xl font-bold text-foreground mb-3">ご依頼ありがとうございます</h3>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              お申し込みを受け付けました。24時間以内にメールまたはXのDMにてご連絡いたします。
-            </p>
-            <p className="text-sm text-muted-foreground">
-              急ぎの場合は X @LilQ_officialJP までDMください。
-            </p>
-          </div>
-          </AnimatedSection>
-        </div>
-      </section>
-    );
-  }
+    if (formspreeApplyId) {
+      try {
+        const res = await fetch(`https://formspree.io/f/${formspreeApplyId}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("送信に失敗しました");
+      } catch {
+        setSubmitting(false);
+        alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
+        return;
+      }
+    }
+    router.push(`${basePath}/apply/thanks`);
+  };
 
   return (
     <section id="apply" className="section section-alt section-pattern pattern-dots">
@@ -203,9 +199,9 @@ export default function ApplySection() {
                 に同意の上、送信してください。
               </p>
 
-              <Button type="submit" size="lg" className="w-full rounded-full">
+              <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting}>
                 <Send className="w-5 h-5 mr-2" />
-                依頼する・相談する（無料）
+                {submitting ? "送信中…" : "依頼する・相談する（無料）"}
               </Button>
             </form>
           </div>

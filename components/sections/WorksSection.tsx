@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 import { works } from "@/content/works";
+import { getYouTubeVideoId, getYouTubeThumbnailUrl } from "@/lib/youtube";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 export default function WorksSection() {
@@ -20,18 +21,22 @@ export default function WorksSection() {
         </AnimatedHeader>
 
         <AnimatedStaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {works.map((w) => (
-            <AnimatedStaggerItem key={w.youtubeId}>
+          {works.map((w) => {
+            const videoId = getYouTubeVideoId(w.url);
+            if (!videoId) return null;
+            const thumbUrl = getYouTubeThumbnailUrl(videoId);
+            return (
+            <AnimatedStaggerItem key={videoId}>
             <div className="card-surface p-4 card-hover group h-full">
               <a
-                href={`https://www.youtube.com/shorts/${w.youtubeId}`}
+                href={w.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
               >
                 <div className="relative rounded-lg overflow-hidden border border-border bg-muted aspect-[9/16]">
                   <img
-                    src={`https://i.ytimg.com/vi/${w.youtubeId}/hqdefault.jpg`}
+                    src={thumbUrl}
                     alt={w.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
@@ -54,7 +59,7 @@ export default function WorksSection() {
                   チャンネル: {w.channel}
                 </p>
                 <a
-                  href={`https://www.youtube.com/shorts/${w.youtubeId}`}
+                  href={w.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -64,7 +69,8 @@ export default function WorksSection() {
               </div>
             </div>
             </AnimatedStaggerItem>
-          ))}
+          );
+          })}
         </AnimatedStaggerContainer>
 
         <AnimatedSection>

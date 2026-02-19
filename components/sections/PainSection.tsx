@@ -29,7 +29,7 @@ const pains = [
 
 export default function PainSection() {
   return (
-    <section className="section section-base">
+    <section className="section section-base pain-section-pattern">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">

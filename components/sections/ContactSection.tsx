@@ -1,46 +1,47 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle, Mail } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 import { XLogo } from "@/components/ui/x-logo";
+import { formspreeContactId, basePath } from "@/lib/constants";
 
 type ContactForm = { name: string; email: string; message: string };
 
 export default function ContactSection() {
+  const router = useRouter();
   const [form, setForm] = useState<ContactForm>({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-  };
+    setSubmitting(true);
 
-  if (submitted) {
-    return (
-      <section id="contact" className="section section-base">
-        <div className="max-w-2xl mx-auto px-5 text-center">
-          <AnimatedSection>
-          <div className="card-surface p-12">
-            <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-2xl font-bold text-foreground mb-3">お問い合わせありがとうございます</h3>
-            <p className="text-muted-foreground">24時間以内にご連絡いたします。</p>
-          </div>
-          </AnimatedSection>
-        </div>
-      </section>
-    );
-  }
+    if (formspreeContactId) {
+      try {
+        const res = await fetch(`https://formspree.io/f/${formspreeContactId}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (!res.ok) throw new Error("送信に失敗しました");
+      } catch {
+        setSubmitting(false);
+        alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
+        return;
+      }
+    }
+    router.push(`${basePath}/contact/thanks`);
+  };
 
   return (
     <section id="contact" className="section section-base">
@@ -130,8 +131,9 @@ export default function ContactSection() {
                 className="mt-2"
               />
             </div>
-            <Button type="submit" size="lg" className="w-full rounded-full">
-              <Send className="w-5 h-5 mr-2" />送信する
+            <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting}>
+              <Send className="w-5 h-5 mr-2" />
+              {submitting ? "送信中…" : "送信する"}
             </Button>
           </form>
         </div>

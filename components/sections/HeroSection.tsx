@@ -25,7 +25,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.15 }}
         >
-          <Badge variant="outline" className="bg-gradient-to-r from-amber-400 to-orange-500 text-white border-0 text-base sm:text-lg font-extrabold px-6 py-3 shadow-[0_4px_14px_rgba(251,146,60,0.5)] hover:from-amber-500 hover:to-orange-600 transition-all duration-300">
+          <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-base sm:text-lg font-extrabold px-6 py-3 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
           <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight tracking-tight">
