@@ -52,20 +52,20 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* 画像＋カード（かぶらず横並び）※画像の後ろ・下に何もかぶらないよう余白を十分に確保 */}
+        {/* 画像＋カード（絶対にかぶらない：テキスト・ボタンとの間隔を十分に確保） */}
         <motion.div
-          className="relative -mt-24 sm:-mt-32 flex flex-col items-center justify-center pt-2 pb-10"
+          className="relative mt-12 flex flex-col items-center justify-center pb-10"
           initial={{ opacity: 0, y: 64, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...cinematic, delay: 0.35 }}
         >
-          <div className="flex w-full max-w-[min(1020px,95vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-10">
-            {/* 画像 */}
-            <div className="relative w-full max-w-[min(766px,95vw)] shrink-0">
+          <div className="flex w-full max-w-[min(1140px,95vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-10">
+            {/* 画像（大きく表示、絶対に他要素と被らない） */}
+            <div className="relative w-full max-w-[min(950px,95vw)] shrink-0">
               <img
                 src={heroImagePath}
                 alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                className="w-full h-auto max-h-[431px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                className="w-full h-auto max-h-[520px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
                 loading="eager"
               />
             </div>
@@ -121,9 +121,9 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* モバイル：3枚のカードを画像の下に整列（画像に絶対かぶらない） */}
+        {/* モバイル：3枚のカードを画像の下に整列（画像に絶対かぶらない・間隔十分） */}
         <motion.div
-          className="relative mt-8 lg:hidden"
+          className="relative mt-10 lg:hidden"
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.5 }}
