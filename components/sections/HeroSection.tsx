@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
+import { heroImagePath } from "@/lib/constants";
 
 export default function HeroSection() {
   const go = (href: string) =>
@@ -66,33 +67,12 @@ export default function HeroSection() {
                   カット編集
                 </div>
 
-                <div className="rounded-[36px] bg-white border border-black/5 shadow-[0_24px_60px_rgba(15,23,42,0.08)] p-6 sm:p-8">
-                  <div className="rounded-[28px] bg-[#f7f8fa] p-6">
-                    <svg viewBox="0 0 520 260" className="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="12" y="150" width="496" height="86" rx="40" fill="#ECEFF4" />
-                      <g>
-                        <circle cx="120" cy="78" r="32" fill="#F4D08E" />
-                        <rect x="88" y="110" width="64" height="120" rx="32" fill="#F6D9A5" />
-                        <rect x="68" y="138" width="28" height="76" rx="14" fill="#F6D9A5" />
-                        <rect x="144" y="138" width="28" height="76" rx="14" fill="#F6D9A5" />
-                      </g>
-                      <g>
-                        <circle cx="248" cy="70" r="34" fill="#F0B8CA" />
-                        <rect x="214" y="106" width="68" height="126" rx="34" fill="#F4C6D5" />
-                        <rect x="190" y="140" width="30" height="76" rx="15" fill="#F4C6D5" />
-                        <rect x="276" y="140" width="30" height="76" rx="15" fill="#F4C6D5" />
-                      </g>
-                      <g>
-                        <circle cx="392" cy="78" r="32" fill="#9DC9D9" />
-                        <rect x="360" y="110" width="64" height="120" rx="32" fill="#B1D8E4" />
-                        <rect x="338" y="138" width="28" height="76" rx="14" fill="#B1D8E4" />
-                        <rect x="416" y="138" width="28" height="76" rx="14" fill="#B1D8E4" />
-                      </g>
-                      <circle cx="210" cy="56" r="4" fill="#1F2937" />
-                      <circle cx="286" cy="56" r="4" fill="#1F2937" />
-                      <path d="M238 70c6 6 16 6 22 0" stroke="#1F2937" strokeWidth="3" strokeLinecap="round" />
-                    </svg>
-                  </div>
+                <div className="rounded-[36px] bg-white border border-black/5 shadow-[0_24px_60px_rgba(15,23,42,0.08)] p-6 sm:p-8 overflow-hidden">
+                  <img
+                    src={heroImagePath}
+                    alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+                    className="w-full h-auto rounded-[20px] object-cover"
+                  />
                 </div>
               </div>
             </div>
