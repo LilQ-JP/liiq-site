@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
 import { heroImagePath } from "@/lib/constants";
+import { Zap, Users2, Banknote } from "lucide-react";
+
+const cardIcons = [Zap, Users2, Banknote] as const;
 
 export default function HeroSection() {
   const go = (href: string) =>
@@ -64,31 +67,59 @@ export default function HeroSection() {
         </div>
 
         <div className="relative mt-10">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 flex-wrap">
-            {heroCards.map((card) => (
-              <div
-                key={card.label}
-                className="bg-white rounded-[25px] px-6 py-5 sm:px-8 sm:py-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)] border border-black/5 max-w-[340px] w-full"
-              >
-                <p className="text-sm text-black/50 mb-2">{card.label}</p>
-                <h3 className="text-base sm:text-xl font-bold text-black/90 m-0 leading-snug">
-                  {card.segments.map((seg, i) => (
-                    <span
-                      key={i}
-                      className={
-                        seg.style === "price"
-                          ? "text-xl sm:text-2xl"
-                          : seg.style === "highlight"
-                            ? "text-black font-bold"
-                            : ""
+          <div className="flex flex-col lg:flex-row items-stretch justify-center gap-5 lg:gap-6 flex-wrap">
+            {heroCards.map((card, idx) => {
+              const Icon = cardIcons[idx];
+              const isPrice = card.label === "料金";
+              return (
+                <div
+                  key={card.label}
+                  className={`
+                    group relative overflow-hidden rounded-2xl max-w-[340px] w-full
+                    transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1
+                    ${isPrice
+                      ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.35)]"
+                      : "bg-white shadow-[0_16px_40px_-10px_rgba(0,0,0,0.12)] hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.18)]"
+                    }
+                  `}
+                >
+                  {isPrice && (
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                  )}
+                  <div className="relative px-6 py-6 sm:px-8 sm:py-7">
+                    <div className={`
+                      inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider
+                      ${isPrice ? "bg-white/15 text-white/90" : "bg-black/5 text-black/60"}
+                    `}>
+                      <Icon className="w-4 h-4 shrink-0" strokeWidth={2.5} />
+                      {card.label}
+                    </div>
+                    <h3 className={`
+                      m-0 leading-tight font-extrabold tracking-tight
+                      ${isPrice
+                        ? "text-2xl sm:text-3xl text-white"
+                        : "text-lg sm:text-xl text-black"
                       }
-                    >
-                      {seg.text}
-                    </span>
-                  ))}
-                </h3>
-              </div>
-            ))}
+                    `}>
+                      {card.segments.map((seg, i) => (
+                        <span
+                          key={i}
+                          className={
+                            seg.style === "price"
+                              ? "text-2xl sm:text-3xl font-black drop-shadow-sm"
+                              : seg.style === "highlight"
+                                ? "font-black"
+                                : ""
+                          }
+                        >
+                          {seg.text}
+                        </span>
+                      ))}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
