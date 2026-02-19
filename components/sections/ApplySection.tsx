@@ -66,7 +66,7 @@ export default function ApplySection() {
 
   return (
     <section id="apply" className="section section-alt section-pattern pattern-dots">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 min-w-0">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">お申し込み</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
@@ -76,9 +76,9 @@ export default function ApplySection() {
         </AnimatedHeader>
 
         <AnimatedSection>
-        <div className="grid lg:grid-cols-5 gap-10 items-start max-w-5xl mx-auto">
-          <div className="lg:col-span-2 space-y-5">
-            <div className="card-surface p-6">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-10 items-start max-w-5xl mx-auto min-w-0 w-full">
+          <div className="lg:col-span-2 space-y-5 min-w-0">
+            <div className="card-surface p-6 min-w-0 overflow-hidden">
               <h3 className="font-bold text-foreground text-base mb-4">依頼前のご確認</h3>
               <div className="space-y-3 text-sm text-muted-foreground">
                 {[
@@ -96,7 +96,7 @@ export default function ApplySection() {
               </div>
             </div>
 
-            <div className="card-surface p-6">
+            <div className="card-surface p-6 min-w-0 overflow-hidden">
               <h4 className="font-bold text-foreground text-sm mb-3">サービス料金</h4>
               <div className="space-y-2 text-sm">
                 {[
@@ -114,21 +114,21 @@ export default function ApplySection() {
             </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="card-surface p-8 space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <Label htmlFor="name">お名前（ハンドルネーム可）</Label>
+          <div className="lg:col-span-3 min-w-0">
+            <form onSubmit={handleSubmit} className="card-surface p-6 sm:p-8 space-y-5 min-w-0 overflow-hidden">
+              <div className="grid sm:grid-cols-2 gap-5 min-w-0">
+                <div className="min-w-0">
+                  <Label htmlFor="name">お名前（ハンドルネーム可・会社名でもOK）</Label>
                   <Input
                     id="name"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="例: はるき"
+                    placeholder="例: LilQ"
                     className="mt-2"
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <Label htmlFor="email">メールアドレス（必須）</Label>
                   <Input
                     id="email"
@@ -143,8 +143,8 @@ export default function ApplySection() {
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
+              <div className="grid sm:grid-cols-2 gap-5 min-w-0">
+                <div className="min-w-0">
                   <Label htmlFor="sns">SNSアカウント（X IDなど）</Label>
                   <Input
                     id="sns"
@@ -155,7 +155,7 @@ export default function ApplySection() {
                     className="mt-2"
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <Label htmlFor="serviceType">依頼内容（必須）</Label>
                   <select
                     id="serviceType"
@@ -174,7 +174,7 @@ export default function ApplySection() {
                 </div>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <Label htmlFor="streamUrl">配信URL（素材となる配信アーカイブ）</Label>
                 <Input
                   id="streamUrl"
@@ -187,7 +187,7 @@ export default function ApplySection() {
                 />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <Label htmlFor="message">ご要望・詳細</Label>
                 <Textarea
                   id="message"

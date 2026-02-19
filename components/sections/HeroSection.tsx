@@ -28,7 +28,7 @@ export default function HeroSection() {
           <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-base sm:text-lg font-extrabold px-6 py-3 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
-          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight tracking-tight">
+          <h1 className="mt-4 text-[37px] sm:text-[44px] lg:text-5xl font-extrabold font-['Hiragino_Sans'] text-black leading-tight tracking-tight">
             500円から、<br />
             気軽にはじめよう！
           </h1>
@@ -137,7 +137,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.5 }}
         >
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full max-w-2xl mx-auto min-w-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-2xl mx-auto min-w-0 [&>div:last-child]:col-span-2 [&>div:last-child]:sm:col-span-1">
             {heroCards.map((card) => {
               const Icon = card.icon;
               const isPrice = card.label === "料金";
@@ -153,16 +153,16 @@ export default function HeroSection() {
                     }
                   `}
                 >
-                  <Icon className={`hero-card-icon w-6 h-6 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
-                  <p className={`hero-card-label text-[10px] sm:text-xs mb-0 ${isPrice ? "text-white/85" : "text-black/65"}`}>
+                  <Icon className={`hero-card-icon w-6 h-6 shrink-0 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
+                  <p className={`hero-card-label text-[18px] mb-0 shrink-0 whitespace-nowrap ${isPrice ? "text-white/85" : "text-black/65"}`}>
                     {card.label}
                   </p>
-                  <p className="hero-card-body text-sm sm:text-base leading-tight m-0 overflow-hidden w-full">
+                  <p className="hero-card-body text-[22.5px] leading-tight m-0 overflow-hidden w-full text-center [overflow-wrap:anywhere]">
                     {card.segments.map((seg, i) =>
                       seg.style === "linebreak" ? (
-                        <span key={i} className="block">{seg.text}</span>
+                        <span key={i} className="inline text-[20.5px] font-[family-name:var(--font-noto-sans-jp)] font-black">{seg.text} </span>
                       ) : (
-                        <span key={i} className={seg.style === "price" ? "hero-card-price text-lg" : ""}>
+                        <span key={i} className={seg.style === "price" ? "hero-card-price text-[33px]" : "font-[family-name:var(--font-noto-sans-jp)] font-black"}>
                           {seg.text}
                         </span>
                       )

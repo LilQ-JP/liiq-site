@@ -100,14 +100,14 @@ export default function ContactSection() {
           <form onSubmit={onSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <Label htmlFor="contact-name">お名前（任意）</Label>
+                <Label htmlFor="contact-name">お名前（任意・会社名でもOK）</Label>
                 <Input
                   id="contact-name"
                   type="text"
                   name="name"
                   value={form.name}
                   onChange={onChange}
-                  placeholder="例: はるき"
+                  placeholder="例: LilQ"
                   className="mt-2"
                 />
               </div>

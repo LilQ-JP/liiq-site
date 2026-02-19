@@ -43,8 +43,8 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/95 backdrop-blur border-b border-border shadow-sm"
-          : "bg-white/80 backdrop-blur border-b border-white/60"
+          ? "bg-white/80 backdrop-blur-md border-b border-border/80 shadow-sm"
+          : "bg-white/40 backdrop-blur-sm border-b border-white/30"
       )}
     >
       <div className="w-full max-w-7xl mx-auto px-4 min-[480px]:px-5 sm:px-8 min-w-0">
