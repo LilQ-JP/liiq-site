@@ -31,7 +31,7 @@ export default function ClipGeniusSection() {
           >
             ClipGenius
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="text-[#c2c2c2] max-w-2xl mx-auto text-sm sm:text-base">
             配信動画の面白いシーンを
             <br className="sm:hidden" />
             効率的に見つけ、切り抜き候補を

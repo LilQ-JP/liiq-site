@@ -42,9 +42,9 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        "rounded-b-2xl",
+        "mx-3 mt-3 rounded-2xl",
         "bg-white/[0.06] backdrop-blur-2xl",
-        "border-b border-x border-white/20",
+        "border border-white/20",
         "shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
       )}
     >
@@ -97,52 +97,58 @@ export default function Navbar() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" className="rounded-full" aria-label="menu">
+              <Button
+                variant="outline"
+                size="icon"
+                className="rounded-full bg-white/[0.08] backdrop-blur-md border-white/20 hover:bg-white/[0.12] shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+                aria-label="menu"
+              >
                 {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <div className="flex items-center gap-3 pt-4 pb-6 border-b border-border">
-                <img
-                  src={logoPath}
-                  alt="LilQ"
-                  className="h-7 w-auto"
-                />
+            <SheetContent
+              side="right"
+              className="w-80 max-w-[85vw] flex flex-col p-0 gap-0 bg-white/[0.12] backdrop-blur-2xl border-l border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)]"
+            >
+              <div className="flex items-center px-6 pt-6 pb-5 pr-14 border-b border-white/10 shrink-0">
+                <img src={logoPath} alt="LilQ" className="h-8 w-auto" />
               </div>
-              <div className="flex flex-col gap-1 pt-4">
-                {navItems.map((item) =>
-                  item.hash ? (
-                    <Link
-                      key={item.href}
-                      href={homeHref(item.href)}
-                      onClick={(e) => handleHashClick(e, item.href)}
-                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  )
-                )}
-                <div className="pt-4 flex flex-col gap-2">
-                  <Button variant="outline" asChild className="rounded-full">
-                    <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
-                      まずは相談
-                    </Link>
-                  </Button>
-                  <Button asChild className="rounded-full">
-                    <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
-                      無料で依頼する
-                    </Link>
-                  </Button>
+              <nav className="flex-1 overflow-y-auto px-4 py-6">
+                <div className="flex flex-col gap-0.5">
+                  {navItems.map((item) =>
+                    item.hash ? (
+                      <Link
+                        key={item.href}
+                        href={homeHref(item.href)}
+                        onClick={(e) => handleHashClick(e, item.href)}
+                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-xl hover:bg-white/10 hover:text-black active:bg-white/15 active:text-black transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-xl hover:bg-white/10 hover:text-black active:bg-white/15 active:text-black transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    )
+                  )}
                 </div>
+              </nav>
+              <div className="shrink-0 p-4 pt-2 pb-6 border-t border-white/10 space-y-3">
+                <Button variant="outline" asChild className="rounded-full w-full h-11">
+                  <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
+                    まずは相談
+                  </Link>
+                </Button>
+                <Button asChild className="rounded-full w-full h-11">
+                  <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
+                    無料で依頼する
+                  </Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
