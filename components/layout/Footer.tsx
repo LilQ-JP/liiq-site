@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Twitter, Mail } from "lucide-react";
+import { logoPath } from "@/lib/constants";
 
 const navLinks = [
   { label: "サービス", href: "#services" },
@@ -24,7 +25,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/lilq-logo.png"
+                src={logoPath}
                 alt="LilQ"
                 className="h-9 w-auto"
               />

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { logoPath } from "@/lib/constants";
 
 const navItems = [
   { label: "サービス", href: "#services" },
@@ -44,7 +45,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center gap-3">
             <img
-              src="/lilq-logo.png"
+              src={logoPath}
               alt="LilQ"
               className="h-8 w-auto"
             />
@@ -90,7 +91,7 @@ export default function Navbar() {
             <SheetContent side="right" className="w-72">
               <div className="flex items-center gap-3 pt-4 pb-6 border-b border-border">
                 <img
-                  src="/lilq-logo.png"
+                  src={logoPath}
                   alt="LilQ"
                   className="h-7 w-auto"
                 />
