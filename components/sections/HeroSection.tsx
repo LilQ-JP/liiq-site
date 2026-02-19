@@ -59,9 +59,9 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* カード（背面）＋ 画像（手前）※画像下にかぶらないよう余白を確保 */}
+        {/* カード（背面）＋ 画像（手前）※画像の後ろ・下に何もかぶらないよう余白を十分に確保 */}
         <motion.div
-          className="relative -mt-24 sm:-mt-32 flex justify-center pb-8 lg:pb-12"
+          className="relative -mt-24 sm:-mt-32 flex justify-center pt-2 pb-16 lg:pb-20"
           initial={{ opacity: 0, y: 64, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...cinematic, delay: 0.35 }}
@@ -106,9 +106,9 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* モバイル：3枚のカードを画像の下に整列（画像に隠れない） */}
+        {/* モバイル：3枚のカードを画像の下に整列（画像に絶対かぶらない） */}
         <motion.div
-          className="relative mt-12 lg:hidden"
+          className="relative mt-10 lg:hidden"
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.5 }}
