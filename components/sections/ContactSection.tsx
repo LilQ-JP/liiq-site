@@ -26,21 +26,28 @@ export default function ContactSection() {
     e.preventDefault();
     setSubmitting(true);
 
-    if (formspreeContactId) {
-      try {
-        const res = await fetch(`https://formspree.io/f/${formspreeContactId}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error("送信に失敗しました");
-      } catch {
-        setSubmitting(false);
-        alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
-        return;
-      }
+    if (!formspreeContactId) {
+      setSubmitting(false);
+      alert("フォームが設定されていません。X @LilQ_officialJP へDMでお問い合わせください。");
+      return;
     }
-    router.push(`${basePath}/contact/thanks`);
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${formspreeContactId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...form,
+          _replyto: form.email,
+          _subject: `【LilQ お問い合わせ】${form.name || "名無し"} さんから`,
+        }),
+      });
+      if (!res.ok) throw new Error("送信に失敗しました");
+      router.push(`${basePath}/contact/thanks`);
+    } catch {
+      setSubmitting(false);
+      alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
+    }
   };
 
   return (

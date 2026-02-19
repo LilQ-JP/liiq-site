@@ -40,21 +40,28 @@ export default function ApplySection() {
     e.preventDefault();
     setSubmitting(true);
 
-    if (formspreeApplyId) {
-      try {
-        const res = await fetch(`https://formspree.io/f/${formspreeApplyId}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error("送信に失敗しました");
-      } catch {
-        setSubmitting(false);
-        alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
-        return;
-      }
+    if (!formspreeApplyId) {
+      setSubmitting(false);
+      alert("フォームが設定されていません。X @LilQ_officialJP へDMでお申し込みください。");
+      return;
     }
-    router.push(`${basePath}/apply/thanks`);
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${formspreeApplyId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...form,
+          _replyto: form.email,
+          _subject: `【LilQ お申し込み】${form.name || "名無し"} さんから`,
+        }),
+      });
+      if (!res.ok) throw new Error("送信に失敗しました");
+      router.push(`${basePath}/apply/thanks`);
+    } catch {
+      setSubmitting(false);
+      alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
+    }
   };
 
   return (

@@ -30,3 +30,35 @@
 
 ### 6. ブラウザのキャッシュ
 - シークレットモードで開くか、ハードリロード（Cmd+Shift+R）を試す
+
+---
+
+## フォーム送信でメールが届かない場合
+
+### 1. GitHub Secrets の設定
+- リポジトリ → **Settings** → **Secrets and variables** → **Actions**
+- 以下が登録されているか確認：
+  - `NEXT_PUBLIC_FORMSPREE_APPLY_ID`（お申し込みフォームのID）
+  - `NEXT_PUBLIC_FORMSPREE_CONTACT_ID`（お問い合わせフォームのID）
+- **未設定の場合**：フォーム送信時に「フォームが設定されていません」と表示されます
+- 設定後は **再デプロイ** が必要です（main へ push し直すか、Actions から再実行）
+
+### 2. Formspree のフォーム作成
+1. [formspree.io](https://formspree.io) でアカウント作成・ログイン
+2. **「+ New Form」** でフォームを2つ作成（お申し込み用・お問い合わせ用）
+3. 各フォームの URL が `https://formspree.io/f/xxxxx` のとき、`xxxxx` がフォームID
+4. このIDを GitHub Secrets に登録
+
+### 3. Formspree でメール通知を有効化
+- 各フォームを開く → **Settings**（または **Emails / Notifications**）
+- **Email notifications** で送信先メールアドレスを登録
+- ここで登録したアドレスに届きます
+
+### 4. 迷惑メールフォルダを確認
+- Formspree からのメールが迷惑メールに振り分けられている場合あり
+- 差出人やドメインを「許可」に追加してみる
+
+### 5. Formspree ダッシュボードで送信履歴を確認
+- [formspree.io](https://formspree.io) → 各フォーム → **Submissions**
+- 送信が記録されていれば、Formspree は届いている（メール通知の設定を見直す）
+- 送信が記録されていなければ、GitHub Secrets が未設定の可能性大
