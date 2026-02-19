@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border bg-background">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+      <div className="w-full max-w-7xl mx-auto px-4 min-[480px]:px-5 sm:px-8 py-14 min-w-0">
         <div className="grid lg:grid-cols-4 gap-10 mb-10">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">

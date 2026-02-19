@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="pt-16">
+      <main className="pt-16 min-w-0 overflow-x-hidden">
         <HeroSection />
         <LogoBanner />
         <PainSection />

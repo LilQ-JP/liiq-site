@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+
+const notoSansJP = Noto_Sans_JP({
+  weight: ["700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-noto-sans-jp",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "LilQ｜配信の神シーン、500円で切り抜きます",
@@ -49,14 +57,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" data-theme="glass">
+    <html lang="ja" data-theme="glass" className={notoSansJP.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

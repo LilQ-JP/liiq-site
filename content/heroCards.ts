@@ -1,10 +1,13 @@
+import { ArrowRightCircle, Gamepad2, CircleDollarSign, type LucideIcon } from "lucide-react";
+
 export type HeroCardSegment = {
   text: string;
-  style?: "normal" | "highlight" | "price";
+  style?: "normal" | "highlight" | "price" | "linebreak";
 };
 
 export type HeroCard = {
   label: string;
+  icon: LucideIcon;
   segments: HeroCardSegment[];
 };
 
@@ -24,17 +27,23 @@ export type HeroCard = {
 export const heroCards: HeroCard[] = [
   {
     label: "依頼の流れ",
+    icon: ArrowRightCircle,
     segments: [
-      { text: "フォーム入力 → " },
-      { text: "24h納品", style: "highlight" },
+      { text: "フォーム入力", style: "linebreak" },
+      { text: "→ 24h納品", style: "highlight" },
     ],
   },
   {
     label: "対応ジャンル",
-    segments: [{ text: "VTuber / ゲーム実況 / 雑談" }],
+    icon: Gamepad2,
+    segments: [
+      { text: "VTuber", style: "linebreak" },
+      { text: "ゲーム実況 / 雑談" },
+    ],
   },
   {
     label: "料金",
+    icon: CircleDollarSign,
     segments: [
       { text: "ショート " },
       { text: "¥500〜", style: "price" },

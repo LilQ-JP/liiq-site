@@ -47,7 +47,7 @@ export default function Navbar() {
           : "bg-white/80 backdrop-blur border-b border-white/60"
       )}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="w-full max-w-7xl mx-auto px-4 min-[480px]:px-5 sm:px-8 min-w-0">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-3">
             <img
