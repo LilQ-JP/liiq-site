@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { heroCards } from "@/content/heroCards";
 
 export default function HeroSection() {
   const go = (href: string) =>
@@ -96,19 +97,31 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="card-surface p-5">
-                <div className="text-xs text-black/50 mb-2">依頼の流れ</div>
-                <div className="text-sm font-semibold text-black">フォーム入力 → 24h納品</div>
-              </div>
-              <div className="card-surface p-5">
-                <div className="text-xs text-black/50 mb-2">対応ジャンル</div>
-                <div className="text-sm font-semibold text-black">VTuber / ゲーム実況 / 雑談</div>
-              </div>
-              <div className="card-surface p-5">
-                <div className="text-xs text-black/50 mb-2">料金</div>
-                <div className="text-sm font-semibold text-black">ショート ¥500〜</div>
-              </div>
+            <div className="flex flex-col gap-4 max-w-[400px] p-5 sm:p-10 rounded-3xl bg-[#f4f7f9]">
+              {heroCards.map((card) => (
+                <div
+                  key={card.label}
+                  className="bg-white rounded-[25px] px-6 py-5 sm:px-8 sm:py-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)]"
+                >
+                  <p className="text-sm text-black/50 mb-2">{card.label}</p>
+                  <h3 className="text-base sm:text-xl font-bold text-black/90 m-0 leading-snug">
+                    {card.segments.map((seg, i) => (
+                      <span
+                        key={i}
+                        className={
+                          seg.style === "price"
+                            ? "text-xl sm:text-2xl"
+                            : seg.style === "highlight"
+                              ? "text-black font-bold"
+                              : ""
+                        }
+                      >
+                        {seg.text}
+                      </span>
+                    ))}
+                  </h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>
