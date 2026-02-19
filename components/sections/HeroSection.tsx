@@ -59,16 +59,25 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* カード（背面）＋ 画像（手前）※画像の後ろ・下に何もかぶらないよう余白を十分に確保 */}
+        {/* 画像＋カード（かぶらず横並び）※画像の後ろ・下に何もかぶらないよう余白を十分に確保 */}
         <motion.div
           className="relative -mt-24 sm:-mt-32 flex justify-center pt-2 pb-16 lg:pb-20"
           initial={{ opacity: 0, y: 64, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...cinematic, delay: 0.35 }}
         >
-          <div className="relative w-full max-w-[min(766px,95vw)]">
-            {/* デスクトップ：画像右に縦並びカード（画像とバランスよく配置） */}
-            <div className="hidden lg:flex absolute right-2 top-1/2 -translate-y-1/2 xl:right-4 flex-col gap-3 w-[200px] xl:w-[220px] z-20">
+          <div className="flex w-full max-w-[min(1020px,95vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-10">
+            {/* 画像 */}
+            <div className="relative w-full max-w-[min(766px,95vw)] shrink-0">
+              <img
+                src={heroImagePath}
+                alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+                className="w-full h-auto max-h-[431px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                loading="eager"
+              />
+            </div>
+            {/* デスクトップ：画像の右に縦並びカード（かぶらないようflexで横並び） */}
+            <div className="hidden lg:flex flex-col gap-3 w-[200px] xl:w-[220px] shrink-0">
               {heroCards.map((card) => {
                 const isPrice = card.label === "料金";
                 return (
@@ -94,15 +103,6 @@ export default function HeroSection() {
                   </div>
                 );
               })}
-            </div>
-            {/* 画像：手前 z-10 */}
-            <div className="relative z-10">
-              <img
-                src={heroImagePath}
-                alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                className="w-full h-auto max-h-[431px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
-                loading="eager"
-              />
             </div>
           </div>
         </motion.div>
