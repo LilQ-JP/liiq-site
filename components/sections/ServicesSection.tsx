@@ -77,7 +77,7 @@ export default function ServicesSection() {
           </p>
         </AnimatedHeader>
 
-        <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-5 mb-8">
+        <AnimatedStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
           {services.map((s) => (
             <AnimatedStaggerItem key={s.title}>
             <div className={`card-surface p-6 card-hover h-full ${s.highlight ? "ring-1 ring-primary/20" : ""}`}>
@@ -108,7 +108,7 @@ export default function ServicesSection() {
           ))}
         </AnimatedStaggerContainer>
 
-        <AnimatedStaggerContainer className="grid lg:grid-cols-2 gap-5" delayIndex={1}>
+        <AnimatedStaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-5" delayIndex={1}>
           <AnimatedStaggerItem>
           <div className="card-surface p-6 card-hover h-full">
             <h3 className="text-lg font-bold text-foreground mb-4">オプションサービス</h3>
