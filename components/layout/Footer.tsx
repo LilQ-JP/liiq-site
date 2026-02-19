@@ -15,8 +15,7 @@ const navLinks = [
 ];
 
 export default function Footer() {
-  const go = (href: string) =>
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  const homeHref = (hash: string) => `/${hash}`;
 
   return (
     <footer className="border-t border-border bg-background">
@@ -60,21 +59,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  {l.href.startsWith("/") ? (
-                    <Link
-                      href={l.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {l.label}
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => go(l.href)}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {l.label}
-                    </button>
-                  )}
+                  <Link
+                    href={l.href.startsWith("/") ? l.href : homeHref(l.href)}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -95,14 +85,14 @@ export default function Footer() {
               </li>
               <li className="pt-3 space-y-2">
                 <div>
-                  <a href="/legal" className="text-xs text-muted-foreground hover:text-foreground underline">
+                  <Link href="/legal" className="text-xs text-muted-foreground hover:text-foreground underline">
                     特定商取引法に基づく表記
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground underline">
+                  <Link href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground underline">
                     プライバシーポリシー
-                  </a>
+                  </Link>
                 </div>
               </li>
             </ul>

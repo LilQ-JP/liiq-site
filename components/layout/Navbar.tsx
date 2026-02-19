@@ -27,10 +27,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const go = (href: string) => {
-    setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const homeHref = (hash: string) => `/${hash}`; // /#services でトップのセクションへ
 
   return (
     <header
@@ -43,42 +40,33 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <img
               src={logoPath}
               alt="LilQ"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) =>
-              item.href.startsWith("/") ? (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.href}
-                  onClick={() => go(item.href)}
-                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
-                >
-                  {item.label}
-                </button>
-              )
-            )}
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href.startsWith("/") ? item.href : homeHref(item.href)}
+                className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" onClick={() => go("#contact")} className="rounded-full">
-              まずは相談
+            <Button variant="outline" asChild className="rounded-full">
+              <Link href="/#contact">まずは相談</Link>
             </Button>
-            <Button onClick={() => go("#apply")} className="rounded-full">
-              無料で依頼する
+            <Button asChild className="rounded-full">
+              <Link href="/#apply">無料で依頼する</Link>
             </Button>
           </div>
 
@@ -97,32 +85,22 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col gap-1 pt-4">
-                {navItems.map((item) =>
-                  item.href.startsWith("/") ? (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.href}
-                      onClick={() => go(item.href)}
-                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                    >
-                      {item.label}
-                    </button>
-                  )
-                )}
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href.startsWith("/") ? item.href : homeHref(item.href)}
+                    onClick={() => setOpen(false)}
+                    className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <div className="pt-4 flex flex-col gap-2">
-                  <Button variant="outline" onClick={() => go("#contact")} className="rounded-full">
-                    まずは相談
+                  <Button variant="outline" asChild className="rounded-full">
+                    <Link href="/#contact" onClick={() => setOpen(false)}>まずは相談</Link>
                   </Button>
-                  <Button onClick={() => go("#apply")} className="rounded-full">
-                    無料で依頼する
+                  <Button asChild className="rounded-full">
+                    <Link href="/#apply" onClick={() => setOpen(false)}>無料で依頼する</Link>
                   </Button>
                 </div>
               </div>
