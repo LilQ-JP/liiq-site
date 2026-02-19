@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
 import { heroImagePath } from "@/lib/constants";
+import { Clock, RefreshCw, ShieldCheck } from "lucide-react";
 
 const cinematic = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const };
 
@@ -49,19 +50,11 @@ export default function HeroSection() {
               実績を見る
             </Button>
           </div>
-
-          <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-black/60">
-            <span>最短24時間納品</span>
-            <span className="w-1 h-1 rounded-full bg-black/20 self-center" />
-            <span>修正2回無料</span>
-            <span className="w-1 h-1 rounded-full bg-black/20 self-center" />
-            <span>全額返金保証</span>
-          </div>
         </motion.div>
 
         {/* 画像＋カード（かぶらず横並び）※画像の後ろ・下に何もかぶらないよう余白を十分に確保 */}
         <motion.div
-          className="relative -mt-24 sm:-mt-32 flex justify-center pt-2 pb-16 lg:pb-20"
+          className="relative -mt-24 sm:-mt-32 flex flex-col items-center justify-center pt-2 pb-10"
           initial={{ opacity: 0, y: 64, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...cinematic, delay: 0.35 }}
@@ -105,11 +98,32 @@ export default function HeroSection() {
               })}
             </div>
           </div>
+
+          {/* 画像の直下：3つの保証・特徴（こだわりデザイン） */}
+          <motion.div
+            className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...cinematic, delay: 0.5 }}
+          >
+            <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+              <Clock className="h-4 w-4 text-black/60" strokeWidth={2.5} />
+              <span className="text-sm font-bold text-black/80">最短24時間納品</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+              <RefreshCw className="h-4 w-4 text-black/60" strokeWidth={2.5} />
+              <span className="text-sm font-bold text-black/80">修正2回無料</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+              <ShieldCheck className="h-4 w-4 text-black/60" strokeWidth={2.5} />
+              <span className="text-sm font-bold text-black/80">全額返金保証</span>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* モバイル：3枚のカードを画像の下に整列（画像に絶対かぶらない） */}
         <motion.div
-          className="relative mt-10 lg:hidden"
+          className="relative mt-8 lg:hidden"
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.5 }}
