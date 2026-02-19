@@ -88,14 +88,14 @@ export default function HeroSection() {
                     <div className={`hero-card-icon w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${isPrice ? "bg-white/15" : "bg-black/5"}`}>
                       <Icon className={`w-5 h-5 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
                     </div>
-                    <div className="min-w-0 flex-1">
+                    <div className="min-w-0 flex-1 overflow-hidden">
                       <p className={`hero-card-label mb-1 ${isPrice ? "text-white/85" : "text-black/65"}`}>{card.label}</p>
                       <p className={`hero-card-body m-0 ${card.segments.some((s) => s.style === "price") ? "hero-card-body-lg" : ""}`}>
                         {card.segments.map((seg, i) =>
                           seg.style === "linebreak" ? (
-                            <span key={i} className="block hero-card-nowrap">{seg.text}</span>
+                            <span key={i} className="block">{seg.text}</span>
                           ) : (
-                            <span key={i} className={`${seg.style === "price" ? "hero-card-price " : ""}hero-card-nowrap`}>
+                            <span key={i} className={seg.style === "price" ? "hero-card-price" : ""}>
                               {seg.text}
                             </span>
                           )
@@ -157,12 +157,12 @@ export default function HeroSection() {
                   <p className={`hero-card-label text-[10px] sm:text-xs mb-0 ${isPrice ? "text-white/85" : "text-black/65"}`}>
                     {card.label}
                   </p>
-                  <p className="hero-card-body text-sm sm:text-base leading-tight m-0">
+                  <p className="hero-card-body text-sm sm:text-base leading-tight m-0 overflow-hidden w-full">
                     {card.segments.map((seg, i) =>
                       seg.style === "linebreak" ? (
-                        <span key={i} className="block sm:whitespace-nowrap">{seg.text}</span>
+                        <span key={i} className="block">{seg.text}</span>
                       ) : (
-                        <span key={i} className={`${seg.style === "price" ? "hero-card-price text-lg " : ""}sm:whitespace-nowrap`}>
+                        <span key={i} className={seg.style === "price" ? "hero-card-price text-lg" : ""}>
                           {seg.text}
                         </span>
                       )
