@@ -67,25 +67,26 @@ export default function HeroSection() {
           transition={{ ...cinematic, delay: 0.35 }}
         >
           <div className="relative w-full max-w-[min(766px,95vw)]">
-            {/* 小さなコンパクトカード：背面 z-0 */}
-            <div className="hidden lg:flex absolute right-2 top-2 xl:right-4 xl:top-4 flex-col gap-2 w-[200px] xl:w-[220px] z-0">
-              {heroCards.map((card, idx) => {
+            {/* デスクトップ：画像右に縦並びカード（画像とバランスよく配置） */}
+            <div className="hidden lg:flex absolute right-2 top-1/2 -translate-y-1/2 xl:right-4 flex-col gap-3 w-[200px] xl:w-[220px] z-20">
+              {heroCards.map((card) => {
                 const isPrice = card.label === "料金";
                 return (
                   <div
                     key={card.label}
                     className={`
-                      px-3 py-2.5 rounded-lg border text-left
+                      px-4 py-3 rounded-xl border text-left
+                      transition-transform duration-200 hover:scale-[1.02]
                       ${isPrice
-                        ? "bg-black/90 border-black/20 text-white"
-                        : "bg-white/95 backdrop-blur border-black/10 text-black"
+                        ? "bg-black/90 border-black/20 text-white shadow-xl"
+                        : "bg-white/95 backdrop-blur border-black/10 text-black shadow-xl"
                       }
                     `}
                   >
-                    <p className={`text-[10px] font-medium mb-0.5 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
-                    <p className="text-xs font-semibold leading-tight m-0">
+                    <p className={`text-[11px] font-semibold uppercase tracking-wider mb-1 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
+                    <p className="text-sm font-bold leading-tight m-0">
                       {card.segments.map((seg, i) => (
-                        <span key={i} className={seg.style === "price" ? "text-sm font-bold" : ""}>
+                        <span key={i} className={seg.style === "price" ? "text-base font-bold" : ""}>
                           {seg.text}
                         </span>
                       ))}
