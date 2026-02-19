@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: "/liiq-site",
+  assetPrefix: "/liiq-site/",
 };
 
 export default nextConfig;
