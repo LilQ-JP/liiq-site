@@ -101,11 +101,11 @@
 @layer base {
   * { @apply border-border outline-ring/50; }
   html {
-    font-size: 18px;
+    font-size: 20px;
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-bold;
     font-family: "SF Pro JP", "SF Pro Text", "SF Pro Icons", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     line-height: 1.75;
   }
