@@ -59,14 +59,14 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* カード（背面）＋ 画像（手前） */}
+        {/* カード（背面）＋ 画像（手前）※画像下にかぶらないよう余白を確保 */}
         <motion.div
-          className="relative -mt-24 sm:-mt-32 flex justify-center"
+          className="relative -mt-24 sm:-mt-32 flex justify-center pb-8 lg:pb-12"
           initial={{ opacity: 0, y: 64, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...cinematic, delay: 0.35 }}
         >
-          <div className="relative w-full max-w-[min(950px,95vw)]">
+          <div className="relative w-full max-w-[min(766px,95vw)]">
             {/* 小さなコンパクトカード：背面 z-0 */}
             <div className="hidden lg:flex absolute right-2 top-2 xl:right-4 xl:top-4 flex-col gap-2 w-[200px] xl:w-[220px] z-0">
               {heroCards.map((card, idx) => {
@@ -99,7 +99,7 @@ export default function HeroSection() {
               <img
                 src={heroImagePath}
                 alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                className="w-full h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                className="w-full h-auto max-h-[431px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
                 loading="eager"
               />
             </div>
