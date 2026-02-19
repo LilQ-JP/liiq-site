@@ -9,25 +9,34 @@ import { cn } from "@/lib/utils";
 import { logoPath } from "@/lib/constants";
 
 const navItems = [
-  { label: "サービス", href: "#services" },
-  { label: "料金", href: "#pricing" },
-  { label: "実績", href: "#works" },
-  { label: "ニュース", href: "/news" },
-  { label: "FAQ", href: "#faq" },
-  { label: "お問い合わせ", href: "#contact" },
+  { label: "サービス", href: "#services", hash: true },
+  { label: "料金", href: "#pricing", hash: true },
+  { label: "実績", href: "#works", hash: true },
+  { label: "ニュース", href: "/news", hash: false },
+  { label: "FAQ", href: "#faq", hash: true },
+  { label: "お問い合わせ", href: "#contact", hash: true },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 32);
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const homeHref = (hash: string) => `/${hash}`; // /#services でトップのセクションへ
+  const handleHashClick = (e: React.MouseEvent, href: string) => {
+    const el = document.querySelector(href);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    }
+    // 他ページにいる場合はデフォルトのナビゲーション（/#hash へ）に任せる
+  };
+
+  const homeHref = (hash: string) => `/${hash}`;
 
   return (
     <header
@@ -49,24 +58,39 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href.startsWith("/") ? item.href : homeHref(item.href)}
-                className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.hash ? (
+                <Link
+                  key={item.href}
+                  href={homeHref(item.href)}
+                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
+                  onClick={(e) => handleHashClick(e, item.href)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
             <Button variant="outline" asChild className="rounded-full">
-              <Link href="/#contact">まずは相談</Link>
+              <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
+                まずは相談
+              </Link>
             </Button>
             <Button asChild className="rounded-full">
-              <Link href="/#apply">無料で依頼する</Link>
+              <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
+                無料で依頼する
+              </Link>
             </Button>
           </div>
 
@@ -85,22 +109,37 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col gap-1 pt-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href.startsWith("/") ? item.href : homeHref(item.href)}
-                    onClick={() => setOpen(false)}
-                    className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) =>
+                  item.hash ? (
+                    <Link
+                      key={item.href}
+                      href={homeHref(item.href)}
+                      onClick={(e) => handleHashClick(e, item.href)}
+                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
                 <div className="pt-4 flex flex-col gap-2">
                   <Button variant="outline" asChild className="rounded-full">
-                    <Link href="/#contact" onClick={() => setOpen(false)}>まずは相談</Link>
+                    <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
+                      まずは相談
+                    </Link>
                   </Button>
                   <Button asChild className="rounded-full">
-                    <Link href="/#apply" onClick={() => setOpen(false)}>無料で依頼する</Link>
+                    <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
+                      無料で依頼する
+                    </Link>
                   </Button>
                 </div>
               </div>

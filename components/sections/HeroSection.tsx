@@ -28,8 +28,8 @@ export default function HeroSection() {
             モニター価格で受付中
           </Badge>
           <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold text-black leading-tight tracking-tight">
-            さあ、500円で<br />
-            リスクゼロではじめよう！
+            500円から、<br />
+            気軽にはじめよう！
           </h1>
           <p className="mt-4 text-base sm:text-lg text-black/60 leading-relaxed">
             VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜きサービス。
