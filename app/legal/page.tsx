@@ -10,10 +10,10 @@ const items = [
   { label: "屋号", value: "LilQ（リルク）" },
   { label: "代表者名", value: "宮宅 晴規（ミヤケ ハルキ）" },
   { label: "所在地", value: "〒252-0304 神奈川県相模原市南区旭町3番9号リブリコーポ樹103" },
-  { label: "電話番号", value: "080-9838-5540（メール・X対応のみ）" },
+  { label: "電話番号", value: "080-9838-5540（メール・X・フォーム対応のみ）" },
   { label: "メールアドレス", value: "contact@lilq-official.com" },
   { label: "販売URL", value: "https://lilq.jp" },
-  { label: "事業形態", value: "個人事業主" },
+  { label: "事業形態", value: "個人事業主（３人体制）" },
   { label: "販売価格", value: "ショート動画制作 500円〜 / 切り抜き動画制作 3,000円〜 / カスタム動画制作 要相談（各サービスページに記載）" },
   { label: "代金の支払方法", value: "銀行振込・クレジットカード・PayPal" },
   { label: "代金の支払時期", value: "前払い制（ご注文確認後、制作開始前にお支払いをお願いします）" },
@@ -38,7 +38,7 @@ export default function LegalPage() {
         <h1 className="text-3xl font-bold text-foreground mb-2">
           特定商取引法に基づく表記
         </h1>
-        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年</p>
+        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年2月19日</p>
 
         <div className="card-surface overflow-hidden">
           <table className="w-full">

@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-3xl font-bold text-foreground mb-2">
           プライバシーポリシー
         </h1>
-        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年</p>
+        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年2月19日</p>
 
         <div className="card-surface p-8 space-y-8">
           <p className="text-sm text-muted-foreground leading-relaxed">
