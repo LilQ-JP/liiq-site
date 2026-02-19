@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
           トップに戻る
         </Link>
 
-        <h1 className="text-3xl font-semibold text-foreground mb-2">
+        <h1 className="text-3xl font-bold text-foreground mb-2">
           プライバシーポリシー
         </h1>
         <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年</p>
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
 
           {sections.map((section, i) => (
             <div key={i}>
-              <h2 className="text-base font-semibold text-foreground mb-3">{section.title}</h2>
+              <h2 className="text-base font-bold text-foreground mb-3">{section.title}</h2>
               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                 {section.content}
               </p>

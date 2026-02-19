@@ -21,7 +21,7 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
           <Badge variant="secondary" className="mb-3">FAQ</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             よくある質問
           </h2>
           <p className="text-muted-foreground">ご不明な点はお気軽にお問い合わせください。</p>
@@ -35,7 +35,7 @@ export default function FAQSection() {
               value={`item-${i}`}
               className="card-surface px-6"
             >
-              <AccordionTrigger className="text-left font-semibold text-foreground py-5 text-sm sm:text-base">
+              <AccordionTrigger className="text-left font-bold text-foreground py-5 text-sm sm:text-base">
                 {f.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-sm sm:text-base">

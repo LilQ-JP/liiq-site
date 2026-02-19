@@ -47,7 +47,7 @@ export default function ApplySection() {
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="text-2xl font-semibold text-foreground mb-3">ご依頼ありがとうございます</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-3">ご依頼ありがとうございます</h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
               お申し込みを受け付けました。24時間以内にメールまたはXのDMにてご連絡いたします。
             </p>
@@ -66,7 +66,7 @@ export default function ApplySection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">お申し込み</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             お申し込みフォーム
           </h2>
           <p className="text-muted-foreground">まずは気軽にご依頼ください。相談だけでも大歓迎です。</p>
@@ -76,7 +76,7 @@ export default function ApplySection() {
         <div className="grid lg:grid-cols-5 gap-10 items-start max-w-5xl mx-auto">
           <div className="lg:col-span-2 space-y-5">
             <div className="card-surface p-6">
-              <h3 className="font-semibold text-foreground text-base mb-4">依頼前のご確認</h3>
+              <h3 className="font-bold text-foreground text-base mb-4">依頼前のご確認</h3>
               <div className="space-y-3 text-sm text-muted-foreground">
                 {[
                   "最短24時間で納品",
@@ -94,7 +94,7 @@ export default function ApplySection() {
             </div>
 
             <div className="card-surface p-6">
-              <h4 className="font-semibold text-foreground text-sm mb-3">サービス料金</h4>
+              <h4 className="font-bold text-foreground text-sm mb-3">サービス料金</h4>
               <div className="space-y-2 text-sm">
                 {[
                   ["ショート動画（〜60秒）", "¥500〜"],
@@ -103,7 +103,7 @@ export default function ApplySection() {
                 ].map(([label, price]) => (
                   <div key={label} className="flex justify-between">
                     <span className="text-muted-foreground">{label}</span>
-                    <span className="font-semibold text-foreground">{price}</span>
+                    <span className="font-bold text-foreground">{price}</span>
                   </div>
                 ))}
               </div>

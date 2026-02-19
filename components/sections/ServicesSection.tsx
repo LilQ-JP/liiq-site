@@ -67,7 +67,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">サービスと料金</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             サービス内容と料金プラン
           </h2>
           <p className="text-muted-foreground">
@@ -85,9 +85,9 @@ export default function ServicesSection() {
                 </Badge>
                 <span className="text-xs text-muted-foreground">納期: {s.delivery}</span>
               </div>
-              <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
+              <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-1">{s.sub}</p>
-              <div className="text-3xl font-bold text-foreground mt-4">{s.price}</div>
+              <div className="text-3xl font-extrabold text-foreground mt-4">{s.price}</div>
 
               <div className="space-y-2 mt-5 text-sm text-muted-foreground">
                 {s.features.map((f) => (
@@ -109,13 +109,13 @@ export default function ServicesSection() {
         <AnimatedStaggerContainer className="grid lg:grid-cols-2 gap-5" delayIndex={1}>
           <AnimatedStaggerItem>
           <div className="card-surface p-6 card-hover h-full">
-            <h3 className="text-lg font-semibold text-foreground mb-4">オプションサービス</h3>
+            <h3 className="text-lg font-bold text-foreground mb-4">オプションサービス</h3>
             <div className="space-y-3">
               {options.map((o) => (
                 <div key={o.name} className="card-soft px-4 py-3">
                   <div className="flex items-center justify-between">
-                    <div className="font-medium text-foreground text-sm">{o.name}</div>
-                    <div className="text-sm font-semibold text-foreground">{o.price}</div>
+                    <div className="font-semibold text-foreground text-sm">{o.name}</div>
+                    <div className="text-sm font-bold text-foreground">{o.price}</div>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">{o.desc}</p>
                 </div>
@@ -126,10 +126,10 @@ export default function ServicesSection() {
 
           <AnimatedStaggerItem>
           <div className="card-surface p-6 card-hover h-full">
-            <h3 className="text-lg font-semibold text-foreground mb-4">支払い・返金</h3>
+            <h3 className="text-lg font-bold text-foreground mb-4">支払い・返金</h3>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div>
-                <div className="font-medium text-foreground mb-1">支払い方法</div>
+                <div className="font-semibold text-foreground mb-1">支払い方法</div>
                 <div className="flex flex-wrap gap-2">
                   {[
                     "銀行振込",
@@ -142,7 +142,7 @@ export default function ServicesSection() {
                 <p className="text-xs text-muted-foreground mt-2">前払い制</p>
               </div>
               <div className="card-soft px-4 py-3">
-                <div className="font-medium text-foreground">全額返金保証</div>
+                <div className="font-semibold text-foreground">全額返金保証</div>
                 <p className="text-xs text-muted-foreground mt-1">
                   制作開始前キャンセルは全額返金。納品物にご満足いただけない場合も全額返金。
                 </p>

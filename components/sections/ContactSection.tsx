@@ -32,7 +32,7 @@ export default function ContactSection() {
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="text-2xl font-semibold text-foreground mb-3">お問い合わせありがとうございます</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-3">お問い合わせありがとうございます</h3>
             <p className="text-muted-foreground">24時間以内にご連絡いたします。</p>
           </div>
           </AnimatedSection>
@@ -46,7 +46,7 @@ export default function ContactSection() {
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
           <Badge variant="secondary" className="mb-3">お問い合わせ</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             お問い合わせ
           </h2>
           <p className="text-muted-foreground">依頼前の相談・ご質問など、何でもお気軽にどうぞ。</p>
@@ -64,7 +64,7 @@ export default function ContactSection() {
               <Twitter className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-semibold text-foreground">X (Twitter) でDM</div>
+              <div className="font-bold text-foreground">X (Twitter) でDM</div>
               <div className="text-sm text-muted-foreground">@LilQ_officialJP</div>
             </div>
           </a>
@@ -78,7 +78,7 @@ export default function ContactSection() {
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-semibold text-foreground">メールで連絡</div>
+              <div className="font-bold text-foreground">メールで連絡</div>
               <div className="text-sm text-muted-foreground">contact@lilq-official.com</div>
             </div>
           </a>
@@ -87,7 +87,7 @@ export default function ContactSection() {
 
         <AnimatedSection>
         <div className="card-surface p-8">
-          <h3 className="font-semibold text-foreground text-lg mb-6 text-center">フォームから送信</h3>
+          <h3 className="font-bold text-foreground text-lg mb-6 text-center">フォームから送信</h3>
           <form onSubmit={onSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>

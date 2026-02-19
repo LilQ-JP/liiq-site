@@ -11,7 +11,7 @@ export default function WorksSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">制作実績</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             制作実績
           </h2>
           <p className="text-muted-foreground">
@@ -47,7 +47,7 @@ export default function WorksSection() {
                     </Badge>
                   ))}
                 </div>
-                <h3 className="font-semibold text-foreground leading-snug">
+                <h3 className="font-bold text-foreground leading-snug">
                   {w.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">

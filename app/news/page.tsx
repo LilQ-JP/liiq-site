@@ -29,7 +29,7 @@ export default function NewsPage() {
             トップに戻る
           </Link>
 
-          <h1 className="text-3xl font-semibold text-foreground mb-2">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
             ニュース
           </h1>
           <p className="text-sm text-muted-foreground mb-10">
@@ -45,7 +45,7 @@ export default function NewsPage() {
                 >
                   {formatDate(item.date)}
                 </time>
-                <h2 className="font-semibold text-foreground text-lg mb-2">
+                <h2 className="font-bold text-foreground text-lg mb-2">
                   {item.href ? (
                     <a
                       href={item.href}

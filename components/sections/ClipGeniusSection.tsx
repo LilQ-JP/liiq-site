@@ -17,7 +17,7 @@ export default function ClipGeniusSection() {
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
           <Badge variant="secondary" className="mb-3">開発中ツール</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             ClipGenius
           </h2>
           <p className="text-muted-foreground">

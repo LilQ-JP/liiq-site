@@ -25,10 +25,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...cinematic, delay: 0.15 }}
         >
-          <Badge variant="outline" className="bg-gradient-to-r from-amber-400 to-orange-500 text-white border-0 text-base sm:text-lg font-bold px-6 py-3 shadow-[0_4px_14px_rgba(251,146,60,0.5)] hover:from-amber-500 hover:to-orange-600 transition-all duration-300">
+          <Badge variant="outline" className="bg-gradient-to-r from-amber-400 to-orange-500 text-white border-0 text-base sm:text-lg font-extrabold px-6 py-3 shadow-[0_4px_14px_rgba(251,146,60,0.5)] hover:from-amber-500 hover:to-orange-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
-          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold text-black leading-tight tracking-tight">
+          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight tracking-tight">
             500円から、<br />
             気軽にはじめよう！
           </h1>
@@ -86,9 +86,9 @@ export default function HeroSection() {
                     `}
                   >
                     <p className={`text-[11px] font-semibold uppercase tracking-wider mb-1 ${isPrice ? "text-white/70" : "text-black/50"}`}>{card.label}</p>
-                    <p className="text-sm font-bold leading-tight m-0">
+                    <p className="text-sm font-extrabold leading-tight m-0">
                       {card.segments.map((seg, i) => (
-                        <span key={i} className={seg.style === "price" ? "text-base font-bold" : ""}>
+                        <span key={i} className={seg.style === "price" ? "text-base font-extrabold" : ""}>
                           {seg.text}
                         </span>
                       ))}
@@ -108,15 +108,15 @@ export default function HeroSection() {
           >
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <Clock className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-bold text-black/80">最短24時間納品</span>
+              <span className="text-sm font-extrabold text-black/80">最短24時間納品</span>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <RefreshCw className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-bold text-black/80">修正2回無料</span>
+              <span className="text-sm font-extrabold text-black/80">修正2回無料</span>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <ShieldCheck className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-bold text-black/80">全額返金保証</span>
+              <span className="text-sm font-extrabold text-black/80">全額返金保証</span>
             </div>
           </motion.div>
         </motion.div>

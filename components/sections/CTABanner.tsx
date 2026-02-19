@@ -14,7 +14,7 @@ export default function CTABanner() {
         <AnimatedSection>
         <div className="card-surface p-8 text-center">
           <Badge variant="secondary" className="mb-4">モニター価格で受付中</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
             まずは1本だけ、試してみませんか？
           </h2>
           <p className="text-muted-foreground mb-6">

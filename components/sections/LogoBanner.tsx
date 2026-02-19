@@ -20,7 +20,7 @@ export default function LogoBanner() {
             <div className="absolute -bottom-12 -left-12 h-32 w-32 rounded-full bg-primary/5 blur-2xl" />
 
             <div className="relative">
-              <h3 className="text-center text-base font-bold tracking-tight text-foreground sm:text-lg">
+              <h3 className="text-center text-base font-extrabold tracking-tight text-foreground sm:text-lg">
                 対応ジャンルと実績クライアント
               </h3>
 
@@ -36,7 +36,7 @@ export default function LogoBanner() {
                       <AnimatedStaggerItem key={c}>
                         <Badge
                           variant="secondary"
-                          className="rounded-lg px-3 py-1.5 text-sm font-bold shadow-sm transition-all hover:scale-105 hover:shadow-md"
+                          className="rounded-lg px-3 py-1.5 text-sm font-extrabold shadow-sm transition-all hover:scale-105 hover:shadow-md"
                         >
                           {c}
                         </Badge>
@@ -59,7 +59,7 @@ export default function LogoBanner() {
                       <AnimatedStaggerItem key={g}>
                         <Badge
                           variant="outline"
-                          className="rounded-lg border-foreground/20 bg-foreground/[0.02] px-3 py-1.5 text-sm font-bold transition-all hover:border-foreground/40 hover:bg-foreground/[0.06]"
+                          className="rounded-lg border-foreground/20 bg-foreground/[0.02] px-3 py-1.5 text-sm font-extrabold transition-all hover:border-foreground/40 hover:bg-foreground/[0.06]"
                         >
                           {g}
                         </Badge>
@@ -78,7 +78,7 @@ export default function LogoBanner() {
                     {features.map((f) => (
                       <AnimatedStaggerItem key={f}>
                         <Badge
-                          className="rounded-lg border-0 bg-primary px-3 py-1.5 text-sm font-bold text-primary-foreground shadow-sm"
+                          className="rounded-lg border-0 bg-primary px-3 py-1.5 text-sm font-extrabold text-primary-foreground shadow-sm"
                         >
                           {f}
                         </Badge>

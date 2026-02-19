@@ -34,7 +34,7 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <Badge variant="secondary" className="mb-3">LilQについて</Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
               LilQ（リルク）とは
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -61,22 +61,22 @@ export default function AboutSection() {
 
           <div className="card-surface p-6 card-hover">
             <div className="text-sm text-muted-foreground">理念 / ビジョン / ミッション</div>
-            <h3 className="text-xl font-semibold text-foreground mt-2">
+            <h3 className="text-xl font-bold text-foreground mt-2">
               すべてのクリエイターの「伝えたい」を形にする
             </h3>
             <Separator className="my-4" />
             <div className="space-y-4 text-sm">
               <div>
                 <div className="text-xs text-muted-foreground">企業理念</div>
-                <div className="font-medium text-foreground">技術の力でクリエイターの表現を形にする</div>
+                <div className="font-semibold text-foreground">技術の力でクリエイターの表現を形にする</div>
               </div>
               <div>
                 <div className="text-xs text-muted-foreground">ビジョン</div>
-                <div className="font-medium text-foreground">誰もがプロ品質の映像を手にできる世界</div>
+                <div className="font-semibold text-foreground">誰もがプロ品質の映像を手にできる世界</div>
               </div>
               <div>
                 <div className="text-xs text-muted-foreground">ミッション</div>
-                <div className="font-medium text-foreground">低価格・高品質・実用的なツールの提供</div>
+                <div className="font-semibold text-foreground">低価格・高品質・実用的なツールの提供</div>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function AboutSection() {
         <div>
           <AnimatedHeader className="text-center mb-10">
             <Badge variant="secondary" className="mb-3">選ばれる理由</Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">
               選ばれる3つの理由
             </h2>
           </AnimatedHeader>
@@ -99,7 +99,7 @@ export default function AboutSection() {
                   <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-foreground" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{r.title}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{r.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {r.desc}
                   </p>

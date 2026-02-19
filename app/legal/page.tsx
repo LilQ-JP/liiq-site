@@ -35,7 +35,7 @@ export default function LegalPage() {
           トップに戻る
         </Link>
 
-        <h1 className="text-3xl font-semibold text-foreground mb-2">
+        <h1 className="text-3xl font-bold text-foreground mb-2">
           特定商取引法に基づく表記
         </h1>
         <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年</p>

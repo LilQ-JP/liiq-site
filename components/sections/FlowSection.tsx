@@ -32,7 +32,7 @@ export default function FlowSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">ご利用の流れ</Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
             たった3ステップで完了
           </h2>
           <p className="text-muted-foreground">最短24時間で納品します。</p>
@@ -42,8 +42,8 @@ export default function FlowSection() {
           {steps.map((s) => (
             <AnimatedStaggerItem key={s.step}>
             <div className="card-surface p-6 card-hover h-full">
-              <div className="text-xs text-black/70 font-semibold">STEP {s.step}</div>
-              <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">
+              <div className="text-xs text-black/70 font-bold">STEP {s.step}</div>
+              <h3 className="text-lg font-bold text-foreground mt-2 mb-2">
                 {s.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
