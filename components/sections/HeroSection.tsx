@@ -16,7 +16,7 @@ export default function HeroSection() {
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-16">
         <div className="text-center max-w-3xl mx-auto relative z-10">
-          <Badge variant="outline" className="bg-white text-black border-black/10 text-sm px-3 py-1.5">
+          <Badge variant="outline" className="bg-gradient-to-r from-amber-400 to-orange-500 text-white border-0 text-base sm:text-lg font-bold px-6 py-3 shadow-[0_4px_14px_rgba(251,146,60,0.5)] hover:from-amber-500 hover:to-orange-600 transition-all duration-300">
             モニター価格で受付中
           </Badge>
           <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold text-black leading-tight tracking-tight">
@@ -86,7 +86,7 @@ export default function HeroSection() {
               <img
                 src={heroImagePath}
                 alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                className="w-full max-w-[200px] max-h-[56px] h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                className="w-full h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
                 loading="eager"
               />
             </div>
