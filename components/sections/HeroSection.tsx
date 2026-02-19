@@ -15,7 +15,7 @@ export default function HeroSection() {
       <div className="absolute -bottom-40 right-0 w-[420px] h-[420px] rounded-full bg-white/70 blur-2xl" />
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 pt-28 pb-16">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto relative z-10">
           <Badge variant="outline" className="bg-white text-black border-black/10 text-sm px-3 py-1.5">
             モニター価格で受付中
           </Badge>
@@ -51,60 +51,44 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative mt-14">
-          <div className="absolute inset-x-0 -bottom-10 h-52 bg-white rounded-[48px] border border-black/5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]" />
+        {/* 画像を中央に大きく、キャッチコピーに少しかぶる配置 */}
+        <div className="relative z-0 -mt-24 sm:-mt-32 flex justify-center">
+          <div className="w-full max-w-[min(700px,90vw)]">
+            <img
+              src={heroImagePath}
+              alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+              className="w-full h-auto rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
+              loading="eager"
+            />
+          </div>
+        </div>
 
-          <div className="relative grid lg:grid-cols-[1.35fr_1fr] gap-8 items-end">
-            <div className="relative">
-              <div className="relative mx-auto max-w-[560px]">
-                <div className="absolute -left-6 top-10 rounded-full border border-black/10 bg-white px-4 py-2 text-xs text-black/70 shadow-[0_8px_16px_rgba(0,0,0,0.08)]">
-                  字幕・テロップ
-                </div>
-                <div className="absolute right-6 -top-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs text-black/70 shadow-[0_8px_16px_rgba(0,0,0,0.08)]">
-                  BGM・効果音
-                </div>
-                <div className="absolute -right-8 bottom-6 rounded-full border border-black/10 bg-white px-4 py-2 text-xs text-black/70 shadow-[0_8px_16px_rgba(0,0,0,0.08)]">
-                  カット編集
-                </div>
-
-                <div className="rounded-[36px] bg-transparent p-6 sm:p-8 overflow-hidden">
-                  <img
-                    src={heroImagePath}
-                    alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                    className="w-full h-auto rounded-[20px] object-contain"
-                    loading="eager"
-                    style={{ mixBlendMode: "normal" }}
-                  />
-                </div>
+        <div className="relative mt-10">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 flex-wrap">
+            {heroCards.map((card) => (
+              <div
+                key={card.label}
+                className="bg-white rounded-[25px] px-6 py-5 sm:px-8 sm:py-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)] border border-black/5 max-w-[340px] w-full"
+              >
+                <p className="text-sm text-black/50 mb-2">{card.label}</p>
+                <h3 className="text-base sm:text-xl font-bold text-black/90 m-0 leading-snug">
+                  {card.segments.map((seg, i) => (
+                    <span
+                      key={i}
+                      className={
+                        seg.style === "price"
+                          ? "text-xl sm:text-2xl"
+                          : seg.style === "highlight"
+                            ? "text-black font-bold"
+                            : ""
+                      }
+                    >
+                      {seg.text}
+                    </span>
+                  ))}
+                </h3>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-4 max-w-[400px] p-5 sm:p-10 rounded-3xl bg-[#f4f7f9]">
-              {heroCards.map((card) => (
-                <div
-                  key={card.label}
-                  className="bg-white rounded-[25px] px-6 py-5 sm:px-8 sm:py-6 shadow-[0_10px_25px_rgba(0,0,0,0.05)]"
-                >
-                  <p className="text-sm text-black/50 mb-2">{card.label}</p>
-                  <h3 className="text-base sm:text-xl font-bold text-black/90 m-0 leading-snug">
-                    {card.segments.map((seg, i) => (
-                      <span
-                        key={i}
-                        className={
-                          seg.style === "price"
-                            ? "text-xl sm:text-2xl"
-                            : seg.style === "highlight"
-                              ? "text-black font-bold"
-                              : ""
-                        }
-                      >
-                        {seg.text}
-                      </span>
-                    ))}
-                  </h3>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
