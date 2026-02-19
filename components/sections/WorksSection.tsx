@@ -2,27 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
-
-const works = [
-  {
-    title: "【伊達鍵は眠らない】冒頭でもう笑いとツッコミが止まらない【AIソムニウムファイル】",
-    channel: "ココマルハピー",
-    youtubeId: "gMeXmGt84ho",
-    tags: ["Shorts"],
-  },
-  {
-    title: "【#limbuscompany 】9章で気付く指の良さ【ネタバレ無し】",
-    channel: "ココマルハピー",
-    youtubeId: "iT6OrySspBk",
-    tags: ["Shorts"],
-  },
-  {
-    title: "【学マスガシャ】Atmosphere 葛城リーリヤ 担当が回した結果",
-    channel: "とみたけかれる / Tomitake karel",
-    youtubeId: "a1tT9K_7d1U",
-    tags: ["Shorts"],
-  },
-];
+import { works } from "@/content/works";
 
 export default function WorksSection() {
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
@@ -10,6 +11,7 @@ const navItems = [
   { label: "サービス", href: "#services" },
   { label: "料金", href: "#pricing" },
   { label: "実績", href: "#works" },
+  { label: "ニュース", href: "/news" },
   { label: "FAQ", href: "#faq" },
   { label: "お問い合わせ", href: "#contact" },
 ];
@@ -49,15 +51,25 @@ export default function Navbar() {
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => go(item.href)}
-                className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.href}
+                  onClick={() => go(item.href)}
+                  className="px-3 py-2 text-sm font-medium text-black/70 hover:text-black rounded-full transition-colors"
+                >
+                  {item.label}
+                </button>
+              )
+            )}
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
@@ -84,15 +96,26 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col gap-1 pt-4">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => go(item.href)}
-                    className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                {navItems.map((item) =>
+                  item.href.startsWith("/") ? (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      key={item.href}
+                      onClick={() => go(item.href)}
+                      className="text-left px-4 py-3 text-sm font-medium text-foreground/80 hover:bg-muted rounded-md transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  )
+                )}
                 <div className="pt-4 flex flex-col gap-2">
                   <Button variant="outline" onClick={() => go("#contact")} className="rounded-full">
                     まずは相談

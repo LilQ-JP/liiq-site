@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { Twitter, Mail } from "lucide-react";
 
 const navLinks = [
   { label: "サービス", href: "#services" },
   { label: "料金プラン", href: "#pricing" },
   { label: "制作実績", href: "#works" },
+  { label: "ニュース", href: "/news" },
   { label: "よくある質問", href: "#faq" },
   { label: "お申し込み", href: "#apply" },
   { label: "お問い合わせ", href: "#contact" },
@@ -57,12 +59,21 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <button
-                    onClick={() => go(l.href)}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {l.label}
-                  </button>
+                  {l.href.startsWith("/") ? (
+                    <Link
+                      href={l.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => go(l.href)}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {l.label}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>
