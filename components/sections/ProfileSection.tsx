@@ -76,18 +76,7 @@ export default function ProfileSection() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-border flex flex-wrap items-center justify-between gap-4">
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Adobe Premiere Pro",
-                    "3人体制",
-                    "2026年開業",
-                  ].map((t) => (
-                    <Badge key={t} variant="outline" className="text-xs">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
+              <div className="mt-6 pt-5 border-t border-border flex justify-start">
                 <Button
                   onClick={() => go("#contact")}
                   variant="outline"
