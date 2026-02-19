@@ -68,11 +68,15 @@ export default function HeroSection() {
                 </div>
 
                 <div className="rounded-[36px] bg-white border border-black/5 shadow-[0_24px_60px_rgba(15,23,42,0.08)] p-6 sm:p-8 overflow-hidden">
-                  <img
-                    src={heroImagePath}
-                    alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
-                    className="w-full h-auto rounded-[20px] object-cover"
-                  />
+                  <picture>
+                    <source srcSet={heroImagePath} type="image/png" />
+                    <img
+                      src={heroImagePath}
+                      alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+                      className="w-full h-auto rounded-[20px] object-cover"
+                      loading="eager"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
