@@ -108,20 +108,20 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-80 max-w-[85vw] flex flex-col p-0 gap-0 bg-white/[0.12] backdrop-blur-2xl border-l border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)]"
+              className="w-80 max-w-[85vw] flex flex-col p-0 gap-0 rounded-l-3xl border-0 bg-white/[0.14] backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.2),-8px_0_32px_rgba(0,0,0,0.08)]"
             >
-              <div className="flex items-center px-6 pt-6 pb-5 pr-14 border-b border-white/10 shrink-0">
+              <div className="flex items-center px-6 pt-6 pb-5 pr-14 shrink-0">
                 <img src={logoPath} alt="LilQ" className="h-8 w-auto" />
               </div>
-              <nav className="flex-1 overflow-y-auto px-4 py-6">
-                <div className="flex flex-col gap-0.5">
+              <nav className="flex-1 overflow-y-auto px-4 py-4">
+                <div className="flex flex-col gap-2">
                   {navItems.map((item) =>
                     item.hash ? (
                       <Link
                         key={item.href}
                         href={homeHref(item.href)}
                         onClick={(e) => handleHashClick(e, item.href)}
-                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-xl hover:bg-white/10 hover:text-black active:bg-white/15 active:text-black transition-colors"
+                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-2xl hover:bg-white/15 active:bg-white/20 transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
                         key={item.href}
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-xl hover:bg-white/10 hover:text-black active:bg-white/15 active:text-black transition-colors"
+                        className="px-4 py-3.5 text-base font-semibold text-foreground rounded-2xl hover:bg-white/15 active:bg-white/20 transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -138,13 +138,13 @@ export default function Navbar() {
                   )}
                 </div>
               </nav>
-              <div className="shrink-0 p-4 pt-2 pb-6 border-t border-white/10 space-y-3">
-                <Button variant="outline" asChild className="rounded-full w-full h-11">
+              <div className="shrink-0 p-5 pt-4 pb-8 space-y-3 bg-black/[0.06] rounded-tl-3xl">
+                <Button variant="outline" asChild className="rounded-2xl w-full h-12 border-white/25 bg-white/5 hover:bg-white/15 font-semibold">
                   <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
                     まずは相談
                   </Link>
                 </Button>
-                <Button asChild className="rounded-full w-full h-11">
+                <Button asChild className="rounded-2xl w-full h-12 font-semibold shadow-lg">
                   <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
                     無料で依頼する
                   </Link>

@@ -63,7 +63,7 @@ export default function ServicesSection() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="pricing" className="section section-base section-pattern pattern-grid">
+    <section id="pricing" className="section section-base section-pattern pattern-grid pb-40 sm:pb-[var(--section-padding)]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">サービスと料金</Badge>
