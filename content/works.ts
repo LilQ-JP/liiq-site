@@ -37,5 +37,11 @@ export const works = [
     url: "https://www.youtube.com/shorts/a1tT9K_7d1U",
     tags: ["Shorts"],
   },
-  // ▼ 新しい実績を追加する場合はここにペースト ▼
+  {
+    title: "【ASSASSINS CREED SHADOWS】織田信長に体力と共にメンタルも削られる松野アマネ【個人勢】",
+    channel: "松野アマネ / Matsuno Amane",
+    url: "https://www.youtube.com/shorts/GZibrcuxyMY",
+    tags: ["Shorts"],
+  }
+  / ▼ 新しい実績を追加する場合はここにペースト ▼
 ];
