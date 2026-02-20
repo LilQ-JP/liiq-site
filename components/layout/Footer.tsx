@@ -8,7 +8,7 @@ import { logoPath } from "@/lib/constants";
 const navLinks = [
   { label: "サービス", href: "#services" },
   { label: "料金プラン", href: "#pricing" },
-  { label: "制作実績", href: "#works" },
+  { label: "制作実績", href: "/works" },
   { label: "ニュース", href: "/news" },
   { label: "よくある質問", href: "#faq" },
   { label: "お申し込み", href: "#apply" },
