@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import { Users2, Zap } from "lucide-react";
 
-const clients = ["ココマルハピー", "とみたけかれる"];
+const clients = ["ココマルハピー", "とみたけかれる,松野アマネ"];
 const genres = ["VTuber", "ゲーム実況", "雑談配信", "切り抜き量産"];
 const features = ["最短24時間", "全額返金保証"];
 
