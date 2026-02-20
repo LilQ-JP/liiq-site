@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 import { works } from "@/content/works";
 import { getYouTubeVideoId, getYouTubeThumbnailUrl } from "@/lib/youtube";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
@@ -41,6 +41,11 @@ export default function WorksSection() {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors">
+                    <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center shadow-xl hover:scale-110 transition-transform pointer-events-none">
+                      <Play className="w-10 h-10 text-white ml-1" fill="white" />
+                    </div>
+                  </div>
                 </div>
               </a>
 
