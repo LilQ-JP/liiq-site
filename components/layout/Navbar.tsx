@@ -12,7 +12,7 @@ const navItems = [
   { label: "サービス", href: "#services", hash: true },
   { label: "料金", href: "#pricing", hash: true },
   { label: "実績", href: "#works", hash: true },
-  { label: "ニュース", href: "/news", hash: false },
+  { label: "ニュース", href: "#news", hash: true },
   { label: "FAQ", href: "#faq", hash: true },
   { label: "お問い合わせ", href: "#contact", hash: true },
 ];

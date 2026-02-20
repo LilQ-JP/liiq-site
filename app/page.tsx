@@ -6,6 +6,7 @@ import PainSection from "@/components/sections/PainSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import WorksSection from "@/components/sections/WorksSection";
+import NewsSection from "@/components/sections/NewsSection";
 import FlowSection from "@/components/sections/FlowSection";
 import ProfileSection from "@/components/sections/ProfileSection";
 import ClipGeniusSection from "@/components/sections/ClipGeniusSection";
@@ -25,6 +26,7 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <WorksSection />
+        <NewsSection />
         <FlowSection />
         <ProfileSection />
         <ClipGeniusSection />

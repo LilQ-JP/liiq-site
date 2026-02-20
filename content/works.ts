@@ -1,16 +1,22 @@
 /**
  * 制作実績データ
- * 新しい実績を追加する場合は、この配列にオブジェクトを追加するだけです。
  *
- * 形式:
+ * 【追加方法】この配列にオブジェクトを1つ追加するだけです。
+ *
+ * 形式（コピペ用）:
  * {
- *   title: string;      // 動画タイトル
- *   channel: string;    // チャンネル名
- *   url: string;        // YouTubeのURL（watch?v=、youtu.be/、shorts/ いずれも対応）
- *   tags: string[];     // タグ（例: ["Shorts"], ["切り抜き", "長尺"]）
- * }
+ *   title: "動画タイトル",
+ *   channel: "チャンネル名",
+ *   url: "https://www.youtube.com/shorts/動画ID または youtu.be/動画ID",
+ *   tags: ["Shorts"],
+ * },
  *
- * サムネイルはURLから自動取得されます。
+ * URL対応形式:
+ * - https://www.youtube.com/shorts/xxxxx
+ * - https://www.youtube.com/watch?v=xxxxx
+ * - https://youtu.be/xxxxx
+ *
+ * サムネイル・再生ボタンはURLから自動取得されます。
  */
 export const works = [
   {
@@ -31,4 +37,5 @@ export const works = [
     url: "https://www.youtube.com/shorts/a1tT9K_7d1U",
     tags: ["Shorts"],
   },
+  // ▼ 新しい実績を追加する場合はここにペースト ▼
 ];
