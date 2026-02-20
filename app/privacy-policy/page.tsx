@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <p className="text-xs text-muted-foreground mt-8 text-center">
-          {site.pages.privacy.footer.replace(\"{{year}}\", String(new Date().getFullYear()))}
+          {site.pages.privacy.footer.replace("{{year}}", String(new Date().getFullYear()))}
         </p>
       </div>
     </main>

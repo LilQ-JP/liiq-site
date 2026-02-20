@@ -31,8 +31,20 @@ const iconMap: Record<string, LucideIcon> = {
   CircleDollarSign,
 };
 
+const allowedStyles = new Set<HeroCardSegment["style"]>([
+  "normal",
+  "highlight",
+  "price",
+  "linebreak",
+]);
+
 export const heroCards: HeroCard[] = site.hero.cards.map((card) => ({
   label: card.label,
   icon: iconMap[card.icon] ?? ArrowRightCircle,
-  segments: card.segments,
+  segments: card.segments.map((seg) => ({
+    text: seg.text,
+    style: allowedStyles.has(seg.style as HeroCardSegment["style"])
+      ? (seg.style as HeroCardSegment["style"])
+      : undefined,
+  })),
 }));
