@@ -16,7 +16,7 @@ const reasons = [
     icon: DollarSign,
     title: "業界最安水準",
     desc: "ショート動画500円から。継続しやすい料金設計。",
-    highlight: "500円〜",
+    highlight: "500円",
   },
   {
     icon: MessageCircle,

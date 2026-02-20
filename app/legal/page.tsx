@@ -14,11 +14,11 @@ const items = [
   { label: "メールアドレス", value: "contact@lilq-official.com" },
   { label: "販売URL", value: "https://lilq.jp" },
   { label: "事業形態", value: "個人事業主（３人体制）" },
-  { label: "販売価格", value: "ショート動画制作 500円〜 / 切り抜き動画制作 3,000円〜 / カスタム動画制作 要相談（各サービスページに記載）" },
+  { label: "販売価格", value: "ショート動画制作 500円 / 切り抜き動画制作 3,000円 / カスタム動画制作 要相談（各サービスページに記載。モニター価格のため通常価格よりお得です）" },
   { label: "代金の支払方法", value: "銀行振込・クレジットカード・PayPal" },
-  { label: "代金の支払時期", value: "前払い制（ご注文確認後、制作開始前にお支払いをお願いします）" },
-  { label: "商品・サービスの提供時期", value: "お支払い確認後、最短24時間〜3営業日以内に納品（プランによる）" },
-  { label: "返品・キャンセルについて", value: "制作開始前のキャンセルは全額返金いたします。制作開始後のキャンセルは原則お断りしておりますが、納品物にご満足いただけない場合は全額返金いたします。" },
+  { label: "代金の支払時期", value: "後払い制（納品物をご確認いただいた後にお支払いをお願いします。モニター価格のため、納品・ご確認後にお見積もりをご提示し、ご請求いたします）" },
+  { label: "商品・サービスの提供時期", value: "ご依頼内容確認後、最短24時間-3営業日以内に納品（プランによる）。納品後にご確認いただき、ご満足いただけましたらお支払いをお願いします。" },
+  { label: "返品・キャンセルについて", value: "制作開始前のキャンセルは費用のご請求はいたしません。納品物にご満足いただけない場合はお支払い不要とし、修正対応または返金にて対応いたします。" },
   { label: "動作環境", value: "MP4形式でのデータ納品。YouTube・TikTok・X等のSNSへの投稿に対応。" },
   { label: "表示価格", value: "表示価格は全て税込価格です。" },
 ];
@@ -38,7 +38,7 @@ export default function LegalPage() {
         <h1 className="text-3xl font-bold text-foreground mb-2">
           特定商取引法に基づく表記
         </h1>
-        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年2月19日</p>
+        <p className="text-sm text-muted-foreground mb-10">最終更新日：2026年2月20日</p>
 
         <div className="card-surface overflow-hidden">
           <table className="w-full">

@@ -8,8 +8,8 @@ import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStag
 const services = [
   {
     title: "ショート動画制作",
-    sub: "〜60秒",
-    price: "¥500〜",
+    sub: "60秒",
+    price: "¥500",
     delivery: "最短24時間",
     features: [
       "60秒以内のショート動画",
@@ -24,8 +24,8 @@ const services = [
   {
     title: "切り抜き動画制作",
     sub: "5分程度",
-    price: "¥3,000〜",
-    delivery: "2〜3営業日",
+    price: "¥3,000",
+    delivery: "2-3営業日",
     features: [
       "5分程度の切り抜き動画",
       "名シーン・神場面を厳選",
@@ -141,7 +141,7 @@ export default function ServicesSection() {
                     <Badge key={m} variant="outline" className="text-xs">{m}</Badge>
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">前払い制</p>
+                <p className="text-xs text-muted-foreground mt-2">後払い制（納品確認後）</p>
               </div>
               <div className="card-soft px-4 py-3">
                 <div className="font-semibold text-foreground">全額返金保証</div>

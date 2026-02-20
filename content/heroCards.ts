@@ -16,7 +16,7 @@ export type HeroCard = {
  *
  * 編集のポイント:
  * - カードの追加・削除: 配列にオブジェクトを追加/削除
- * - 価格の変更: segments 内の text（例: "¥500〜"）を書き換え
+ * - 価格の変更: segments 内の text（例: "¥500"）を書き換え
  * - ラベル・本文: label と segments を変更
  *
  * segments の style:
@@ -46,7 +46,7 @@ export const heroCards: HeroCard[] = [
     icon: CircleDollarSign,
     segments: [
       { text: "ショート " },
-      { text: "¥500〜", style: "price" },
+      { text: "¥500", style: "price" },
     ],
   },
 ];

@@ -12,10 +12,10 @@ export default function CTABanner() {
     <section className="section section-alt section-pattern pattern-grid">
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
-        <div className="card-surface p-8 text-center">
+        <div className="card-surface p-8 text-center min-w-0 overflow-hidden">
           <Badge variant="secondary" className="mb-4">モニター価格で受付中</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4">
-            <span className="whitespace-nowrap sm:whitespace-normal">まずは1本だけ、</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4 break-words">
+            まずは1本だけ、
             <br className="sm:hidden" />
             試してみませんか？
           </h2>

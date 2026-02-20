@@ -106,8 +106,8 @@ export default function ApplySection() {
               <h4 className="font-bold text-foreground text-sm mb-3">サービス料金</h4>
               <div className="space-y-2 text-sm">
                 {[
-                  ["ショート動画（〜60秒）", "¥500〜"],
-                  ["切り抜き動画（5分程度）", "¥3,000〜"],
+                  ["ショート動画（60秒）", "¥500"],
+                  ["切り抜き動画（5分程度）", "¥3,000"],
                   ["カスタム動画", "要相談"],
                 ].map(([label, price]) => (
                   <div key={label} className="flex justify-between">
@@ -172,8 +172,8 @@ export default function ApplySection() {
                     className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:border-ring"
                   >
                     <option value="">選択してください</option>
-                    <option value="short">ショート動画（¥500〜）</option>
-                    <option value="clip">切り抜き動画（¥3,000〜）</option>
+                    <option value="short">ショート動画（¥500）</option>
+                    <option value="clip">切り抜き動画（¥3,000）</option>
                     <option value="custom">カスタム動画（要相談）</option>
                     <option value="consult">まずは相談したい</option>
                   </select>

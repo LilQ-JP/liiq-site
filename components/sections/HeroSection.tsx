@@ -14,11 +14,11 @@ export default function HeroSection() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative overflow-hidden bg-[#eef2f6] hero-geo-pattern">
+    <section className="relative overflow-hidden bg-[#eef2f6] hero-geo-pattern -mt-16">
       <div className="absolute -top-28 -left-24 w-[320px] h-[320px] rounded-full bg-white/70 blur-2xl" />
       <div className="absolute -bottom-40 right-0 w-[420px] h-[420px] rounded-full bg-white/70 blur-2xl" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-3 min-[400px]:px-4 min-[480px]:px-5 sm:px-8 pt-28 pb-16 min-w-0">
+      <div className="relative w-full max-w-7xl mx-auto px-3 min-[400px]:px-4 min-[480px]:px-5 sm:px-8 pt-20 pb-16 min-w-0">
         <motion.div
           className="text-center max-w-3xl mx-auto relative z-10"
           initial={{ opacity: 0, y: 48 }}
@@ -156,14 +156,14 @@ export default function HeroSection() {
                     }
                   `}
                 >
-                  <Icon className={`hero-card-icon w-6 h-6 shrink-0 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
-                  <p className={`hero-card-label text-[18px] mb-0 shrink-0 whitespace-nowrap ${isPrice ? "text-white/85" : "text-black/65"}`}>
+                  <Icon className={`hero-card-icon w-5 h-5 shrink-0 ${isPrice ? "text-white" : "text-black/70"}`} strokeWidth={2.5} />
+                  <p className={`hero-card-label text-xs sm:text-sm mb-0 shrink-0 font-semibold ${isPrice ? "text-white/85" : "text-black/65"}`}>
                     {card.label}
                   </p>
-                  <p className="hero-card-body text-[22.5px] leading-tight m-0 overflow-hidden w-full text-center [overflow-wrap:anywhere]">
+                  <p className="hero-card-body text-sm sm:text-base leading-snug m-0 w-full text-center break-keep">
                     {card.segments.map((seg, i) =>
                       seg.style === "linebreak" ? (
-                        <span key={i} className="inline text-[20.5px] font-[family-name:var(--font-noto-sans-jp)] font-black">{seg.text} </span>
+                        <span key={i} className={`block font-[family-name:var(--font-noto-sans-jp)] font-black ${seg.text === "フォーム入力" ? "text-[19px] sm:text-sm" : ""}`}>{seg.text}</span>
                       ) : (
                         <span key={i} className={seg.style === "price" ? "hero-card-price text-[33px]" : "font-[family-name:var(--font-noto-sans-jp)] font-black"}>
                           {seg.text}

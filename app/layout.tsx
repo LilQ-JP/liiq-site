@@ -12,12 +12,12 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "LilQ｜配信の神シーン、500円で切り抜きます",
   description:
-    "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円〜。Adobe Premiere Proでプロ品質の動画を制作。VTuber・ゲーム実況者・雑談配信者を全力サポート。",
+    "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。Adobe Premiere Proでプロ品質の動画を制作。VTuber・ゲーム実況者・雑談配信者を全力サポート。",
   keywords: ["動画編集", "切り抜き", "VTuber", "ゲーム実況", "ショート動画", "低価格", "LilQ"],
   openGraph: {
     title: "LilQ｜配信の神シーン、500円で切り抜きます",
     description:
-      "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円〜。プロ品質の動画を圧倒的低価格で。",
+      "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。プロ品質の動画を圧倒的低価格で。",
     siteName: "LilQ",
     locale: "ja_JP",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "LilQ｜配信の神シーン、500円で切り抜きます",
-    description: "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円〜。",
+    description: "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。",
     site: "@LilQ_officialJP",
   },
 };
@@ -47,7 +47,7 @@ const jsonLd = {
     addressCountry: "JP",
   },
   sameAs: ["https://twitter.com/LilQ_officialJP"],
-  priceRange: "¥500〜",
+  priceRange: "¥500",
   serviceType: "動画編集・切り抜きサービス",
 };
 
