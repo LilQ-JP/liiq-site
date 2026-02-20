@@ -1,0 +1,592 @@
+{
+  "meta": {
+    "siteTitle": "LilQ｜配信の神シーン、500円で切り抜きます",
+    "siteDescription": "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。Adobe Premiere Proでプロ品質の動画を制作。VTuber・ゲーム実況者・雑談配信者を全力サポート。",
+    "keywords": ["動画編集", "切り抜き", "VTuber", "ゲーム実況", "ショート動画", "低価格", "LilQ"],
+    "openGraph": {
+      "title": "LilQ｜配信の神シーン、500円で切り抜きます",
+      "description": "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。プロ品質の動画を圧倒的低価格で。",
+      "siteName": "LilQ",
+      "locale": "ja_JP",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "LilQ｜配信の神シーン、500円で切り抜きます",
+      "description": "LilQは配信者向けの動画切り抜き・編集サービスです。ショート動画500円。",
+      "site": "@LilQ_officialJP"
+    }
+  },
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "LilQ（リルク）",
+    "description": "VTuber・ゲーム実況者・雑談配信者向けの動画編集・切り抜きサービス",
+    "url": "https://lilq.jp",
+    "telephone": "080-9838-5540",
+    "email": "contact@lilq-official.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "旭町3番9号リブリコーポ樹103",
+      "addressLocality": "相模原市南区",
+      "addressRegion": "神奈川県",
+      "postalCode": "252-0304",
+      "addressCountry": "JP"
+    },
+    "sameAs": ["https://twitter.com/LilQ_officialJP"],
+    "priceRange": "¥500",
+    "serviceType": "動画編集・切り抜きサービス"
+  },
+  "site": {
+    "brandName": "LilQ",
+    "brandNameJa": "LilQ（リルク）",
+    "tagline": "VTuber・ゲーム実況者・雑談配信者向けの動画編集・切り抜きサービス",
+    "twitterHandle": "@LilQ_officialJP",
+    "twitterUrl": "https://twitter.com/LilQ_officialJP",
+    "email": "contact@lilq-official.com",
+    "phone": "080-9838-5540",
+    "siteUrl": "https://lilq.jp",
+    "address": {
+      "street": "旭町3番9号リブリコーポ樹103",
+      "city": "相模原市南区",
+      "prefecture": "神奈川県",
+      "postal": "252-0304"
+    }
+  },
+  "nav": {
+    "items": [
+      { "label": "サービス", "href": "#services", "hash": true },
+      { "label": "料金", "href": "#pricing", "hash": true },
+      { "label": "実績", "href": "#works", "hash": true },
+      { "label": "ニュース", "href": "#news", "hash": true },
+      { "label": "FAQ", "href": "#faq", "hash": true },
+      { "label": "お問い合わせ", "href": "#contact", "hash": true }
+    ],
+    "cta": {
+      "consult": "まずは相談",
+      "apply": "無料で依頼する"
+    }
+  },
+  "hero": {
+    "badge": "モニター価格で受付中",
+    "titleLines": ["500円から、", "気軽にはじめよう！"],
+    "descriptionLines": [
+      "VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜きサービス。",
+      "最短24時間納品、修正2回無料。",
+      "まずは1本、気軽に試せます。"
+    ],
+    "buttons": {
+      "apply": "無料で依頼する",
+      "works": "実績を見る"
+    },
+    "imageAlt": "動画制作・切り抜きサービス - 配信者をサポートするチーム",
+    "featureChips": ["最短24時間納品", "修正2回無料", "全額返金保証"],
+    "cards": [
+      {
+        "label": "依頼の流れ",
+        "icon": "ArrowRightCircle",
+        "segments": [
+          { "text": "フォーム入力", "style": "linebreak" },
+          { "text": "→ 24h納品", "style": "highlight" }
+        ]
+      },
+      {
+        "label": "対応ジャンル",
+        "icon": "Gamepad2",
+        "segments": [
+          { "text": "VTuber", "style": "linebreak" },
+          { "text": "ゲーム実況 / 雑談" }
+        ]
+      },
+      {
+        "label": "料金",
+        "icon": "CircleDollarSign",
+        "segments": [
+          { "text": "ショート " },
+          { "text": "¥500", "style": "price" }
+        ]
+      }
+    ]
+  },
+  "logoBanner": {
+    "title": "対応ジャンルと実績クライアント",
+    "clientsLabel": "実績クライアント",
+    "genresLabel": "対応ジャンル",
+    "featuresLabel": "サービス特徴",
+    "clients": ["ココマルハピー", "とみたけかれる", "松野アマネ"],
+    "genres": ["VTuber", "ゲーム実況", "雑談配信", "切り抜き量産"],
+    "features": ["最短24時間", "全額返金保証"]
+  },
+  "pain": {
+    "badge": "よくある悩み",
+    "titleLines": ["配信者の課題を", "整理しました"],
+    "description": "LilQはこの悩みを最短距離で解決します。",
+    "items": [
+      {
+        "icon": "Clock",
+        "title": "編集に時間が取れない",
+        "desc": "配信と編集の両立が難しく、投稿頻度が落ちてしまう。"
+      },
+      {
+        "icon": "PenSquare",
+        "title": "編集スキルに不安がある",
+        "desc": "思い通りのクオリティを安定して出せない。"
+      },
+      {
+        "icon": "TrendingDown",
+        "title": "SNSで伸ばしきれない",
+        "desc": "切り抜きの量産ができず認知が広がらない。"
+      },
+      {
+        "icon": "Wallet",
+        "title": "外注費が高すぎる",
+        "desc": "プロに頼みたいが予算が合わない。"
+      }
+    ],
+    "callout": {
+      "lead": "その悩みを、価格とスピードで解決します",
+      "headline": "配信に集中できる環境を、LilQがつくります。"
+    }
+  },
+  "about": {
+    "badge": "LilQについて",
+    "title": "LilQ（リルク）とは",
+    "bodyLines": [
+      "VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜き特化サービスです。",
+      "プロ品質の映像を、圧倒的な低価格で提供します。"
+    ],
+    "bodyLines2": [
+      "伝えたい瞬間を、最短で、最良の形に。",
+      "配信に集中できる環境をつくります。"
+    ],
+    "tags": ["VTuber", "ゲーム実況者", "雑談配信者", "切り抜き量産", "編集が苦手な方"],
+    "vision": {
+      "heading": "理念 / ビジョン / ミッション",
+      "title": "すべてのクリエイターの「伝えたい」を形にする",
+      "items": [
+        { "label": "企業理念", "value": "技術の力でクリエイターの表現を形にする" },
+        { "label": "ビジョン", "value": "誰もがプロ品質の映像を手にできる世界" },
+        { "label": "ミッション", "value": "低価格・高品質・実用的なツールの提供" }
+      ]
+    },
+    "reasons": {
+      "badge": "選ばれる理由",
+      "title": "選ばれる3つの理由",
+      "items": [
+        {
+          "icon": "Zap",
+          "title": "圧倒的な速さ",
+          "desc": "最短24時間以内に納品。トレンドの波を逃さず拡散までを高速化。",
+          "highlight": "最短24時間"
+        },
+        {
+          "icon": "DollarSign",
+          "title": "業界最安水準",
+          "desc": "ショート動画500円から。継続しやすい料金設計。",
+          "highlight": "500円"
+        },
+        {
+          "icon": "MessageCircle",
+          "title": "話しやすい距離感",
+          "desc": "堅苦しいやり取りは不要。DMやフォームで気軽に相談可能。",
+          "highlight": "気軽に相談"
+        }
+      ]
+    }
+  },
+  "services": {
+    "badge": "サービスと料金",
+    "titleLines": ["サービス内容と", "料金プラン"],
+    "description": "全プラン修正2回無料・全額返金保証付き。",
+    "deliveryLabel": "納期",
+    "services": [
+      {
+        "title": "ショート動画制作",
+        "sub": "60秒",
+        "price": "¥500",
+        "delivery": "最短24時間",
+        "features": [
+          "60秒以内のショート動画",
+          "Adobe Premiere Proで制作",
+          "BGM・テロップ対応",
+          "修正2回まで無料",
+          "YouTube Shorts / TikTok対応"
+        ],
+        "badge": "人気",
+        "highlight": true
+      },
+      {
+        "title": "切り抜き動画制作",
+        "sub": "5分程度",
+        "price": "¥3,000",
+        "delivery": "2-3営業日",
+        "features": [
+          "5分程度の切り抜き動画",
+          "名シーン・神場面を厳選",
+          "テロップ・エフェクト対応",
+          "修正2回まで無料",
+          "YouTube / SNS対応"
+        ],
+        "badge": "おすすめ",
+        "highlight": false
+      },
+      {
+        "title": "カスタム動画制作",
+        "sub": "ご要望に対応",
+        "price": "要相談",
+        "delivery": "要相談",
+        "features": [
+          "長尺・特殊仕様に対応",
+          "OP・ED制作",
+          "複数動画のまとめ編集",
+          "修正2回まで無料",
+          "詳細はご相談ください"
+        ],
+        "badge": "柔軟対応",
+        "highlight": false
+      }
+    ],
+    "ctaLabel": "このプランで依頼する",
+    "optionsTitle": "オプションサービス",
+    "options": [
+      {
+        "name": "Priority Production",
+        "price": "+¥3,000",
+        "desc": "他の依頼より優先対応。急ぎの依頼に。"
+      },
+      {
+        "name": "追加修正（3回目以降）",
+        "price": "+¥500/回",
+        "desc": "2回超えた修正に対応。"
+      }
+    ],
+    "paymentTitle": "支払い・返金",
+    "paymentMethodsLabel": "支払い方法",
+    "paymentMethods": ["銀行振込", "クレジットカード", "PayPal"],
+    "paymentNote": "後払い制（納品確認後）",
+    "refundTitle": "全額返金保証",
+    "refundDesc": "制作開始前キャンセルは全額返金。納品物にご満足いただけない場合も全額返金。"
+  },
+  "works": {
+    "badge": "制作実績",
+    "title": "制作実績",
+    "description": "実際に制作した動画をご覧ください。",
+    "buttonLabel": "制作実績一覧を見る",
+    "note": "モニター期間中のため実績数は少ないですが、随時更新します。",
+    "channelLabel": "チャンネル:",
+    "watchLabel": "YouTubeで見る",
+    "playAria": "を再生",
+    "closeAria": "再生を閉じる"
+  },
+  "news": {
+    "badge": "ニュース",
+    "title": "お知らせ",
+    "description": "最新のニュースやお知らせをお届けします。",
+    "empty": "お知らせはまだありません。",
+    "more": "ニュース一覧を見る"
+  },
+  "flow": {
+    "badge": "ご利用の流れ",
+    "title": "たった3ステップで完了",
+    "description": "最短24時間で納品します。",
+    "steps": [
+      {
+        "step": "01",
+        "title": "フォームから依頼",
+        "desc": "フォームまたはXのDMから依頼内容・配信URLを送ってください。相談だけでもOK。"
+      },
+      {
+        "step": "02",
+        "title": "制作・納品",
+        "desc": "内容確認後、お見積もりをご提示。制作完了後メールまたはDMでお届け。修正は2回まで無料で対応。"
+      },
+      {
+        "step": "03",
+        "title": "確認・お支払い",
+        "desc": "納品物をご確認いただいた後、銀行振込・クレカ・PayPalで後払い。"
+      }
+    ],
+    "ctaLabel": "今すぐ無料で依頼する"
+  },
+  "profile": {
+    "badge": "代表プロフィール",
+    "title": "代表プロフィール",
+    "roleLabel": "LilQ 代表",
+    "initials": "MH",
+    "name": "宮宅 晴規",
+    "nameRoman": "Miyake Haruki",
+    "headlineLines": ["動画編集で、", "配信者の可能性を広げたい"],
+    "paragraphs": [
+      "こんにちは、LilQ代表の宮宅晴規です。",
+      "配信は楽しいのに、編集が追いつかない。そんな声を多く聞いてきました。そこで、プロ品質の動画を気軽に頼める価格で提供したいと考えました。",
+      "いまは面白いシーンを効率的に見つけるツールも開発中です。配信者が配信に集中できる世界をつくる。それがLilQの使命です。",
+      "まずは1本、気軽にご相談ください。"
+    ],
+    "ctaLabel": "相談する"
+  },
+  "clipGenius": {
+    "badge": "開発中ツール",
+    "title": "ClipGenius",
+    "descriptionLines": [
+      "配信動画の面白いシーンを",
+      "効率的に見つけ、切り抜き候補を",
+      "提案するツールを開発中です。"
+    ],
+    "features": [
+      { "icon": "Target", "text": "見どころを自動で抽出" },
+      { "icon": "Zap", "text": "編集時間を大幅に短縮" },
+      { "icon": "Clock", "text": "24時間365日自動処理" },
+      { "icon": "Layers", "text": "配信スタイルを問わず対応" }
+    ],
+    "comingSoonLabel": "COMING SOON",
+    "comingSoonLines": ["リリース情報は", "X @LilQ_officialJP でお知らせします。"]
+  },
+  "cta": {
+    "badge": "モニター価格で受付中",
+    "titleLines": ["まずは1本だけ、", "試してみませんか？"],
+    "description": "相談だけでも大歓迎。全額返金保証付きなので、リスクゼロで始められます。",
+    "primaryLabel": "今すぐ無料で依頼する",
+    "secondaryLabel": "まずは相談する",
+    "bullets": ["全額返金保証", "修正2回無料", "最短24時間納品"]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "よくある質問",
+    "descriptionLines": ["ご不明な点は", "お気軽にお問い合わせください。"],
+    "items": [
+      {
+        "q": "どんな配信でも対応できますか？",
+        "a": "はい、VTuber・ゲーム実況・雑談配信など、ほとんどのジャンルに対応しています。まずはお気軽にご相談ください。"
+      },
+      {
+        "q": "素材の送り方を教えてください。",
+        "a": "YouTubeやTwitchなどの配信アーカイブURLをフォームにご記入ください。非公開・メンバー限定の場合は別途ご相談ください。"
+      },
+      {
+        "q": "修正の回数制限はありますか？",
+        "a": "各プランにつき2回まで無料で修正に対応しています。3回目以降は1回あたり500円の追加料金が発生します。"
+      },
+      {
+        "q": "納期の目安を教えてください。",
+        "a": "ショート動画は最短24時間、切り抜き動画は2-3営業日が目安です。Priority Production（+3,000円）で優先対応も可能です。"
+      },
+      {
+        "q": "キャンセルはできますか？",
+        "a": "制作開始前のキャンセルは全額返金いたします。制作途中のキャンセルについては別途ご相談ください。"
+      },
+      {
+        "q": "納品物の著作権は誰にありますか？",
+        "a": "納品後の著作権はお客様に帰属します。YouTube・TikTok・X等、どのプラットフォームでもご自由にお使いいただけます。"
+      },
+      {
+        "q": "VTuberのアバターや版権素材がある場合は？",
+        "a": "ご提供いただいたアバター・素材・BGMをそのまま使用します。著作権のある素材についてはお客様側での使用許諾の確認をお願いしています。"
+      },
+      {
+        "q": "領収書・請求書の発行は可能ですか？",
+        "a": "はい、対応可能です。ご依頼時にご連絡いただければ発行いたします。"
+      }
+    ]
+  },
+  "apply": {
+    "badge": "お申し込み",
+    "title": "お申し込みフォーム",
+    "descriptionLines": ["まずは気軽にご依頼ください。", "相談だけでも大歓迎です。"],
+    "precheckTitle": "依頼前のご確認",
+    "precheckItems": [
+      "最短24時間で納品",
+      "修正2回まで無料",
+      "全額返金保証",
+      "相談だけでもOK",
+      "個人情報は厳重管理"
+    ],
+    "priceTitle": "サービス料金",
+    "priceItems": [
+      { "label": "ショート動画（60秒）", "price": "¥500" },
+      { "label": "切り抜き動画（5分程度）", "price": "¥3,000" },
+      { "label": "カスタム動画", "price": "要相談" }
+    ],
+    "priceBadge": "モニター価格で受付中",
+    "form": {
+      "nameLabel": "お名前（ハンドルネーム可・会社名でもOK）",
+      "namePlaceholder": "例: LilQ",
+      "emailLabel": "メールアドレス（必須）",
+      "emailPlaceholder": "contact@example.com",
+      "snsLabel": "SNSアカウント（X IDなど）",
+      "snsPlaceholder": "@example",
+      "serviceTypeLabel": "依頼内容（必須）",
+      "serviceTypePlaceholder": "選択してください",
+      "serviceTypeOptions": [
+        { "value": "short", "label": "ショート動画（¥500）" },
+        { "value": "clip", "label": "切り抜き動画（¥3,000）" },
+        { "value": "custom", "label": "カスタム動画（要相談）" },
+        { "value": "consult", "label": "まずは相談したい" }
+      ],
+      "streamUrlLabel": "配信URL（素材となる配信アーカイブ）",
+      "streamUrlPlaceholder": "https://www.youtube.com/watch?v=...",
+      "messageLabel": "ご要望・詳細",
+      "messagePlaceholder": "切り抜きたいシーンのタイムスタンプや希望する雰囲気などをご記入ください。",
+      "privacyText": "入力情報はサービス提供のみに使用します。",
+      "privacyLinkLabel": "プライバシーポリシー",
+      "privacyTextAfter": "に同意の上、送信してください。",
+      "submitLabel": "依頼する・相談する（無料）",
+      "submittingLabel": "送信中…",
+      "alertNoForm": "フォームが設定されていません。X @LilQ_officialJP へDMでお申し込みください。",
+      "alertFailed": "送信に失敗しました。X @LilQ_officialJP へDMをお願いします。",
+      "errorSend": "送信に失敗しました",
+      "subjectPrefix": "【LilQ お申し込み】",
+      "subjectFallbackName": "名無し",
+      "subjectSuffix": " さんから"
+    }
+  },
+  "contact": {
+    "badge": "お問い合わせ",
+    "title": "お問い合わせ",
+    "descriptionLines": ["依頼前の相談・ご質問など、", "何でもお気軽にどうぞ。"],
+    "cards": {
+      "xTitle": "X (Twitter) でDM",
+      "emailTitle": "メールで連絡"
+    },
+    "form": {
+      "title": "フォームから送信",
+      "nameLabel": "お名前（任意・会社名でもOK）",
+      "namePlaceholder": "例: LilQ",
+      "emailLabel": "メールアドレス（必須）",
+      "emailPlaceholder": "contact@example.com",
+      "messageLabel": "お問い合わせ内容（必須）",
+      "messagePlaceholder": "ご質問・ご相談内容をご記入ください。",
+      "privacyText": "入力情報はサービス提供のみに使用します。",
+      "privacyLinkLabel": "プライバシーポリシー",
+      "privacyTextAfter": "に同意の上、送信してください。",
+      "submitLabel": "送信する",
+      "submittingLabel": "送信中…",
+      "alertNoForm": "フォームが設定されていません。X @LilQ_officialJP へDMでお問い合わせください。",
+      "alertFailed": "送信に失敗しました。X @LilQ_officialJP へDMをお願いします。",
+      "errorSend": "送信に失敗しました",
+      "subjectPrefix": "【LilQ お問い合わせ】",
+      "subjectFallbackName": "名無し",
+      "subjectSuffix": " さんから"
+    }
+  },
+  "footer": {
+    "menuHeading": "メニュー",
+    "companyHeading": "会社情報",
+    "links": [
+      { "label": "サービス", "href": "#services" },
+      { "label": "料金プラン", "href": "#pricing" },
+      { "label": "制作実績", "href": "/works" },
+      { "label": "ニュース", "href": "/news" },
+      { "label": "よくある質問", "href": "#faq" },
+      { "label": "お申し込み", "href": "#apply" },
+      { "label": "お問い合わせ", "href": "#contact" }
+    ],
+    "description": "VTuber・ゲーム実況者・雑談配信者のための動画編集・切り抜きサービス。500円からプロ品質の動画制作。",
+    "tagline": "すべてのクリエイターの「伝えたい」を、技術の力で形にする。",
+    "companyInfo": [
+      "屋号: LilQ（リルク）",
+      "代表: 宮宅 晴規",
+      "contact@lilq-official.com"
+    ],
+    "legalLabel": "特定商取引法に基づく表記",
+    "privacyLabel": "プライバシーポリシー",
+    "copyright": "© {{year}} LilQ（リルク）. All rights reserved.",
+    "subline": "Designed for creators"
+  },
+  "pages": {
+    "news": {
+      "metaTitle": "ニュース | LilQ",
+      "metaDescription": "LilQの最新ニュース・お知らせ",
+      "backLabel": "トップに戻る",
+      "title": "ニュース",
+      "description": "会社のお知らせや更新情報をお届けします。",
+      "empty": "お知らせはまだありません。"
+    },
+    "works": {
+      "metaTitle": "制作実績 | LilQ",
+      "metaDescription": "LilQの制作実績一覧。ショート動画の事例をご覧いただけます。",
+      "backLabel": "トップに戻る",
+      "badge": "制作実績",
+      "title": "制作実績一覧",
+      "description": "実際に制作した動画を一覧で掲載しています。",
+      "note": "モニター期間中のため実績数は少ないですが、随時更新します。"
+    },
+    "applyThanks": {
+      "title": "ご依頼ありがとうございます",
+      "messageLines": [
+        "お申し込みを受け付けました。24時間以内にメールまたはXのDMにてご連絡いたします。",
+        "急ぎの場合は X @LilQ_officialJP までDMください。"
+      ],
+      "backLabel": "トップに戻る"
+    },
+    "contactThanks": {
+      "title": "お問い合わせありがとうございます",
+      "messageLines": ["24時間以内にご連絡いたします。"],
+      "backLabel": "トップに戻る"
+    },
+    "legal": {
+      "metaTitle": "特定商取引法に基づく表記 | LilQ",
+      "backLabel": "トップに戻る",
+      "title": "特定商取引法に基づく表記",
+      "updated": "最終更新日：2026年2月20日",
+      "items": [
+        { "label": "屋号", "value": "LilQ（リルク）" },
+        { "label": "代表者名", "value": "宮宅 晴規（ミヤケ ハルキ）" },
+        { "label": "所在地", "value": "〒252-0304 神奈川県相模原市南区旭町3番9号リブリコーポ樹103" },
+        { "label": "電話番号", "value": "080-9838-5540（メール・X・フォーム対応のみ）" },
+        { "label": "メールアドレス", "value": "contact@lilq-official.com" },
+        { "label": "販売URL", "value": "https://lilq.jp" },
+        { "label": "事業形態", "value": "個人事業主（３人体制）" },
+        { "label": "販売価格", "value": "ショート動画制作 500円 / 切り抜き動画制作 3,000円 / カスタム動画制作 要相談（各サービスページに記載。モニター価格のため通常価格よりお得です）" },
+        { "label": "代金の支払方法", "value": "銀行振込・クレジットカード・PayPal" },
+        { "label": "代金の支払時期", "value": "後払い制（納品物をご確認いただいた後にお支払いをお願いします。モニター価格のため、納品・ご確認後にお見積もりをご提示し、ご請求いたします）" },
+        { "label": "商品・サービスの提供時期", "value": "ご依頼内容確認後、最短24時間-3営業日以内に納品（プランによる）。納品後にご確認いただき、ご満足いただけましたらお支払いをお願いします。" },
+        { "label": "返品・キャンセルについて", "value": "制作開始前のキャンセルは費用のご請求はいたしません。納品物にご満足いただけない場合はお支払い不要とし、修正対応または返金にて対応いたします。" },
+        { "label": "動作環境", "value": "MP4形式でのデータ納品。YouTube・TikTok・X等のSNSへの投稿に対応。" },
+        { "label": "表示価格", "value": "表示価格は全て税込価格です。" }
+      ],
+      "footer": "ご不明な点は contact@lilq-official.com までお問い合わせください。"
+    },
+    "privacy": {
+      "metaTitle": "プライバシーポリシー | LilQ",
+      "backLabel": "トップに戻る",
+      "title": "プライバシーポリシー",
+      "updated": "最終更新日：2026年2月19日",
+      "intro": "LilQ（リルク）（以下「当サービス」）は、お客様の個人情報の保護を重要な責務と認識し、以下のプライバシーポリシーを定め、適切な取り扱いに努めます。",
+      "sections": [
+        {
+          "title": "1. 収集する情報",
+          "content": "LilQ（以下「当サービス」）は、サービス提供・お問い合わせ対応のために以下の情報を収集します。\n・メールアドレス\n・SNSアカウント（X IDなど）\n・お名前（ハンドルネーム可）\n・配信URL・動画URL（素材として使用するもの）\n・その他、お客様が任意でご提供いただいた情報"
+        },
+        {
+          "title": "2. 情報の利用目的",
+          "content": "収集した個人情報は、以下の目的のみに使用します。\n・サービスの提供およびご連絡\n・お問い合わせへの回答\n・サービス改善のための分析（個人を特定しない形での統計利用）\n・法的義務の履行"
+        },
+        {
+          "title": "3. 第三者への提供",
+          "content": "当サービスは、法令に基づく場合を除き、お客様の個人情報を第三者に提供・開示・共有することはありません。"
+        },
+        {
+          "title": "4. 情報の管理",
+          "content": "お客様の個人情報は適切な安全管理措置を講じて厳重に管理します。不正アクセス・紛失・漏洩・改ざんを防止するための適切な対策を実施します。"
+        },
+        {
+          "title": "5. クッキー（Cookie）について",
+          "content": "当サービスのWebサイトでは、サービス向上のためにクッキーを使用する場合があります。ブラウザの設定によりクッキーを無効にすることができますが、一部のサービスがご利用いただけなくなる場合があります。"
+        },
+        {
+          "title": "6. 個人情報の開示・訂正・削除",
+          "content": "お客様は、当サービスが保有する自身の個人情報について、開示・訂正・削除を請求することができます。ご希望の場合は、以下のメールアドレスまでお問い合わせください。"
+        },
+        {
+          "title": "7. プライバシーポリシーの変更",
+          "content": "当サービスは、法令の改正やサービス内容の変更等に伴い、本プライバシーポリシーを変更することがあります。変更した場合は、当Webサイト上にて告知します。"
+        },
+        {
+          "title": "8. お問い合わせ",
+          "content": "個人情報の取り扱いに関するお問い合わせは、以下の窓口までご連絡ください。\nLilQ（リルク）\n代表: 宮宅 晴規\nEmail: contact@lilq-official.com\nX: @LilQ_officialJP"
+        }
+      ],
+      "footer": "© {{year}} LilQ（リルク）. All rights reserved."
+    }
+  }
+}

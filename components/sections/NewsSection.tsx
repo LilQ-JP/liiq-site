@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ChevronRight } from "lucide-react";
 import { news } from "@/content/news";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
 function formatDate(dateStr: string) {
   const [y, m, d] = dateStr.split("-");
@@ -18,12 +19,12 @@ export default function NewsSection() {
     <section id="news" className="section section-base">
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
-          <Badge variant="secondary" className="mb-3">ニュース</Badge>
+          <Badge variant="secondary" className="mb-3">{site.news.badge}</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            お知らせ
+            {site.news.title}
           </h2>
           <p className="text-muted-foreground">
-            最新のニュースやお知らせをお届けします。
+            {site.news.description}
           </p>
         </AnimatedHeader>
 
@@ -61,7 +62,7 @@ export default function NewsSection() {
             </div>
           ) : (
             <p className="text-center text-muted-foreground py-12 mb-8">
-              お知らせはまだありません。
+              {site.news.empty}
             </p>
           )}
 
@@ -71,7 +72,7 @@ export default function NewsSection() {
                 href="/news"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
               >
-                ニュース一覧を見る
+                {site.news.more}
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>

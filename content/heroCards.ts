@@ -1,4 +1,5 @@
 import { ArrowRightCircle, Gamepad2, CircleDollarSign, type LucideIcon } from "lucide-react";
+import site from "@/content/site.json";
 
 export type HeroCardSegment = {
   text: string;
@@ -24,29 +25,14 @@ export type HeroCard = {
  * - "highlight": 強調表示
  * - "price": 価格（大きめフォント）
  */
-export const heroCards: HeroCard[] = [
-  {
-    label: "依頼の流れ",
-    icon: ArrowRightCircle,
-    segments: [
-      { text: "フォーム入力", style: "linebreak" },
-      { text: "→ 24h納品", style: "highlight" },
-    ],
-  },
-  {
-    label: "対応ジャンル",
-    icon: Gamepad2,
-    segments: [
-      { text: "VTuber", style: "linebreak" },
-      { text: "ゲーム実況 / 雑談" },
-    ],
-  },
-  {
-    label: "料金",
-    icon: CircleDollarSign,
-    segments: [
-      { text: "ショート " },
-      { text: "¥500", style: "price" },
-    ],
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  ArrowRightCircle,
+  Gamepad2,
+  CircleDollarSign,
+};
+
+export const heroCards: HeroCard[] = site.hero.cards.map((card) => ({
+  label: card.label,
+  icon: iconMap[card.icon] ?? ArrowRightCircle,
+  segments: card.segments,
+}));

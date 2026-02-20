@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
 export default function CTABanner() {
   const go = (href: string) =>
@@ -13,14 +14,14 @@ export default function CTABanner() {
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
         <div className="card-surface p-8 text-center min-w-0 overflow-hidden">
-          <Badge variant="secondary" className="mb-4">モニター価格で受付中</Badge>
+          <Badge variant="secondary" className="mb-4">{site.cta.badge}</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4 break-words">
-            まずは1本だけ、
+            {site.cta.titleLines[0]}
             <br className="sm:hidden" />
-            試してみませんか？
+            {site.cta.titleLines[1]}
           </h2>
           <p className="text-muted-foreground mb-6">
-            相談だけでも大歓迎。全額返金保証付きなので、リスクゼロで始められます。
+            {site.cta.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
@@ -28,7 +29,7 @@ export default function CTABanner() {
               size="lg"
               className="rounded-full"
             >
-              今すぐ無料で依頼する
+              {site.cta.primaryLabel}
             </Button>
             <Button
               onClick={() => go("#contact")}
@@ -36,15 +37,15 @@ export default function CTABanner() {
               size="lg"
               className="rounded-full"
             >
-              まずは相談する
+              {site.cta.secondaryLabel}
             </Button>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6 text-xs text-muted-foreground">
-            <span>全額返金保証</span>
+            <span>{site.cta.bullets[0]}</span>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <span>修正2回無料</span>
+            <span>{site.cta.bullets[1]}</span>
             <span className="w-1 h-1 rounded-full bg-border" />
-            <span>最短24時間納品</span>
+            <span>{site.cta.bullets[2]}</span>
           </div>
         </div>
         </AnimatedSection>

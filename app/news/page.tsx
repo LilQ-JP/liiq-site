@@ -4,10 +4,11 @@ import { ChevronLeft, ExternalLink } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { news } from "@/content/news";
+import site from "@/content/site.json";
 
 export const metadata: Metadata = {
-  title: "ニュース | LilQ",
-  description: "LilQの最新ニュース・お知らせ",
+  title: site.pages.news.metaTitle,
+  description: site.pages.news.metaDescription,
 };
 
 function formatDate(dateStr: string) {
@@ -26,14 +27,14 @@ export default function NewsPage() {
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
-            トップに戻る
+            {site.pages.news.backLabel}
           </Link>
 
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            ニュース
+            {site.pages.news.title}
           </h1>
           <p className="text-sm text-muted-foreground mb-10">
-            会社のお知らせや更新情報をお届けします。
+            {site.pages.news.description}
           </p>
 
           <ul className="space-y-6">
@@ -71,7 +72,7 @@ export default function NewsPage() {
 
           {news.length === 0 && (
             <p className="text-center text-muted-foreground py-12">
-              お知らせはまだありません。
+              {site.pages.news.empty}
             </p>
           )}
         </div>

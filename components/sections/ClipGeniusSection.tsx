@@ -3,13 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Target, Zap, Clock, Layers } from "lucide-react";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
-const features = [
-  { icon: Target, text: "見どころを自動で抽出" },
-  { icon: Zap, text: "編集時間を大幅に短縮" },
-  { icon: Clock, text: "24時間365日自動処理" },
-  { icon: Layers, text: "配信スタイルを問わず対応" },
-];
+const iconMap = { Target, Zap, Clock, Layers };
+const features = site.clipGenius.features.map((f) => ({
+  ...f,
+  icon: iconMap[f.icon as keyof typeof iconMap] || Target,
+}));
 
 export default function ClipGeniusSection() {
   return (
@@ -18,7 +18,7 @@ export default function ClipGeniusSection() {
       <div className="relative max-w-5xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
           <Badge variant="outline" className="mb-3 border-white/30 bg-white text-black font-bold">
-            開発中ツール
+            {site.clipGenius.badge}
           </Badge>
           <h2
             className="text-4xl sm:text-5xl font-extrabold mb-3 tracking-tight"
@@ -29,14 +29,14 @@ export default function ClipGeniusSection() {
               backgroundClip: "text",
             }}
           >
-            ClipGenius
+            {site.clipGenius.title}
           </h2>
           <p className="text-[#c2c2c2] max-w-2xl mx-auto text-sm sm:text-base">
-            配信動画の面白いシーンを
+            {site.clipGenius.descriptionLines[0]}
             <br className="sm:hidden" />
-            効率的に見つけ、切り抜き候補を
+            {site.clipGenius.descriptionLines[1]}
             <br className="sm:hidden" />
-            提案するツールを開発中です。
+            {site.clipGenius.descriptionLines[2]}
           </p>
         </AnimatedHeader>
 
@@ -74,12 +74,12 @@ export default function ClipGeniusSection() {
               variant="outline"
               className="text-xs font-bold text-white border-transparent bg-transparent"
             >
-              COMING SOON
+              {site.clipGenius.comingSoonLabel}
             </Badge>
             <p className="text-xs sm:text-sm text-[#c2c2c2] mt-2">
-              リリース情報は
+              {site.clipGenius.comingSoonLines[0]}
               <br className="sm:hidden" />
-              X @LilQ_officialJP でお知らせします。
+              {site.clipGenius.comingSoonLines[1]}
             </p>
           </div>
         </div>

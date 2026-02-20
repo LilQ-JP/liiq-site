@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Mail, ArrowRight } from "lucide-react";
 import { XLogo } from "@/components/ui/x-logo";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
 export default function ProfileSection() {
   const go = (href: string) =>
@@ -14,9 +15,9 @@ export default function ProfileSection() {
     <section className="section section-alt">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
-          <Badge variant="secondary" className="mb-3">代表プロフィール</Badge>
+          <Badge variant="secondary" className="mb-3">{site.profile.badge}</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">
-            代表プロフィール
+            {site.profile.title}
           </h2>
         </AnimatedHeader>
 
@@ -26,54 +27,46 @@ export default function ProfileSection() {
             <div className="lg:col-span-2 flex flex-col items-center">
               <div className="card-surface w-52 h-52 flex items-center justify-center">
                 <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center text-xl font-bold text-foreground">
-                  MH
+                  {site.profile.initials}
                 </div>
               </div>
               <div className="text-center mt-4">
-                <div className="text-xs text-muted-foreground">LilQ 代表</div>
-                <div className="text-xl font-bold text-foreground mt-1">宮宅 晴規</div>
-                <div className="text-xs text-muted-foreground">Miyake Haruki</div>
+                <div className="text-xs text-muted-foreground">{site.profile.roleLabel}</div>
+                <div className="text-xl font-bold text-foreground mt-1">{site.profile.name}</div>
+                <div className="text-xs text-muted-foreground">{site.profile.nameRoman}</div>
               </div>
               <div className="flex flex-col gap-2 mt-4">
                 <a
-                  href="https://twitter.com/LilQ_officialJP"
+                  href={site.site.twitterUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs text-foreground/80 hover:text-foreground"
                 >
                   <XLogo className="w-4 h-4 text-foreground" />
-                  @LilQ_officialJP
+                  {site.site.twitterHandle}
                 </a>
                 <a
-                  href="mailto:contact@lilq-official.com"
+                  href={`mailto:${site.site.email}`}
                   className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground"
                 >
                   <Mail className="w-4 h-4" />
-                  contact@lilq-official.com
+                  {site.site.email}
                 </a>
               </div>
             </div>
 
             <div className="lg:col-span-3">
               <h3 className="text-2xl font-bold text-foreground mb-4 leading-tight">
-                動画編集で、
+                {site.profile.headlineLines[0]}
                 <br className="sm:hidden" />
-                配信者の可能性を広げたい
+                {site.profile.headlineLines[1]}
               </h3>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">
-                <p>こんにちは、LilQ代表の宮宅晴規です。</p>
-                <p>
-                  配信は楽しいのに、編集が追いつかない。そんな声を多く聞いてきました。
-                  そこで、プロ品質の動画を気軽に頼める価格で提供したいと考えました。
-                </p>
-                <p>
-                  いまは面白いシーンを効率的に見つけるツールも開発中です。
-                  配信者が配信に集中できる世界をつくる。それがLilQの使命です。
-                </p>
-                <p className="font-semibold text-foreground">
-                  まずは1本、気軽にご相談ください。
-                </p>
+                <p>{site.profile.paragraphs[0]}</p>
+                <p>{site.profile.paragraphs[1]}</p>
+                <p>{site.profile.paragraphs[2]}</p>
+                <p className="font-semibold text-foreground">{site.profile.paragraphs[3]}</p>
               </div>
 
               <div className="mt-6 pt-5 border-t border-border flex justify-start">
@@ -83,7 +76,7 @@ export default function ProfileSection() {
                   size="sm"
                   className="rounded-full"
                 >
-                  相談する <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  {site.profile.ctaLabel} <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
               </div>
             </div>

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Send, Mail } from "lucide-react";
 import { XLogo } from "@/components/ui/x-logo";
 import { formspreeContactId, basePath } from "@/lib/constants";
+import site from "@/content/site.json";
 
 type ContactForm = { name: string; email: string; message: string };
 
@@ -30,7 +31,7 @@ export default function ContactSection() {
 
     if (!formspreeContactId) {
       setSubmitting(false);
-      alert("フォームが設定されていません。X @LilQ_officialJP へDMでお問い合わせください。");
+      alert(site.contact.form.alertNoForm);
       return;
     }
 
@@ -41,14 +42,14 @@ export default function ContactSection() {
         body: JSON.stringify({
           ...form,
           _replyto: form.email,
-          _subject: `【LilQ お問い合わせ】${form.name || "名無し"} さんから`,
+          _subject: `${site.contact.form.subjectPrefix}${form.name || site.contact.form.subjectFallbackName}${site.contact.form.subjectSuffix}`,
         }),
       });
-      if (!res.ok) throw new Error("送信に失敗しました");
+      if (!res.ok) throw new Error(site.contact.form.errorSend);
       router.push(`${basePath}/contact/thanks`);
     } catch {
       setSubmitting(false);
-      alert("送信に失敗しました。X @LilQ_officialJP へDMをお願いします。");
+      alert(site.contact.form.alertFailed);
     }
   };
 
@@ -56,21 +57,21 @@ export default function ContactSection() {
     <section id="contact" className="section section-base">
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-10">
-          <Badge variant="secondary" className="mb-3">お問い合わせ</Badge>
+          <Badge variant="secondary" className="mb-3">{site.contact.badge}</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            お問い合わせ
+            {site.contact.title}
           </h2>
           <p className="text-muted-foreground">
-            依頼前の相談・ご質問など、
+            {site.contact.descriptionLines[0]}
             <br className="sm:hidden" />
-            何でもお気軽にどうぞ。
+            {site.contact.descriptionLines[1]}
           </p>
         </AnimatedHeader>
 
         <AnimatedStaggerContainer className="grid sm:grid-cols-2 gap-5 mb-8">
           <AnimatedStaggerItem>
           <a
-            href="https://twitter.com/LilQ_officialJP"
+            href={site.site.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="card-surface p-5 flex items-center gap-4 hover:translate-y-[-2px] transition-transform"
@@ -79,22 +80,22 @@ export default function ContactSection() {
               <XLogo className="w-5 h-5 text-foreground" />
             </div>
             <div>
-              <div className="font-bold text-foreground">X (Twitter) でDM</div>
-              <div className="text-sm text-muted-foreground">@LilQ_officialJP</div>
+              <div className="font-bold text-foreground">{site.contact.cards.xTitle}</div>
+              <div className="text-sm text-muted-foreground">{site.site.twitterHandle}</div>
             </div>
           </a>
           </AnimatedStaggerItem>
           <AnimatedStaggerItem>
           <a
-            href="mailto:contact@lilq-official.com"
+            href={`mailto:${site.site.email}`}
             className="card-surface p-5 flex items-center gap-4 hover:translate-y-[-2px] transition-transform"
           >
             <div className="w-12 h-12 rounded-md bg-muted flex items-center justify-center">
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-bold text-foreground">メールで連絡</div>
-              <div className="text-sm text-muted-foreground">contact@lilq-official.com</div>
+              <div className="font-bold text-foreground">{site.contact.cards.emailTitle}</div>
+              <div className="text-sm text-muted-foreground">{site.site.email}</div>
             </div>
           </a>
           </AnimatedStaggerItem>
@@ -102,23 +103,23 @@ export default function ContactSection() {
 
         <AnimatedSection>
         <div className="card-surface p-8">
-          <h3 className="font-bold text-foreground text-lg mb-6 text-center">フォームから送信</h3>
+          <h3 className="font-bold text-foreground text-lg mb-6 text-center">{site.contact.form.title}</h3>
           <form onSubmit={onSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <Label htmlFor="contact-name">お名前（任意・会社名でもOK）</Label>
+                <Label htmlFor="contact-name">{site.contact.form.nameLabel}</Label>
                 <Input
                   id="contact-name"
                   type="text"
                   name="name"
                   value={form.name}
                   onChange={onChange}
-                  placeholder="例: LilQ"
+                  placeholder={site.contact.form.namePlaceholder}
                   className="mt-2"
                 />
               </div>
               <div>
-                <Label htmlFor="contact-email">メールアドレス（必須）</Label>
+                <Label htmlFor="contact-email">{site.contact.form.emailLabel}</Label>
                 <Input
                   id="contact-email"
                   type="email"
@@ -126,13 +127,13 @@ export default function ContactSection() {
                   value={form.email}
                   onChange={onChange}
                   required
-                  placeholder="contact@example.com"
+                  placeholder={site.contact.form.emailPlaceholder}
                   className="mt-2"
                 />
               </div>
             </div>
             <div>
-              <Label htmlFor="contact-message">お問い合わせ内容（必須）</Label>
+              <Label htmlFor="contact-message">{site.contact.form.messageLabel}</Label>
               <Textarea
                 id="contact-message"
                 name="message"
@@ -140,7 +141,7 @@ export default function ContactSection() {
                 onChange={onChange}
                 required
                 rows={5}
-                placeholder="ご質問・ご相談内容をご記入ください。"
+                placeholder={site.contact.form.messagePlaceholder}
                 className="mt-2"
               />
             </div>
@@ -152,16 +153,16 @@ export default function ContactSection() {
                 className="mt-0.5 h-4 w-4 rounded border-input accent-primary"
               />
               <span className="text-xs text-muted-foreground">
-                入力情報はサービス提供のみに使用します。
+                {site.contact.form.privacyText}
                 <Link href="/privacy-policy" className="text-primary hover:underline ml-1">
-                  プライバシーポリシー
+                  {site.contact.form.privacyLinkLabel}
                 </Link>
-                に同意の上、送信してください。
+                {site.contact.form.privacyTextAfter}
               </span>
             </label>
             <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed}>
               <Send className="w-5 h-5 mr-2" />
-              {submitting ? "送信中…" : "送信する"}
+              {submitting ? site.contact.form.submittingLabel : site.contact.form.submitLabel}
             </Button>
           </form>
         </div>

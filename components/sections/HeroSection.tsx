@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
 import { heroImagePath } from "@/lib/constants";
 import { Clock, RefreshCw, ShieldCheck } from "lucide-react";
+import site from "@/content/site.json";
 
 const cinematic = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const };
 
@@ -26,23 +27,23 @@ export default function HeroSection() {
           transition={{ ...cinematic, delay: 0.15 }}
         >
           <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-lg sm:text-xl font-extrabold px-8 py-3.5 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
-            モニター価格で受付中
+            {site.hero.badge}
           </Badge>
           <h1 className="mt-4 text-[37px] sm:text-[44px] lg:text-5xl font-extrabold font-['Hiragino_Sans'] text-black leading-tight tracking-tight">
-            500円から、<br />
-            気軽にはじめよう！
+            {site.hero.titleLines[0]}<br />
+            {site.hero.titleLines[1]}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-black/60 leading-relaxed">
-            VTuber・ゲーム実況・雑談配信者向けの動画編集・切り抜きサービス。
+            {site.hero.descriptionLines[0]}
             <br />
-            最短24時間納品、修正2回無料。
+            {site.hero.descriptionLines[1]}
             <br />
-            まずは1本、気軽に試せます。
+            {site.hero.descriptionLines[2]}
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button onClick={() => go("#apply")} size="lg" className="rounded-full">
-              無料で依頼する
+              {site.hero.buttons.apply}
             </Button>
             <Button
               onClick={() => go("#works")}
@@ -50,7 +51,7 @@ export default function HeroSection() {
               size="lg"
               className="rounded-full"
             >
-              実績を見る
+              {site.hero.buttons.works}
             </Button>
           </div>
         </motion.div>
@@ -67,7 +68,7 @@ export default function HeroSection() {
             <div className="relative w-full min-w-0 shrink-0 lg:max-w-[min(680px,60%)]">
               <img
                 src={heroImagePath}
-                alt="動画制作・切り抜きサービス - 配信者をサポートするチーム"
+                alt={site.hero.imageAlt}
                 className="w-full h-auto max-h-[520px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
                 loading="eager"
               />
@@ -76,7 +77,7 @@ export default function HeroSection() {
             <div className="hidden lg:flex flex-col gap-3 w-[220px] xl:w-[240px] shrink-0">
               {heroCards.map((card) => {
                 const Icon = card.icon;
-                const isPrice = card.label === "料金";
+                const isPrice = card.segments.some((seg) => seg.style === "price");
                 return (
                   <div
                     key={card.label}
@@ -120,15 +121,15 @@ export default function HeroSection() {
           >
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <Clock className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-extrabold text-black/80">最短24時間納品</span>
+              <span className="text-sm font-extrabold text-black/80">{site.hero.featureChips[0]}</span>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <RefreshCw className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-extrabold text-black/80">修正2回無料</span>
+              <span className="text-sm font-extrabold text-black/80">{site.hero.featureChips[1]}</span>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2.5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-sm">
               <ShieldCheck className="h-4 w-4 text-black/60" strokeWidth={2.5} />
-              <span className="text-sm font-extrabold text-black/80">全額返金保証</span>
+              <span className="text-sm font-extrabold text-black/80">{site.hero.featureChips[2]}</span>
             </div>
           </motion.div>
         </motion.div>
@@ -143,7 +144,7 @@ export default function HeroSection() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-2xl mx-auto min-w-0 [&>div:last-child]:col-span-2 [&>div:last-child]:sm:col-span-1">
             {heroCards.map((card) => {
               const Icon = card.icon;
-              const isPrice = card.label === "料金";
+              const isPrice = card.segments.some((seg) => seg.style === "price");
               return (
                 <div
                   key={card.label}
@@ -163,7 +164,7 @@ export default function HeroSection() {
                   <p className="hero-card-body text-sm sm:text-base leading-snug m-0 w-full text-center break-keep">
                     {card.segments.map((seg, i) =>
                       seg.style === "linebreak" ? (
-                        <span key={i} className={`block font-[family-name:var(--font-noto-sans-jp)] font-black ${seg.text === "フォーム入力" ? "text-[19px] sm:text-sm" : ""}`}>{seg.text}</span>
+                        <span key={i} className="block font-[family-name:var(--font-noto-sans-jp)] font-black">{seg.text}</span>
                       ) : (
                         <span key={i} className={seg.style === "price" ? "hero-card-price text-[33px]" : "font-[family-name:var(--font-noto-sans-jp)] font-black"}>
                           {seg.text}

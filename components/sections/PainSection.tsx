@@ -3,29 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Clock, PenSquare, TrendingDown, Wallet } from "lucide-react";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
-const pains = [
-  {
-    icon: Clock,
-    title: "編集に時間が取れない",
-    desc: "配信と編集の両立が難しく、投稿頻度が落ちてしまう。",
-  },
-  {
-    icon: PenSquare,
-    title: "編集スキルに不安がある",
-    desc: "思い通りのクオリティを安定して出せない。",
-  },
-  {
-    icon: TrendingDown,
-    title: "SNSで伸ばしきれない",
-    desc: "切り抜きの量産ができず認知が広がらない。",
-  },
-  {
-    icon: Wallet,
-    title: "外注費が高すぎる",
-    desc: "プロに頼みたいが予算が合わない。",
-  },
-];
+const iconMap = { Clock, PenSquare, TrendingDown, Wallet };
+const pains = site.pain.items.map((item) => ({
+  ...item,
+  icon: iconMap[item.icon as keyof typeof iconMap] || Clock,
+}));
 
 export default function PainSection() {
   return (
@@ -33,15 +17,15 @@ export default function PainSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
           <Badge variant="secondary" className="mb-3">
-            よくある悩み
+            {site.pain.badge}
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">
-            配信者の課題を
+            {site.pain.titleLines[0]}
             <br className="sm:hidden" />
-            整理しました
+            {site.pain.titleLines[1]}
           </h2>
           <p className="text-muted-foreground mt-3">
-            LilQはこの悩みを最短距離で解決します。
+            {site.pain.description}
           </p>
         </AnimatedHeader>
 
@@ -68,9 +52,9 @@ export default function PainSection() {
 
         <AnimatedSection className="mt-12">
         <div className="card-soft px-6 py-5 text-center">
-          <p className="text-sm text-muted-foreground">その悩みを、価格とスピードで解決します</p>
+          <p className="text-sm text-muted-foreground">{site.pain.callout.lead}</p>
           <p className="text-xl sm:text-2xl font-bold text-foreground mt-2">
-            配信に集中できる環境を、LilQがつくります。
+            {site.pain.callout.headline}
           </p>
         </div>
         </AnimatedSection>

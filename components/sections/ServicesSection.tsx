@@ -4,59 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import site from "@/content/site.json";
 
-const services = [
-  {
-    title: "ショート動画制作",
-    sub: "60秒",
-    price: "¥500",
-    delivery: "最短24時間",
-    features: [
-      "60秒以内のショート動画",
-      "Adobe Premiere Proで制作",
-      "BGM・テロップ対応",
-      "修正2回まで無料",
-      "YouTube Shorts / TikTok対応",
-    ],
-    badge: "人気",
-    highlight: true,
-  },
-  {
-    title: "切り抜き動画制作",
-    sub: "5分程度",
-    price: "¥3,000",
-    delivery: "2-3営業日",
-    features: [
-      "5分程度の切り抜き動画",
-      "名シーン・神場面を厳選",
-      "テロップ・エフェクト対応",
-      "修正2回まで無料",
-      "YouTube / SNS対応",
-    ],
-    badge: "おすすめ",
-    highlight: false,
-  },
-  {
-    title: "カスタム動画制作",
-    sub: "ご要望に対応",
-    price: "要相談",
-    delivery: "要相談",
-    features: [
-      "長尺・特殊仕様に対応",
-      "OP・ED制作",
-      "複数動画のまとめ編集",
-      "修正2回まで無料",
-      "詳細はご相談ください",
-    ],
-    badge: "柔軟対応",
-    highlight: false,
-  },
-];
-
-const options = [
-  { name: "Priority Production", price: "+¥3,000", desc: "他の依頼より優先対応。急ぎの依頼に。" },
-  { name: "追加修正（3回目以降）", price: "+¥500/回", desc: "2回超えた修正に対応。" },
-];
+const services = site.services.services;
+const options = site.services.options;
 
 export default function ServicesSection() {
   const go = (href: string) =>
@@ -66,14 +17,14 @@ export default function ServicesSection() {
     <section id="pricing" className="section section-base section-pattern pattern-grid pb-40 sm:pb-[var(--section-padding)]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedHeader className="text-center mb-12">
-          <Badge variant="secondary" className="mb-3">サービスと料金</Badge>
+          <Badge variant="secondary" className="mb-3">{site.services.badge}</Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            サービス内容と
+            {site.services.titleLines[0]}
             <br className="sm:hidden" />
-            料金プラン
+            {site.services.titleLines[1]}
           </h2>
           <p className="text-muted-foreground">
-            全プラン修正2回無料・全額返金保証付き。
+            {site.services.description}
           </p>
         </AnimatedHeader>
 
@@ -85,7 +36,7 @@ export default function ServicesSection() {
                 <Badge variant="outline" className="text-xs">
                   {s.badge}
                 </Badge>
-                <span className="text-xs text-muted-foreground">納期: {s.delivery}</span>
+                <span className="text-xs text-muted-foreground">{site.services.deliveryLabel}: {s.delivery}</span>
               </div>
               <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-1">{s.sub}</p>
@@ -101,7 +52,7 @@ export default function ServicesSection() {
               </div>
 
               <Button onClick={() => go("#apply")} className="w-full mt-6 rounded-full">
-                このプランで依頼する
+                {site.services.ctaLabel}
               </Button>
             </div>
             </AnimatedStaggerItem>
@@ -111,7 +62,7 @@ export default function ServicesSection() {
         <AnimatedStaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-5" delayIndex={1}>
           <AnimatedStaggerItem>
           <div className="card-surface p-6 card-hover h-full">
-            <h3 className="text-lg font-bold text-foreground mb-4">オプションサービス</h3>
+            <h3 className="text-lg font-bold text-foreground mb-4">{site.services.optionsTitle}</h3>
             <div className="space-y-3">
               {options.map((o) => (
                 <div key={o.name} className="card-soft px-4 py-3">
@@ -128,25 +79,21 @@ export default function ServicesSection() {
 
           <AnimatedStaggerItem>
           <div className="card-surface p-6 card-hover h-full">
-            <h3 className="text-lg font-bold text-foreground mb-4">支払い・返金</h3>
+            <h3 className="text-lg font-bold text-foreground mb-4">{site.services.paymentTitle}</h3>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div>
-                <div className="font-semibold text-foreground mb-1">支払い方法</div>
+                <div className="font-semibold text-foreground mb-1">{site.services.paymentMethodsLabel}</div>
                 <div className="flex flex-wrap gap-2">
-                  {[
-                    "銀行振込",
-                    "クレジットカード",
-                    "PayPal",
-                  ].map((m) => (
+                  {site.services.paymentMethods.map((m) => (
                     <Badge key={m} variant="outline" className="text-xs">{m}</Badge>
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">後払い制（納品確認後）</p>
+                <p className="text-xs text-muted-foreground mt-2">{site.services.paymentNote}</p>
               </div>
               <div className="card-soft px-4 py-3">
-                <div className="font-semibold text-foreground">全額返金保証</div>
+                <div className="font-semibold text-foreground">{site.services.refundTitle}</div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  制作開始前キャンセルは全額返金。納品物にご満足いただけない場合も全額返金。
+                  {site.services.refundDesc}
                 </p>
               </div>
             </div>

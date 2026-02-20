@@ -7,15 +7,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { logoPath } from "@/lib/constants";
+import site from "@/content/site.json";
 
-const navItems = [
-  { label: "サービス", href: "#services", hash: true },
-  { label: "料金", href: "#pricing", hash: true },
-  { label: "実績", href: "#works", hash: true },
-  { label: "ニュース", href: "#news", hash: true },
-  { label: "FAQ", href: "#faq", hash: true },
-  { label: "お問い合わせ", href: "#contact", hash: true },
-];
+const navItems = site.nav.items;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -82,12 +76,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Button variant="outline" asChild className="rounded-full">
               <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
-                まずは相談
+                {site.nav.cta.consult}
               </Link>
             </Button>
             <Button asChild className="rounded-full">
               <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
-                無料で依頼する
+                {site.nav.cta.apply}
               </Link>
             </Button>
           </div>
@@ -138,12 +132,12 @@ export default function Navbar() {
               <div className="shrink-0 p-5 pt-4 pb-8 space-y-3 bg-black/[0.06] rounded-tl-3xl">
                 <Button variant="outline" asChild className="rounded-2xl w-full h-12 border-white/25 bg-white/5 hover:bg-white/15 font-semibold">
                   <Link href={homeHref("#contact")} onClick={(e) => handleHashClick(e, "#contact")}>
-                    まずは相談
+                    {site.nav.cta.consult}
                   </Link>
                 </Button>
                 <Button asChild className="rounded-2xl w-full h-12 font-semibold shadow-lg">
                   <Link href={homeHref("#apply")} onClick={(e) => handleHashClick(e, "#apply")}>
-                    無料で依頼する
+                    {site.nav.cta.apply}
                   </Link>
                 </Button>
               </div>

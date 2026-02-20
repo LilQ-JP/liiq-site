@@ -4,10 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import { Users2, Zap } from "lucide-react";
+import site from "@/content/site.json";
 
-const clients = ["ココマルハピー", "とみたけかれる","松野アマネ"];
-const genres = ["VTuber", "ゲーム実況", "雑談配信", "切り抜き量産"];
-const features = ["最短24時間", "全額返金保証"];
+const clients = site.logoBanner.clients;
+const genres = site.logoBanner.genres;
+const features = site.logoBanner.features;
 
 export default function LogoBanner() {
   return (
@@ -21,7 +22,7 @@ export default function LogoBanner() {
 
             <div className="relative">
               <h3 className="text-center text-base font-extrabold tracking-tight text-foreground sm:text-lg">
-                対応ジャンルと実績クライアント
+                {site.logoBanner.title}
               </h3>
 
               <div className="mt-6 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:items-center sm:justify-center sm:gap-10">
@@ -29,7 +30,7 @@ export default function LogoBanner() {
                 <div className="flex flex-col items-center gap-3 sm:items-start">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     <Users2 className="h-3.5 w-3.5" />
-                    実績クライアント
+                    {site.logoBanner.clientsLabel}
                   </div>
                   <AnimatedStaggerContainer className="flex flex-wrap justify-center gap-2 sm:justify-start">
                     {clients.map((c) => (
@@ -52,7 +53,7 @@ export default function LogoBanner() {
                 <div className="flex flex-col items-center gap-3 sm:items-start">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     <Zap className="h-3.5 w-3.5" />
-                    対応ジャンル
+                    {site.logoBanner.genresLabel}
                   </div>
                   <AnimatedStaggerContainer className="flex flex-wrap justify-center gap-2 sm:justify-start" delayIndex={1}>
                     {genres.map((g) => (
@@ -73,7 +74,7 @@ export default function LogoBanner() {
 
                 {/* 特徴 */}
                 <div className="flex flex-col items-center gap-3 sm:items-start">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">サービス特徴</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{site.logoBanner.featuresLabel}</div>
                   <AnimatedStaggerContainer className="flex flex-wrap justify-center gap-2 sm:justify-start" delayIndex={2}>
                     {features.map((f) => (
                       <AnimatedStaggerItem key={f}>

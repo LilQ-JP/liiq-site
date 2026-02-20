@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import site from "@/content/site.json";
 
 export default function ApplyThanksPage() {
   return (
@@ -14,15 +15,15 @@ export default function ApplyThanksPage() {
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground mb-3">ご依頼ありがとうございます</h1>
+            <h1 className="text-2xl font-bold text-foreground mb-3">{site.pages.applyThanks.title}</h1>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              お申し込みを受け付けました。24時間以内にメールまたはXのDMにてご連絡いたします。
+              {site.pages.applyThanks.messageLines[0]}
             </p>
             <p className="text-sm text-muted-foreground mb-8">
-              急ぎの場合は X @LilQ_officialJP までDMください。
+              {site.pages.applyThanks.messageLines[1]}
             </p>
             <Button asChild className="rounded-full">
-              <Link href="/">トップに戻る</Link>
+              <Link href="/">{site.pages.applyThanks.backLabel}</Link>
             </Button>
           </div>
         </div>
