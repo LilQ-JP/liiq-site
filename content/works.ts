@@ -43,5 +43,5 @@ export const works = [
     url: "https://www.youtube.com/shorts/GZibrcuxyMY",
     tags: ["Shorts"],
   }
-  / ▼ 新しい実績を追加する場合はここにペースト ▼
+  // ▼ 新しい実績を追加する場合はここにペースト ▼
 ];
