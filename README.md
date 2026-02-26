@@ -1,89 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YouTubeサムネ生成MVP（社内用）
 
-## Getting Started
+ソシャゲ翻訳動画（実況者なし・ゲーム画面のみ）から、**キャラ切り抜き必須**のYouTubeサムネを自動生成するWebアプリです。
 
-First, run the development server:
+- フロント: Next.js (App Router) + Tailwind + Canvas編集
+- バックエンド: FastAPI
+- 動画処理: ffmpeg
+- 切り抜き: rembg
+- 合成: Pillow + OpenCV
+
+## 構成
+
+- `/apps/web` : Next.js フロントエンド
+- `/apps/api` : FastAPI APIサーバー
+- `/scripts` : 開発補助スクリプト
+
+## セットアップ（macOS）
+
+### 1. 依存関係
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+brew install ffmpeg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Node.js 18+ / Python 3.10+ を利用してください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. APIサーバー
 
-## フォーム（お申し込み・お問い合わせ）
+```bash
+cd /Users/haru/Desktop/lilq-website/apps/api
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
 
-- **お申し込みフォーム**: トップページの「お申し込み」セクション（`/#apply`）
-- **お問い合わせフォーム**: トップページの「お問い合わせ」セクション（`/#contact`）
+> 初回の rembg 実行時にモデルがダウンロードされます。時間がかかる場合があります。
 
-### 送信先・保存先
+ffmpeg が見つからない場合は以下を確認してください。
 
-フォームは [Formspree](https://formspree.io) に送信され、以下の2つの方法で受け取れます。
+```bash
+/Users/haru/Desktop/lilq-website/scripts/check_ffmpeg.sh
+```
 
-1. **メール通知** - 登録したメールアドレスに送信内容が届く  
-2. **Formspree ダッシュボード** - [formspree.io](https://formspree.io) の管理画面で送信履歴を確認
+### 3. フロントエンド
 
-### セットアップ（メールで受け取る手順）
+```bash
+cd /Users/haru/Desktop/lilq-website/apps/web
+npm install
+npm run dev
+```
 
-1. **[Formspree](https://formspree.io)** でアカウント作成・ログイン
+`NEXT_PUBLIC_API_URL` を変更したい場合は、`/Users/haru/Desktop/lilq-website/apps/web/.env.local` に以下を追加してください。
 
-2. **フォームを2つ作成**
-   - 「+ New Form」から作成
-   - **1つ目（お申し込み用）**：任意の名前（例: LilQ お申し込み）
-   - **2つ目（お問い合わせ用）**：任意の名前（例: LilQ お問い合わせ）
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
-3. **各フォームで受け取るメールアドレスを設定**
-   - フォームを開く → 「Emails」または「Notifications」
-   - 送信先のメールアドレス（例: contact@lilq-official.com）を登録  
-   - ※ ここで登録したアドレスに送信内容が届きます
+### 4. 起動確認
 
-4. **フォームIDを取得**
-   - 各フォームのURLが `https://formspree.io/f/xxxxx` の形式
-   - `xxxxx` の部分がフォームID
+- Web: http://localhost:3000
+- API: http://localhost:8000/api/health
 
-5. **GitHub Secrets に `NEXT_PUBLIC_BASE_PATH` を追加**
-   - 独自ドメイン利用時: 空文字（または設定しない）
-   - github.io/liiq-site 利用時: `/liiq-site`
+## 使い方
 
-6. **`.env.local` を作成**（ルートに配置）
-   ```bash
-   cp .env.example .env.local
-   ```
-   中身を編集：
-   ```bash
-   NEXT_PUBLIC_FORMSPREE_APPLY_ID=お申し込みフォームのID
-   NEXT_PUBLIC_FORMSPREE_CONTACT_ID=お問い合わせフォームのID
-   NEXT_PUBLIC_SITE_URL=https://lilq.jp
-   ```
+1. 動画(mp4/mov)をアップロード
+2. 5案生成 → 一覧から1案選択
+3. Canvasでキャラ位置・スケール・背景調整
+4. Export で PNG + JPG をダウンロード
 
-7. **GitHub Pages デプロイ時に環境変数を設定**
-   - リポジトリ → Settings → Secrets and variables → Actions
-   - `NEXT_PUBLIC_FORMSPREE_APPLY_ID`、`NEXT_PUBLIC_FORMSPREE_CONTACT_ID`、`NEXT_PUBLIC_SITE_URL` を追加
+## 出力仕様
 
-以上で、フォーム送信時に登録メールに届きます。
+- 1280x720 / sRGB
+- PNG（編集用）
+- JPG（2MB以下になるよう自動圧縮）
 
----
+## API（最低限）
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `POST /api/upload` → 動画アップロード
+- `POST /api/generate?video_id=...` → 5案生成
+- `GET /api/result/{id}` → 生成画像取得
+- `GET /api/result/{id}?meta=1` → 編集用メタ取得
+- `POST /api/export/{id}` → 編集パラメータでPNG/JPG生成
 
-## Learn More
+## テスト（簡易）
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd /Users/haru/Desktop/lilq-website/apps/api
+pytest
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+対象: フレームスコアリング、品質ゲート、JPG圧縮
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 保存先
 
-## Deploy on Vercel
+生成結果は `/Users/haru/Desktop/lilq-website/apps/api/storage` 配下に保存されます。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
