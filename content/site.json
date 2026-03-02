@@ -292,7 +292,8 @@
       {
         "title": "ショート動画制作",
         "sub": "60秒",
-        "price": "¥2,000",
+        "price": "¥500",
+        "originalPrice": "¥2,000",
         "delivery": "最短24時間",
         "features": [
           "60秒以内のショート動画",

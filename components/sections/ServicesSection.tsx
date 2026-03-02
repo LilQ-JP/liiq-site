@@ -52,7 +52,14 @@ export default function ServicesSection() {
                 </div>
                 <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{s.sub}</p>
-                <div className="text-3xl sm:text-4xl font-extrabold text-foreground mt-4">{s.price}</div>
+                <div className="mt-4 flex flex-col gap-0.5">
+                  {"originalPrice" in s && (
+                    <div className="text-sm sm:text-base text-muted-foreground line-through font-bold">
+                      {(s as any).originalPrice}
+                    </div>
+                  )}
+                  <div className="text-3xl sm:text-4xl font-extrabold text-foreground">{s.price}</div>
+                </div>
 
                 <div className="space-y-2 mt-6 text-sm text-foreground/80 flex-1">
                   {s.features.map((f) => (
