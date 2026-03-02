@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { ChevronRight } from "lucide-react";
+import { CaretRight } from "@phosphor-icons/react";
 import { news } from "@/content/news";
-import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
 
 function formatDate(dateStr: string) {
@@ -16,64 +15,51 @@ export default function NewsSection() {
   const displayNews = news.slice(0, 5);
 
   return (
-    <section id="news" className="section section-base">
+    <section id="news" className="section-forma" style={{ background: "#F2F2F0" }}>
       <div className="max-w-4xl mx-auto px-5 sm:px-8">
-        <AnimatedHeader className="text-center mb-10">
-          <Badge variant="secondary" className="mb-3">{site.news.badge}</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            {site.news.title}
-          </h2>
-          <p className="text-muted-foreground">
-            {site.news.description}
-          </p>
-        </AnimatedHeader>
+        <AnimatedSection>
+          <div className="text-center mb-10">
+            <span className="label-sm mb-3 block">{site.news.badge}</span>
+            <h2 className="text-3xl sm:text-4xl text-foreground mb-3">{site.news.title}</h2>
+            <p className="text-muted-foreground">{site.news.description}</p>
+          </div>
+        </AnimatedSection>
 
         <AnimatedStaggerContainer>
           {displayNews.length > 0 ? (
-            <div className="space-y-3 mb-8">
+            <div className="space-y-2 mb-8">
               {displayNews.map((item, i) => (
                 <AnimatedStaggerItem key={i}>
                   <Link
                     href={item.href || "/news"}
                     target={item.href ? "_blank" : undefined}
                     rel={item.href ? "noopener noreferrer" : undefined}
-                    className="card-surface p-4 flex items-center gap-4 hover:border-primary/30 transition-colors group"
+                    className="card-glass !p-4 flex items-center gap-4 group !rounded-2xl"
                   >
-                    <time
-                      dateTime={item.date}
-                      className="text-xs text-muted-foreground shrink-0 w-20"
-                    >
+                    <time dateTime={item.date} className="text-xs text-muted-foreground shrink-0 w-20 font-medium">
                       {formatDate(item.date)}
                     </time>
                     <div className="min-w-0 flex-1">
-                      <p className="font-medium text-foreground group-hover:text-primary transition-colors truncate sm:whitespace-normal">
+                      <p className="font-semibold text-foreground group-hover:text-foreground/70 transition-colors truncate sm:whitespace-normal text-sm">
                         {item.title}
                       </p>
                       {item.body && (
-                        <p className="text-sm text-muted-foreground mt-1 line-clamp-1 hidden sm:block">
-                          {item.body}
-                        </p>
+                        <p className="text-xs text-muted-foreground mt-1 line-clamp-1 hidden sm:block">{item.body}</p>
                       )}
                     </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
+                    <CaretRight size={16} weight="bold" className="text-muted-foreground shrink-0" />
                   </Link>
                 </AnimatedStaggerItem>
               ))}
             </div>
           ) : (
-            <p className="text-center text-muted-foreground py-12 mb-8">
-              {site.news.empty}
-            </p>
+            <p className="text-center text-muted-foreground py-12 mb-8">{site.news.empty}</p>
           )}
 
           <AnimatedSection>
             <div className="text-center">
-              <Link
-                href="/news"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-              >
-                {site.news.more}
-                <ChevronRight className="w-4 h-4" />
+              <Link href="/news" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-foreground/70 transition-colors">
+                {site.news.more} <CaretRight size={14} weight="bold" />
               </Link>
             </div>
           </AnimatedSection>

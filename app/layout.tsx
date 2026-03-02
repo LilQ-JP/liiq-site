@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import site from "@/content/site.json";
 
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 const notoSansJP = Noto_Sans_JP({
-  weight: ["700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
   display: "swap",
@@ -26,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" data-theme="glass" className={notoSansJP.variable}>
+    <html lang="ja" className={`${dmSans.variable} ${inter.variable} ${notoSansJP.variable}`}>
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWG8ZGTTS8" />
         <script

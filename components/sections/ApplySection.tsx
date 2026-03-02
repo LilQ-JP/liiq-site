@@ -2,14 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { AnimatedSection, AnimatedHeader } from "@/components/ui/animated-section";
-import { Textarea } from "@/components/ui/textarea";
+import { AnimatedSection } from "@/components/ui/animated-section";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { Send, Check } from "lucide-react";
+import { PaperPlaneTilt, Check } from "@phosphor-icons/react";
 import { formspreeApplyId, basePath } from "@/lib/constants";
 import site from "@/content/site.json";
 
@@ -43,13 +39,7 @@ export default function ApplySection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-
-    if (!formspreeApplyId) {
-      setSubmitting(false);
-      alert(site.apply.form.alertNoForm);
-      return;
-    }
-
+    if (!formspreeApplyId) { setSubmitting(false); alert(site.apply.form.alertNoForm); return; }
     try {
       const res = await fetch(`https://formspree.io/f/${formspreeApplyId}`, {
         method: "POST",
@@ -69,55 +59,67 @@ export default function ApplySection() {
   };
 
   return (
-    <section id="apply" className="section section-alt section-pattern pattern-dots">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 min-w-0">
-        <AnimatedHeader className="text-center mb-12">
-          <Badge variant="secondary" className="mb-3">{site.apply.badge}</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            {site.apply.title}
-          </h2>
-          <p className="text-muted-foreground">
-            {site.apply.descriptionLines[0]}
-            <br className="sm:hidden" />
-            {site.apply.descriptionLines[1]}
-          </p>
-        </AnimatedHeader>
+    <section
+      id="apply"
+      className="section-forma"
+      style={{
+        background: "#F2F2F0",
+        backgroundImage: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139,92,246,0.06) 0%, transparent 60%)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 min-w-0">
+        <AnimatedSection>
+          <div className="text-center mb-10 sm:mb-12">
+            <span className="label-sm mb-3 block">{site.apply.badge}</span>
+            <h2 className="text-3xl sm:text-4xl text-foreground mb-3">{site.apply.title}</h2>
+            <p className="text-muted-foreground">
+              {site.apply.descriptionLines[0]}
+              <br className="hidden sm:block" />
+              {site.apply.descriptionLines[1]}
+            </p>
+          </div>
+        </AnimatedSection>
 
         <AnimatedSection>
-          <div className="grid lg:grid-cols-5 gap-6 sm:gap-10 items-start max-w-5xl mx-auto min-w-0 w-full">
-            <div className="lg:col-span-2 space-y-5 min-w-0">
-              <div className="card-surface p-6 min-w-0 overflow-hidden">
+          <div className="grid lg:grid-cols-5 gap-5 items-start max-w-5xl mx-auto min-w-0 w-full">
+            {/* Side cards */}
+            <div className="lg:col-span-2 space-y-4 min-w-0">
+              <div className="card-glass !p-6 min-w-0 overflow-hidden">
                 <h3 className="font-bold text-foreground text-base mb-4">{site.apply.precheckTitle}</h3>
                 <div className="space-y-3 text-sm text-muted-foreground">
                   {site.apply.precheckItems.map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
+                    <div key={item} className="flex items-center gap-2.5">
+                      <Check size={16} weight="bold" className="text-foreground shrink-0" />
                       <span className="leading-snug">{item}</span>
                     </div>
                   ))}
                   {form.serviceType === "short-monitor" && (
-                    <label className="flex items-start gap-2 text-primary font-bold cursor-pointer group">
+                    <label className="flex items-start gap-2.5 cursor-pointer mt-2 p-3 rounded-xl border"
+                      style={{
+                        background: "rgba(139,92,246,0.06)",
+                        borderColor: "rgba(139,92,246,0.2)",
+                      }}
+                    >
                       <input
-                        type="checkbox"
-                        checked={monitorAgreed}
+                        type="checkbox" checked={monitorAgreed}
                         onChange={(e) => setMonitorAgreed(e.target.checked)}
-                        className="mt-0.5 h-4 w-4 rounded border-input accent-primary shrink-0"
+                        className="mt-0.5 h-4 w-4 rounded accent-purple-600 shrink-0"
                       />
-                      <span className="leading-snug">制作実績としてサイト・SNSへの掲載に同意する（モニター価格適用条件）</span>
+                      <span className="leading-snug text-sm font-semibold text-foreground">制作実績としてサイト・SNSへの掲載に同意する（モニター価格適用条件）</span>
                     </label>
                   )}
                 </div>
               </div>
 
-              <div className="card-surface p-6 min-w-0 overflow-hidden">
-                <h4 className="font-bold text-foreground text-sm mb-3">{site.apply.priceTitle}</h4>
-                <div className="space-y-2 text-sm">
+              <div className="card-glass !p-6 min-w-0 overflow-hidden">
+                <h4 className="font-bold text-foreground text-sm mb-4">{site.apply.priceTitle}</h4>
+                <div className="space-y-2.5 text-sm">
                   {site.apply.priceItems.map((item) => (
                     <div key={item.label} className="flex justify-between items-center">
                       <span className="text-muted-foreground">{item.label}</span>
                       <div className="flex items-center gap-2">
                         {"originalPrice" in item && (
-                          <span className="text-muted-foreground line-through text-xs font-bold">
+                          <span className="text-muted-foreground/50 line-through text-xs font-semibold">
                             {(item as any).originalPrice}
                           </span>
                         )}
@@ -126,115 +128,89 @@ export default function ApplySection() {
                     </div>
                   ))}
                 </div>
-                <Badge variant="outline" className="text-xs mt-4 bg-black text-white border border-black/10">{site.apply.priceBadge}</Badge>
+                <span className="tag-dark text-xs mt-4 inline-block">{site.apply.priceBadge}</span>
               </div>
             </div>
 
+            {/* Form */}
             <div className="lg:col-span-3 min-w-0">
-              <form onSubmit={handleSubmit} className="card-surface p-6 sm:p-8 space-y-5 min-w-0 overflow-hidden">
+              <form onSubmit={handleSubmit} className="card-glass !p-6 sm:!p-8 space-y-5 min-w-0 overflow-hidden">
                 <div className="grid sm:grid-cols-2 gap-5 min-w-0">
                   <div className="min-w-0">
-                    <Label htmlFor="name">{site.apply.form.nameLabel}</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
+                    <Label htmlFor="name" className="text-foreground/70 text-sm font-semibold">{site.apply.form.nameLabel}</Label>
+                    <input
+                      id="name" name="name" value={form.name} onChange={handleChange}
                       placeholder={site.apply.form.namePlaceholder}
-                      className="mt-2"
+                      className="input-forma mt-2"
                     />
                   </div>
                   <div className="min-w-0">
-                    <Label htmlFor="email">{site.apply.form.emailLabel}</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
+                    <Label htmlFor="email" className="text-foreground/70 text-sm font-semibold">{site.apply.form.emailLabel}</Label>
+                    <input
+                      id="email" type="email" name="email" value={form.email} onChange={handleChange} required
                       placeholder={site.apply.form.emailPlaceholder}
-                      className="mt-2"
+                      className="input-forma mt-2"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5 min-w-0">
                   <div className="min-w-0">
-                    <Label htmlFor="sns">{site.apply.form.snsLabel}</Label>
-                    <Input
-                      id="sns"
-                      name="sns"
-                      value={form.sns}
-                      onChange={handleChange}
+                    <Label htmlFor="sns" className="text-foreground/70 text-sm font-semibold">{site.apply.form.snsLabel}</Label>
+                    <input
+                      id="sns" name="sns" value={form.sns} onChange={handleChange}
                       placeholder={site.apply.form.snsPlaceholder}
-                      className="mt-2"
+                      className="input-forma mt-2"
                     />
                   </div>
                   <div className="min-w-0">
-                    <Label htmlFor="serviceType">{site.apply.form.serviceTypeLabel}</Label>
+                    <Label htmlFor="serviceType" className="text-foreground/70 text-sm font-semibold">{site.apply.form.serviceTypeLabel}</Label>
                     <select
-                      id="serviceType"
-                      name="serviceType"
-                      value={form.serviceType}
-                      onChange={handleChange}
-                      required
-                      className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:border-ring"
+                      id="serviceType" name="serviceType" value={form.serviceType} onChange={handleChange} required
+                      className="input-forma mt-2"
                     >
                       <option value="">{site.apply.form.serviceTypePlaceholder}</option>
                       {site.apply.form.serviceTypeOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
+                        <option key={option.value} value={option.value}>{option.label}</option>
                       ))}
                     </select>
                   </div>
                 </div>
 
                 <div className="min-w-0">
-                  <Label htmlFor="streamUrl">{site.apply.form.streamUrlLabel}</Label>
-                  <Input
-                    id="streamUrl"
-                    type="url"
-                    name="streamUrl"
-                    value={form.streamUrl}
-                    onChange={handleChange}
+                  <Label htmlFor="streamUrl" className="text-foreground/70 text-sm font-semibold">{site.apply.form.streamUrlLabel}</Label>
+                  <input
+                    id="streamUrl" type="url" name="streamUrl" value={form.streamUrl} onChange={handleChange}
                     placeholder={site.apply.form.streamUrlPlaceholder}
-                    className="mt-2"
+                    className="input-forma mt-2"
                   />
                 </div>
 
                 <div className="min-w-0">
-                  <Label htmlFor="message">{site.apply.form.messageLabel}</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={4}
+                  <Label htmlFor="message" className="text-foreground/70 text-sm font-semibold">{site.apply.form.messageLabel}</Label>
+                  <textarea
+                    id="message" name="message" value={form.message} onChange={handleChange} rows={4}
                     placeholder={site.apply.form.messagePlaceholder}
-                    className="mt-2"
+                    className="input-forma mt-2 resize-none"
                   />
                 </div>
 
-                <label className="flex items-start gap-3 cursor-pointer group">
+                <label className="flex items-start gap-3 cursor-pointer">
                   <input
-                    type="checkbox"
-                    checked={privacyAgreed}
+                    type="checkbox" checked={privacyAgreed}
                     onChange={(e) => setPrivacyAgreed(e.target.checked)}
-                    className="mt-0.5 h-4 w-4 rounded border-input accent-primary"
+                    className="mt-0.5 h-4 w-4 rounded accent-purple-600"
                   />
                   <span className="text-xs text-muted-foreground">
                     {site.apply.form.privacyText}
-                    <br className="sm:hidden" />
-                    <Link href="/privacy-policy" className="text-primary hover:underline">
+                    <Link href="/privacy-policy" className="text-foreground hover:underline ml-1 font-medium">
                       {site.apply.form.privacyLinkLabel}
                     </Link>
                     {site.apply.form.privacyTextAfter}
                   </span>
                 </label>
 
-                <div className="text-center text-sm font-medium text-foreground/80 mb-4 bg-primary/5 p-3 rounded-lg border border-primary/10">
+                <div className="text-center text-sm text-muted-foreground bg-[#f5f5f5] p-3 rounded-xl border border-black/[0.04]">
                   {site.apply.form.noticeText.split('。').map((segment, idx, arr) => (
                     <span key={idx}>
                       {segment}{idx < arr.length - 1 ? '。' : ''}
@@ -243,10 +219,14 @@ export default function ApplySection() {
                   ))}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed || (form.serviceType === "short-monitor" && !monitorAgreed)}>
-                  <Send className="w-5 h-5 mr-2" />
+                <button
+                  type="submit"
+                  disabled={submitting || !privacyAgreed || (form.serviceType === "short-monitor" && !monitorAgreed)}
+                  className="w-full btn-primary-gradient py-3.5 text-base disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <PaperPlaneTilt size={20} weight="bold" />
                   {submitting ? site.apply.form.submittingLabel : site.apply.form.submitLabel}
-                </Button>
+                </button>
               </form>
             </div>
           </div>

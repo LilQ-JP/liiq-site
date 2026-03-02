@@ -1,7 +1,6 @@
 "use client";
 
-import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
-import { Badge } from "@/components/ui/badge";
+import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 
 export default function PriceReasonSection() {
     const reasons = [
@@ -23,24 +22,24 @@ export default function PriceReasonSection() {
     ];
 
     return (
-        <section className="section bg-zinc-50 dark:bg-zinc-900/50 pt-32 pb-20 sm:pt-40 sm:pb-[var(--section-padding)]">
+        <section className="section-forma pt-32 sm:pt-40" style={{ background: "#F2F2F0" }}>
             <div className="max-w-7xl mx-auto px-5 sm:px-8">
-                <AnimatedHeader className="text-center mb-12">
-                    <Badge variant="outline" className="mb-3 border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/50">Price Update</Badge>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
-                        なぜ価格を改定するのか
-                    </h2>
-                </AnimatedHeader>
+                <AnimatedSection>
+                    <div className="text-center mb-12">
+                        <span className="label-sm mb-3 block">Price Update</span>
+                        <h2 className="text-2xl sm:text-3xl text-foreground">
+                            なぜ価格を改定するのか
+                        </h2>
+                    </div>
+                </AnimatedSection>
 
-                <AnimatedStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <AnimatedStaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {reasons.map((r, i) => (
                         <AnimatedStaggerItem key={i}>
-                            <div className="bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 h-full shadow-sm hover:shadow-md transition-shadow">
+                            <div className="card-glass !p-8 h-full">
                                 <div className="text-3xl mb-4">{r.icon}</div>
-                                <h3 className="text-lg font-bold text-foreground mb-2">{r.title}</h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                    {r.desc}
-                                </p>
+                                <h3 className="text-lg font-bold text-foreground mb-3">{r.title}</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
                             </div>
                         </AnimatedStaggerItem>
                     ))}

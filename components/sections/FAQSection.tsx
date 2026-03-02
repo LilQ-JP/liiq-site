@@ -1,47 +1,48 @@
 "use client";
 
+import { AnimatedSection } from "@/components/ui/animated-section";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
-
-const faqs = site.faq.items;
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="section section-base">
-      <div className="max-w-4xl mx-auto px-5 sm:px-8">
-        <AnimatedHeader className="text-center mb-10">
-          <Badge variant="secondary" className="mb-3">{site.faq.badge}</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            {site.faq.title}
-          </h2>
-          <p className="text-muted-foreground">
-            {site.faq.descriptionLines[0]}
-            <br className="sm:hidden" />
-            {site.faq.descriptionLines[1]}
-          </p>
-        </AnimatedHeader>
+    <section id="faq" className="section-forma" style={{ background: "#F2F2F0" }}>
+      <div className="max-w-3xl mx-auto px-5 sm:px-8">
+        <AnimatedSection>
+          <div className="text-center mb-10 sm:mb-12">
+            <span className="label-sm mb-3 block">{site.faq.badge}</span>
+            <h2 className="text-3xl sm:text-4xl text-foreground">{site.faq.title}</h2>
+            <p className="text-muted-foreground mt-3">
+              {site.faq.descriptionLines[0]}
+              {site.faq.descriptionLines[1]}
+            </p>
+          </div>
+        </AnimatedSection>
 
-        <AnimatedStaggerContainer>
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((f, i) => (
-            <AnimatedStaggerItem key={i}>
-            <AccordionItem
-              value={`item-${i}`}
-              className="card-surface px-6"
-            >
-              <AccordionTrigger className="text-left font-bold text-foreground py-5 text-sm sm:text-base">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-sm sm:text-base">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
-            </AnimatedStaggerItem>
-          ))}
-        </Accordion>
-        </AnimatedStaggerContainer>
+        <AnimatedSection>
+          <Accordion type="single" collapsible className="space-y-2">
+            {site.faq.items.map((item, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="border-0 px-6"
+                style={{
+                  background: "rgba(255,255,255,0.9)",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: "16px",
+                  boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03)",
+                }}
+              >
+                <AccordionTrigger className="text-left text-[15px] font-semibold text-foreground hover:no-underline py-5">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
-import { AnimatedSection, AnimatedHeader, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
+import { NumberSquareOne, NumberSquareTwo, NumberSquareThree, ArrowRight } from "@phosphor-icons/react";
+import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
 
+const stepIcons = [NumberSquareOne, NumberSquareTwo, NumberSquareThree];
 const steps = site.flow.steps;
 
 export default function FlowSection() {
@@ -13,43 +12,38 @@ export default function FlowSection() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="section section-base section-pattern pattern-dots">
+    <section className="section-forma" style={{ background: "#F2F2F0" }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <AnimatedHeader className="text-center mb-12">
-          <Badge variant="secondary" className="mb-3">{site.flow.badge}</Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-3">
-            {site.flow.title}
-          </h2>
-          <p className="text-muted-foreground">{site.flow.description}</p>
-        </AnimatedHeader>
+        <AnimatedSection>
+          <div className="text-center mb-12">
+            <span className="label-sm mb-3 block">{site.flow.badge}</span>
+            <h2 className="text-3xl sm:text-4xl text-foreground mb-3">{site.flow.title}</h2>
+            <p className="text-muted-foreground">{site.flow.description}</p>
+          </div>
+        </AnimatedSection>
 
-        <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-5 mb-10">
-          {steps.map((s) => (
-            <AnimatedStaggerItem key={s.step}>
-            <div className="card-surface p-6 card-hover h-full">
-              <div className="text-xs text-black/70 font-bold">STEP {s.step}</div>
-              <h3 className="text-lg font-bold text-foreground mt-2 mb-2">
-                {s.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {s.desc}
-              </p>
-            </div>
-            </AnimatedStaggerItem>
-          ))}
+        <AnimatedStaggerContainer className="grid lg:grid-cols-3 gap-4 mb-10">
+          {steps.map((s, i) => {
+            const StepIcon = stepIcons[i] || NumberSquareOne;
+            return (
+              <AnimatedStaggerItem key={s.step}>
+                <div className="card-glass !p-8 h-full">
+                  <StepIcon size={36} weight="duotone" className="text-foreground mb-4" />
+                  <h3 className="text-lg font-bold text-foreground mb-2">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
+              </AnimatedStaggerItem>
+            );
+          })}
         </AnimatedStaggerContainer>
 
         <AnimatedSection>
-        <div className="text-center">
-          <Button
-            onClick={() => go("#apply")}
-            size="lg"
-            className="rounded-full"
-          >
-            {site.flow.ctaLabel}
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
+          <div className="text-center">
+            <button onClick={() => go("#apply")} className="btn-primary-gradient">
+              {site.flow.ctaLabel}
+              <ArrowRight size={16} weight="bold" />
+            </button>
+          </div>
         </AnimatedSection>
       </div>
     </section>
