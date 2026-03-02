@@ -14,6 +14,8 @@ import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
 import ApplySection from "@/components/sections/ApplySection";
 import ContactSection from "@/components/sections/ContactSection";
+import MonitorNoticeSection from "@/components/sections/MonitorNoticeSection";
+import PriceReasonSection from "@/components/sections/PriceReasonSection";
 
 export default function Home() {
   return (
@@ -24,6 +26,8 @@ export default function Home() {
         <LogoBanner />
         <PainSection />
         <AboutSection />
+        <MonitorNoticeSection />
+        <PriceReasonSection />
         <ServicesSection />
         <WorksSection />
         <NewsSection />

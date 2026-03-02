@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroCards } from "@/content/heroCards";
-import { heroImagePath } from "@/lib/constants";
+
 import { Clock, RefreshCw, ShieldCheck } from "lucide-react";
 import site from "@/content/site.json";
 
@@ -13,6 +13,30 @@ const cinematic = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const };
 export default function HeroSection() {
   const go = (href: string) =>
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+
+  type WorkItem =
+    | { type: "youtube"; id: string; channel: string }
+    | { type: "mp4"; url: string; channel: string };
+
+  // ▼ ここに動画データを追加・変更することでスライダーの中身を簡単に差し替えられます ▼
+  //
+  // 【YouTubeの場合】
+  // { type: "youtube", id: "動画ID", channel: "チャンネル名" }
+  // ※動画IDは、YouTubeURLの「v=」の後ろにある文字列です。
+  //
+  // 【MP4ファイルの場合】
+  // 1. まず、ご自身のMP4動画を `lilq-website/public` フォルダの中に保存します。
+  //    （例: `sample.mp4` という名前で保存した場合）
+  // 2. その後、以下のように `url` にファイル名を「/」から始めて記述します。
+  // { type: "mp4", url: "/sample.mp4", channel: "チャンネル名" }
+  //
+  // ※注意: `public` という文字は書かず、最初から `/` で記述します。
+  const works: WorkItem[] = [
+    { type: "mp4", url: "/videos_01.mp4", channel: "ココマルハピー" },
+    { type: "mp4", url: "/videos_02.mp4", channel: "ココマルハピー" },
+    { type: "youtube", id: "a1tT9K_7d1U", channel: "とみたけかれる" },
+    { type: "youtube", id: "GZibrcuxyMY", channel: "松野アマネ" }
+  ];
 
   return (
     <section className="relative overflow-hidden bg-[#eef2f6] hero-geo-pattern -mt-16">
@@ -64,14 +88,45 @@ export default function HeroSection() {
           transition={{ ...cinematic, delay: 0.35 }}
         >
           <div className="flex w-full max-w-[min(1100px,100%)] flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-6 min-w-0 overflow-hidden">
-            {/* 画像 */}
-            <div className="relative w-full min-w-0 shrink-0 lg:max-w-[min(680px,60%)]">
-              <img
-                src={heroImagePath}
-                alt={site.hero.imageAlt}
-                className="w-full h-auto max-h-[520px] rounded-[24px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
-                loading="eager"
-              />
+            {/* 動画グリッド */}
+            <div className="relative w-full min-w-0 shrink-0 lg:max-w-[min(800px,65%)] mx-auto">
+              <div className="overflow-hidden bg-white/30 backdrop-blur-xl p-4 sm:p-6 rounded-[24px] border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+                <div className="-mx-2 lg:-mx-3">
+                  <motion.div
+                    className="flex w-[400%]"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+                  >
+                    {[...works, ...works].map((v, i) => (
+                      <div key={i} className="w-[12.5%] px-2 lg:px-3 flex-none flex flex-col gap-2.5">
+                        <div className="relative w-full rounded-[12px] overflow-hidden bg-zinc-900 aspect-[9/16] shadow-sm transform transition-transform hover:-translate-y-1 duration-300 ring-1 ring-black/5">
+                          {v.type === "youtube" ? (
+                            <iframe
+                              src={`https://www.youtube.com/embed/${v.id}?${v.id === "gMeXmGt84ho" ? "" : "autoplay=1&"}mute=1&loop=1&playlist=${v.id}&controls=0&playsinline=1`}
+                              title={`YouTube Shorts - ${v.channel}`}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+                            />
+                          ) : (
+                            <video
+                              src={v.url}
+                              autoPlay={true}
+                              muted={true}
+                              loop={true}
+                              playsInline={true}
+                              className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          )}
+                        </div>
+                        <div className="text-xs sm:text-sm text-black/70 font-semibold px-1 text-center truncate">
+                          チャンネル: {v.channel}
+                        </div>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
             </div>
             {/* デスクトップ：画像の右に縦並びカード */}
             <div className="hidden lg:flex flex-col gap-3 w-[220px] xl:w-[240px] shrink-0">
