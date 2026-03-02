@@ -10,7 +10,7 @@ const features = site.logoBanner.features;
 
 export default function LogoBanner() {
   return (
-    <section className="py-10 sm:py-14" style={{ background: "#F2F2F0" }}>
+    <section className="py-10 sm:py-14" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="card-glass !p-8 sm:!p-10">

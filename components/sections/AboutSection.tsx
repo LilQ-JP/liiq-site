@@ -13,7 +13,7 @@ const reasons = site.about.reasons.items.map((item) => ({
 
 export default function AboutSection() {
   return (
-    <section id="services" className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section id="services" className="section-forma section-base" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-20">

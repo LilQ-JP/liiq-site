@@ -61,9 +61,8 @@ export default function ApplySection() {
   return (
     <section
       id="apply"
-      className="section-forma"
+      className="section-forma section-alt"
       style={{
-        background: "#F2F2F0",
         backgroundImage: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139,92,246,0.06) 0%, transparent 60%)",
       }}
     >

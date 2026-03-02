@@ -12,7 +12,7 @@ export default function FlowSection() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section className="section-forma section-base" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="text-center mb-12">

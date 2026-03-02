@@ -12,7 +12,7 @@ const pains = site.pain.items.map((item) => ({
 
 export default function PainSection() {
   return (
-    <section className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section className="section-forma section-alt" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="text-center mb-12 sm:mb-14">

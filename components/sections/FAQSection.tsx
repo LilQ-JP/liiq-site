@@ -6,7 +6,7 @@ import site from "@/content/site.json";
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section id="faq" className="section-forma section-base" >
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="text-center mb-10 sm:mb-12">

@@ -13,7 +13,7 @@ export default function ServicesSection() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="pricing" className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section id="pricing" className="section-forma section-alt" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="text-center mb-12 sm:mb-14">

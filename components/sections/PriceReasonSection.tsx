@@ -22,7 +22,7 @@ export default function PriceReasonSection() {
     ];
 
     return (
-        <section className="section-forma pt-32 sm:pt-40" style={{ background: "#F2F2F0" }}>
+        <section className="section-forma pt-32 sm:pt-40 section-base" >
             <div className="max-w-7xl mx-auto px-5 sm:px-8">
                 <AnimatedSection>
                     <div className="text-center mb-12">

@@ -8,7 +8,7 @@ export default function CTABanner() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section className="section-forma" >
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div
@@ -32,12 +32,16 @@ export default function CTABanner() {
                 {site.cta.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button onClick={() => go("#apply")} className="btn-primary-gradient !bg-white !text-[#0a0a0a] !border-white/20 hover:!bg-white/90">
+                <button
+                  onClick={() => go("#apply")}
+                  className="btn-primary-gradient !text-black"
+                  style={{ background: "#ffffff", boxShadow: "0 4px 16px rgba(255,255,255,0.2)" }}
+                >
                   {site.cta.primaryLabel}
                 </button>
                 <button
                   onClick={() => go("#contact")}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 text-[15px] font-semibold rounded-full bg-white/[0.06] text-white border border-white/[0.12] hover:bg-white/[0.12] transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-10 py-3.5 text-[16px] font-bold rounded-full bg-white/[0.08] text-white border border-white/[0.2] hover:bg-white/[0.15] transition-all"
                 >
                   {site.cta.secondaryLabel}
                 </button>

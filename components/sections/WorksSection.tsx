@@ -7,7 +7,7 @@ import site from "@/content/site.json";
 
 export default function WorksSection() {
   return (
-    <section id="works" className="section-forma" style={{ background: "#F2F2F0" }}>
+    <section id="works" className="section-forma section-alt" >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <AnimatedSection>
           <div className="text-center mb-12 sm:mb-14">
