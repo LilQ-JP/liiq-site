@@ -154,7 +154,11 @@ export default function HeroSection() {
                           seg.style === "linebreak" ? (
                             <span key={i} className="block">{seg.text}</span>
                           ) : (
-                            <span key={i} className={seg.style === "price" ? "hero-card-price" : ""}>
+                            <span key={i} className={
+                              seg.style === "price" ? "hero-card-price" :
+                                seg.style === "strikethrough" ? "line-through text-sm text-black/40 font-bold mr-1.5 align-middle" :
+                                  ""
+                            }>
                               {seg.text}
                             </span>
                           )
@@ -221,7 +225,11 @@ export default function HeroSection() {
                       seg.style === "linebreak" ? (
                         <span key={i} className="block font-[family-name:var(--font-noto-sans-jp)] font-black">{seg.text}</span>
                       ) : (
-                        <span key={i} className={seg.style === "price" ? "hero-card-price text-[33px]" : "font-[family-name:var(--font-noto-sans-jp)] font-black"}>
+                        <span key={i} className={
+                          seg.style === "price" ? "hero-card-price text-[33px]" :
+                            seg.style === "strikethrough" ? "line-through text-xs text-black/40 font-bold mr-1 block mb-0.5" :
+                              "font-[family-name:var(--font-noto-sans-jp)] font-black"
+                        }>
                           {seg.text}
                         </span>
                       )

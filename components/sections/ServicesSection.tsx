@@ -29,7 +29,7 @@ export default function ServicesSection() {
             <br className="sm:hidden" />
             {site.services.titleLines[1]}
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground whitespace-pre-line">
             {site.services.description}
           </p>
         </AnimatedHeader>

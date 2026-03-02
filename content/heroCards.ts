@@ -3,7 +3,7 @@ import site from "@/content/site.json";
 
 export type HeroCardSegment = {
   text: string;
-  style?: "normal" | "highlight" | "price" | "linebreak";
+  style?: "normal" | "highlight" | "price" | "linebreak" | "strikethrough";
 };
 
 export type HeroCard = {
@@ -36,6 +36,7 @@ const allowedStyles = new Set<HeroCardSegment["style"]>([
   "highlight",
   "price",
   "linebreak",
+  "strikethrough",
 ]);
 
 export const heroCards: HeroCard[] = site.hero.cards.map((card) => ({

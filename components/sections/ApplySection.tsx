@@ -34,6 +34,7 @@ export default function ApplySection() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [monitorAgreed, setMonitorAgreed] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -90,10 +91,21 @@ export default function ApplySection() {
                 <div className="space-y-3 text-sm text-muted-foreground">
                   {site.apply.precheckItems.map((item) => (
                     <div key={item} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-primary" />
-                      {item}
+                      <Check className="w-4 h-4 text-primary shrink-0" />
+                      <span className="leading-snug">{item}</span>
                     </div>
                   ))}
+                  {form.serviceType === "short-monitor" && (
+                    <label className="flex items-start gap-2 text-primary font-bold cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={monitorAgreed}
+                        onChange={(e) => setMonitorAgreed(e.target.checked)}
+                        className="mt-0.5 h-4 w-4 rounded border-input accent-primary shrink-0"
+                      />
+                      <span className="leading-snug">制作実績としてサイト・SNSへの掲載に同意する（モニター価格適用条件）</span>
+                    </label>
+                  )}
                 </div>
               </div>
 
@@ -101,9 +113,16 @@ export default function ApplySection() {
                 <h4 className="font-bold text-foreground text-sm mb-3">{site.apply.priceTitle}</h4>
                 <div className="space-y-2 text-sm">
                   {site.apply.priceItems.map((item) => (
-                    <div key={item.label} className="flex justify-between">
+                    <div key={item.label} className="flex justify-between items-center">
                       <span className="text-muted-foreground">{item.label}</span>
-                      <span className="font-bold text-foreground">{item.price}</span>
+                      <div className="flex items-center gap-2">
+                        {"originalPrice" in item && (
+                          <span className="text-muted-foreground line-through text-xs font-bold">
+                            {(item as any).originalPrice}
+                          </span>
+                        )}
+                        <span className="font-bold text-foreground">{item.price}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -224,7 +243,7 @@ export default function ApplySection() {
                   ))}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed}>
+                <Button type="submit" size="lg" className="w-full rounded-full" disabled={submitting || !privacyAgreed || (form.serviceType === "short-monitor" && !monitorAgreed)}>
                   <Send className="w-5 h-5 mr-2" />
                   {submitting ? site.apply.form.submittingLabel : site.apply.form.submitLabel}
                 </Button>

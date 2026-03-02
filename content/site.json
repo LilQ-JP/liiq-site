@@ -158,6 +158,10 @@
           },
           {
             "text": "¥2,000",
+            "style": "strikethrough"
+          },
+          {
+            "text": "¥500",
             "style": "price"
           }
         ]
@@ -286,7 +290,7 @@
       "サービス内容と",
       "料金プラン"
     ],
-    "description": "全プラン修正2回無料・全額返金保証付き。",
+    "description": "全プラン修正2回無料・全額返金保証付き。\n※モニター価格適用の条件として、制作した動画をLilQの制作実績としてサイト・SNSに掲載することに同意いただく必要があります。",
     "deliveryLabel": "納期",
     "services": [
       {
@@ -582,7 +586,8 @@
     "priceItems": [
       {
         "label": "ショート動画（60秒）",
-        "price": "¥2,000"
+        "price": "¥500",
+        "originalPrice": "¥2,000"
       },
       {
         "label": "切り抜き動画（5分程度）",
@@ -606,8 +611,12 @@
       "serviceTypePlaceholder": "選択してください",
       "serviceTypeOptions": [
         {
-          "value": "short",
-          "label": "ショート動画（¥2,000）"
+          "value": "short-monitor",
+          "label": "ショート動画 モニター価格（¥500）"
+        },
+        {
+          "value": "short-regular",
+          "label": "ショート動画 通常価格（¥2,000）"
         },
         {
           "value": "clip-short",
