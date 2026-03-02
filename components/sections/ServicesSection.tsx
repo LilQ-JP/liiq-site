@@ -39,8 +39,11 @@ export default function ServicesSection() {
                 } : undefined}
               >
                 {s.highlight && (
-                  <div className="bg-[#1a1a1a] text-white text-center py-2 text-xs font-bold tracking-wide">
-                    おすすめ
+                  <div
+                    className="text-white text-center py-2.5 text-xs font-bold tracking-wider uppercase"
+                    style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" }}
+                  >
+                    ✦ おすすめ
                   </div>
                 )}
                 <div className="p-7 flex flex-col flex-1">
@@ -51,13 +54,13 @@ export default function ServicesSection() {
                   <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
                   <p className="text-sm text-muted-foreground mt-1 mb-5">{s.sub}</p>
 
-                  <div className="mb-5">
+                  <div className="mb-6">
                     {"originalPrice" in s && (
-                      <div className="text-sm text-muted-foreground line-through font-semibold mb-0.5">
+                      <div className="text-sm text-muted-foreground line-through font-semibold mb-1">
                         {(s as any).originalPrice}
                       </div>
                     )}
-                    <div className="text-3xl sm:text-4xl font-extrabold text-foreground">{s.price}</div>
+                    <div className="price-large">{s.price}</div>
                   </div>
 
                   <div className="space-y-2.5 text-sm text-muted-foreground flex-1">
@@ -121,8 +124,8 @@ export default function ServicesSection() {
                       <button
                         onClick={() => go("#apply")}
                         className={`w-full rounded-full font-semibold py-3 text-sm transition-all ${p.highlight
-                            ? "bg-white text-[#0a0a0a] hover:bg-white/90"
-                            : "bg-white/[0.06] text-white hover:bg-white/[0.12] border border-white/[0.08]"
+                          ? "bg-white text-[#0a0a0a] hover:bg-white/90"
+                          : "bg-white/[0.06] text-white hover:bg-white/[0.12] border border-white/[0.08]"
                           }`}
                       >
                         {site.services.ctaLabel}

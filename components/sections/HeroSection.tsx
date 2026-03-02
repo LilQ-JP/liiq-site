@@ -192,19 +192,19 @@ export default function HeroSection() {
                 <div
                   key={card.label}
                   className={`hero-card flex items-center gap-3 px-4 py-4 min-w-[200px] lg:min-w-0 text-left ${isPrice
-                      ? "text-white"
-                      : "text-foreground"
+                    ? "text-white"
+                    : "text-foreground"
                     }`}
                   style={isPrice ? {
-                    background: "linear-gradient(145deg, #111827 0%, #0a0f1a 100%)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "linear-gradient(145deg, #7c3aed 0%, #5b21b6 100%)",
+                    border: "1px solid rgba(255,255,255,0.2)",
                     borderRadius: "20px",
-                    boxShadow: "0 4px 6px rgba(0,0,0,0.2), 0 12px 30px rgba(0,0,0,0.3)",
+                    boxShadow: "0 4px 12px rgba(124,58,237,0.3), 0 12px 30px rgba(124,58,237,0.15)",
                   } : {
-                    background: "rgba(255,255,255,0.9)",
-                    border: "1px solid rgba(0,0,0,0.06)",
+                    background: "rgba(255,255,255,0.95)",
+                    border: "1px solid rgba(0,0,0,0.08)",
                     borderRadius: "20px",
-                    boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05)",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05)",
                   }}
                 >
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isPrice ? "bg-white/10" : "bg-black/[0.04]"
@@ -224,7 +224,7 @@ export default function HeroSection() {
                             {seg.text}
                           </span>
                         ) : (
-                          <span key={i} className={seg.style === "price" ? "hero-card-price" : ""}>
+                          <span key={i} className={seg.style === "price" ? "hero-card-price !text-white" : ""}>
                             {seg.text}
                           </span>
                         )
