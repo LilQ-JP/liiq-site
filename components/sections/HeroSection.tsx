@@ -1,249 +1,197 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { heroCards } from "@/content/heroCards";
-import { Clock, ArrowsClockwise, ShieldCheck } from "@phosphor-icons/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Lightning, ShieldCheck, CaretRight, DeviceMobile } from "@phosphor-icons/react";
 import site from "@/content/site.json";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+type WorkItem =
+  | { type: "youtube"; id: string; channel: string; label: string }
+  | { type: "mp4"; url: string; channel: string; label: string };
+
+const allWorks: WorkItem[] = [
+  { type: "mp4", url: "/videos_01.mp4", channel: "ココマルハピー", label: "Short" },
+  { type: "mp4", url: "/videos_02.mp4", channel: "ココマルハピー", label: "VTuber" },
+  { type: "youtube", id: "a1tT9K_7d1U", channel: "とみたけかれる", label: "Highlight" },
+  { type: "youtube", id: "GZibrcuxyMY", channel: "松野アマネ", label: "Vlog" }
+];
+
 export default function HeroSection() {
+  const [startIndex, setStartIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % allWorks.length);
+    }, 4000); // Swap every 4 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   const go = (href: string) =>
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
-  type WorkItem =
-    | { type: "youtube"; id: string; channel: string }
-    | { type: "mp4"; url: string; channel: string };
-
-  const works: WorkItem[] = [
-    { type: "mp4", url: "/videos_01.mp4", channel: "ココマルハピー" },
-    { type: "mp4", url: "/videos_02.mp4", channel: "ココマルハピー" },
-    { type: "youtube", id: "a1tT9K_7d1U", channel: "とみたけかれる" },
-    { type: "youtube", id: "GZibrcuxyMY", channel: "松野アマネ" }
-  ];
-
   const chips = [
     { icon: Clock, text: site.hero.featureChips[0] },
-    { icon: ArrowsClockwise, text: site.hero.featureChips[1] },
+    { icon: Lightning, text: site.hero.featureChips[1] },
     { icon: ShieldCheck, text: site.hero.featureChips[2] },
   ];
 
-  // Split title into words for stagger animation
-  const titleWords = site.hero.titleLines.join("").split("");
+  // Get current 3 visible works
+  const visibleWorks = [
+    allWorks[startIndex],
+    allWorks[(startIndex + 1) % allWorks.length],
+    allWorks[(startIndex + 2) % allWorks.length],
+  ];
 
   return (
-    <section
-      className="relative overflow-hidden section-forma section-base"
-      style={{
-        backgroundImage: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 60%)",
-      }}
-    >
-      <div className="relative w-full max-w-[1400px] mx-auto px-4 lg:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16 min-w-0">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+    <section className="relative overflow-hidden bg-[#FCFCFD]">
+      {/* Background Gradients */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-100/40 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative w-full max-w-[1400px] mx-auto px-4 lg:px-8 pt-24 pb-16 min-w-0">
+        <div className="flex flex-col xl:flex-row gap-12 xl:gap-16 items-center">
 
           {/* LEFT COLUMN: Text and CTA */}
-          <div className="flex-1 min-w-0 flex flex-col items-start text-left w-full">
+          <div className="flex-1 min-w-0 flex flex-col items-start text-left w-full xl:max-w-[600px]">
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.65, ease }}
-              className="mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease }}
+              className="mb-8"
             >
-              <span className="badge-hero">
+              <Badge variant="outline" className="bg-gradient-to-r from-blue-500 to-pink-500 text-white border-0 text-base sm:text-lg lg:text-xl font-extrabold px-6 lg:px-8 py-2.5 lg:py-3.5 shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:from-blue-600 hover:to-pink-600 transition-all duration-300">
                 {site.hero.badge}
-              </span>
+              </Badge>
             </motion.div>
 
-            {/* Giant heading with word stagger */}
+            {/* Headline */}
             <motion.h1
-              className="max-w-4xl mb-6"
-              style={{ fontSize: "clamp(2.2rem, 5.5vw, 4rem)" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              className="mb-6 font-black text-[3rem] sm:text-[4rem] xl:text-[4.5rem] leading-[1.1] tracking-tight text-zinc-900"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.1 }}
             >
-              {site.hero.titleLines.map((line, lineIdx) => (
-                <span key={lineIdx}>
-                  {line.split("").map((char, i) => (
-                    <motion.span
-                      key={`${lineIdx}-${i}`}
-                      className="inline-block"
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.6,
-                        ease,
-                        delay: 0.1 + (lineIdx * line.length + i) * 0.03,
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                  {lineIdx < site.hero.titleLines.length - 1 && <br />}
-                </span>
-              ))}
+              配信を、<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-rose-500">
+                コンテンツ
+              </span>へ。
             </motion.h1>
 
             {/* Subtext */}
             <motion.p
-              className="max-w-xl mb-10"
-              style={{ color: "#666", fontSize: "1.1rem", lineHeight: 1.7 }}
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.65, ease, delay: 0.4 }}
+              className="max-w-xl mb-10 text-[1.125rem] sm:text-[1.25rem] font-medium text-zinc-500 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.2 }}
             >
-              {site.hero.descriptionLines[0]}
-              <br className="hidden sm:block" />
+              {site.hero.descriptionLines[0]}<br className="hidden sm:block" />
               {site.hero.descriptionLines[1]}
             </motion.p>
 
             {/* CTA buttons */}
             <motion.div
-              className="flex flex-wrap gap-3 mb-14 sm:mb-16"
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.65, ease, delay: 0.5 }}
+              className="flex flex-wrap gap-4 mb-16 w-full sm:w-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.3 }}
             >
-              <button onClick={() => go("#apply")} className="btn-primary-gradient">
+              <button
+                onClick={() => go("#apply")}
+                className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/20"
+              >
                 {site.hero.buttons.apply}
+                <CaretRight weight="bold" />
               </button>
-              <button onClick={() => go("#works")} className="btn-secondary-glass">
+              <button
+                onClick={() => go("#works")}
+                className="flex-1 sm:flex-none bg-white text-zinc-900 border border-zinc-200 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-zinc-50 transition-colors shadow-sm"
+              >
                 {site.hero.buttons.works}
               </button>
             </motion.div>
 
-            {/* Feature chips */}
+            {/* Trust Badges */}
             <motion.div
-              className="flex flex-wrap gap-3 mb-10 sm:mb-14"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 w-full"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease, delay: 0.4 }}
             >
-              {chips.map((c, i) => (
-                <span key={i} className="tag-dark">
-                  <c.icon size={14} weight="bold" className="mr-1.5" />
-                  {c.text}
-                </span>
-              ))}
+              {chips.map((c, i) => {
+                const colors = [
+                  "text-blue-600",
+                  "text-purple-600",
+                  "text-rose-600"
+                ];
+                return (
+                  <div key={i} className="flex items-start gap-3">
+                    <c.icon size={24} weight="fill" className={colors[i]} />
+                    <div>
+                      <div className="font-bold text-zinc-900 leading-none mb-1">{c.text}</div>
+                      <div className="text-zinc-500 text-sm">{i === 0 ? "スピード納品" : i === 1 ? "納得いくまで" : "品質への自信"}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </motion.div>
           </div>
 
-          {/* RIGHT COLUMN: Video + Cards */}
-          <div className="w-full lg:w-[540px] xl:w-[600px] shrink-0">
-            <div className="flex flex-col gap-5 items-stretch min-w-0">
-              {/* Video carousel */}
-              <motion.div
-                className="relative w-full min-w-0 mx-auto"
-                initial={{ opacity: 0, scale: 0.96, filter: "blur(8px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                transition={{ duration: 0.8, ease, delay: 0.5 }}
-              >
-                <div
-                  className="overflow-hidden p-3 sm:p-4"
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: "24px",
-                    border: "1px solid rgba(0,0,0,0.06)",
-                    boxShadow: "0 12px 32px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)",
-                  }}
-                >
-                  <div className="-mx-1.5">
-                    <motion.div
-                      className="flex w-[400%]"
-                      animate={{ x: ["0%", "-50%"] }}
-                      transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
-                    >
-                      {[...works, ...works].map((v, i) => (
-                        <div key={i} className="w-[12.5%] px-1.5 flex-none flex flex-col gap-2">
-                          <div className="relative w-full overflow-hidden bg-black aspect-[9/16] shadow-md border border-black/5" style={{ borderRadius: "16px" }}>
-                            {v.type === "youtube" ? (
-                              <iframe
-                                src={`https://www.youtube.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=0&playsinline=1`}
-                                title={`YouTube Shorts - ${v.channel}`}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-                              />
-                            ) : (
-                              <video
-                                src={v.url}
-                                autoPlay muted loop playsInline
-                                className="absolute inset-0 w-full h-full object-cover"
-                              />
-                            )}
-                          </div>
-                          <div className="text-[14px] text-foreground/80 font-bold px-1 text-center truncate mt-1">
-                            {v.channel}
-                          </div>
-                        </div>
-                      ))}
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* BOTTOM COLUMN: Info Cards Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-12 lg:mt-14"
-
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, ease, delay: 0.65 }}
-        >
-          {heroCards.map((card, cardIdx) => {
-            const Icon = card.icon;
-            const isPrice = card.segments.some((seg) => seg.style === "price");
-            return (
-              <div
-                key={card.label}
-                className={`hero-card flex items-center gap-3 px-4 py-4 min-w-[200px] shrink-0 text-left ${isPrice
-                  ? "text-white"
-                  : "text-foreground"
-                  }`}
-                style={isPrice ? {
-                  background: "linear-gradient(145deg, #7c3aed 0%, #5b21b6 100%)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  borderRadius: "20px",
-                  boxShadow: "0 4px 12px rgba(124,58,237,0.3), 0 12px 30px rgba(124,58,237,0.15)",
-                } : {
-                  background: "rgba(255,255,255,0.95)",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  borderRadius: "20px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05)",
-                }}
-              >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${isPrice ? "bg-white/10" : "bg-black/[0.04]"
-                  }`}>
-                  <Icon className={`w-5 h-5 ${isPrice ? "text-white/70" : "text-foreground/60"}`} strokeWidth={2.5} />
-                </div>
-                <div className="min-w-0 flex-1 overflow-hidden">
-                  <p className={`hero-card-label mb-0.5 ${isPrice ? "text-white/50" : "text-foreground/40"}`}>
-                    {card.label}
-                  </p>
-                  <p className={`hero-card-body m-0 ${card.segments.some((s) => s.style === "price") ? "hero-card-body-lg" : ""}`}>
-                    {card.segments.map((seg, i) =>
-                      seg.style === "linebreak" ? (
-                        <span key={i} className="block">{seg.text}</span>
-                      ) : seg.style === "strikethrough" ? (
-                        <span key={i} className={`line-through text-sm font-bold mr-1.5 align-middle ${isPrice ? "text-white/30" : "text-foreground/30"}`}>
-                          {seg.text}
-                        </span>
-                      ) : (
-                        <span key={i} className={seg.style === "price" ? "hero-card-price !text-white" : ""}>
-                          {seg.text}
-                        </span>
-                      )
+          {/* RIGHT COLUMN: Bento Grid */}
+          <motion.div
+            className="w-full xl:w-[700px] shrink-0"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease, delay: 0.3 }}
+          >
+            <div className="grid grid-cols-12 gap-4 sm:gap-6 h-[320px] sm:h-[400px]">
+              {visibleWorks.map((work, idx) => {
+                const cardStyles = [
+                  "bg-gradient-to-br from-zinc-100 to-zinc-200 border-zinc-200",
+                  "bg-blue-50 border-blue-100",
+                  "bg-rose-50 border-rose-100"
+                ];
+                return (
+                  <motion.div
+                    key={`${work.channel}-${idx}`}
+                    className={`col-span-4 row-span-1 relative overflow-hidden rounded-[24px] border shadow-[0_8px_30px_rgb(0,0,0,0.12)] sm:shadow-[0_20px_40px_rgba(0,0,0,0.2)] group ${cardStyles[idx]}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {work.type === "mp4" ? (
+                      <video
+                        src={work.url}
+                        autoPlay muted loop playsInline
+                        className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    ) : (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${work.id}?autoplay=1&mute=1&loop=1&playlist=${work.id}&controls=0&playsinline=1`}
+                        title={`YouTube Short - ${work.channel}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        className="absolute inset-0 w-full h-full border-0 pointer-events-none scale-105 opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      />
                     )}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                    <div className="absolute bottom-4 left-4 z-20 text-white">
+                      <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold tracking-widest uppercase opacity-80 mb-1">
+                        <DeviceMobile size={14} />
+                        {work.label}
+                      </div>
+                      <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{work.channel}</div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

@@ -69,10 +69,11 @@ export default function Navbar() {
             )}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
               href={homeHref("#contact")}
               onClick={(e) => handleHashClick(e, "#contact")}
+              className="whitespace-nowrap"
               style={{
                 border: "1.5px solid rgba(0,0,0,0.15)",
                 borderRadius: "100px",
@@ -89,7 +90,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-primary-gradient text-[13px] !py-2 !px-5"
+              className="btn-primary-gradient text-[13px] !py-2 !px-5 whitespace-nowrap"
             >
               {site.nav.cta.apply}
             </button>
