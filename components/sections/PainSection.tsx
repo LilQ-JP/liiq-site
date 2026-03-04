@@ -162,42 +162,47 @@ const BalanceIllustration = () => (
 );
 
 export default function PainSection() {
-  // Ultra-premium aesthetic classes
-  const cardShadows = "shadow-[0_8px_32px_rgba(0,0,0,0.03),0_24px_80px_rgba(0,0,0,0.05),0_60px_140px_rgba(0,0,0,0.08)]";
-  const cardClass = `relative h-full w-full bg-[#FFFFFF] rounded-[40px] ${cardShadows} border border-black/[0.03] overflow-hidden`;
-  const titleClass = "font-black text-[#1D1D1F] tracking-[-0.08em] leading-tight font-sans";
+  // Ultra-premium aesthetic classes with responsive adjustments
+  // Reduced shadow diffusion and scale on mobile to avoid clutter
+  const cardShadows = "shadow-[0_4px_16px_rgba(0,0,0,0.02),0_12px_40px_rgba(0,0,0,0.04),0_30px_70px_rgba(0,0,0,0.06)] md:shadow-[0_8px_32px_rgba(0,0,0,0.03),0_24px_80px_rgba(0,0,0,0.05),0_60px_140px_rgba(0,0,0,0.08)]";
+  const cardClass = `relative h-full w-full bg-[#FFFFFF] rounded-[32px] md:rounded-[40px] ${cardShadows} border border-black/[0.03] overflow-hidden`;
+  // Responsive title scaling using modern CSS clamp for smoothness
+  const titleClass = "font-black text-[#1D1D1F] tracking-[-0.06em] md:tracking-[-0.08em] leading-tight font-sans";
 
   return (
-    <section className="bg-[#FFFFFF] w-full py-24 sm:py-32 overflow-hidden">
+    <section className="bg-[#FFFFFF] w-full py-16 sm:py-24 md:py-32 overflow-hidden">
       <DefsAndGradients />
       <div className="max-w-[1200px] mx-auto px-5 sm:px-8">
 
-        <AnimatedStaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px] max-w-[1000px] mx-auto w-full">
+        {/* Grid layout: Stacked on mobile, 2 Cols on Tablet, 4 Cols on Desktop */}
+        <AnimatedStaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[240px] sm:auto-rows-[260px] md:auto-rows-[280px] max-w-[1000px] mx-auto w-full">
 
-          {/* Card 1: Large Hero */}
-          <AnimatedStaggerItem className="col-span-1 md:col-span-2 md:row-span-2">
-            <div className={`${cardClass} flex flex-col items-center justify-between p-10 ring-1 ring-inset ring-black/[0.02]`}>
+          {/* Card 1: Large Hero - Full width on smallest mobile, 2 cols on tablet+ */}
+          <AnimatedStaggerItem className="col-span-1 sm:col-span-2 row-span-1 md:row-span-2">
+            <div className={`${cardClass} flex flex-col items-center justify-between p-6 sm:p-8 md:p-10`}>
               <div className="z-10 text-center mt-2">
-                <h3 className={`${titleClass} text-[32px] md:text-[38px]`}>
+                <h3 className={`${titleClass} text-[24px] sm:text-[28px] md:text-[38px]`}>
                   編集に時間が取れない
                 </h3>
               </div>
-              <div className="w-full flex-grow relative flex items-center justify-center mt-6">
-                <TimelineClockIllustration />
+              <div className="w-full flex-grow relative flex items-center justify-center mt-4 md:mt-6">
+                <div className="w-full max-w-[320px] md:max-w-none">
+                  <TimelineClockIllustration />
+                </div>
               </div>
             </div>
           </AnimatedStaggerItem>
 
-          {/* Card 2: Medium */}
-          <AnimatedStaggerItem className="col-span-1 md:col-span-2 md:row-span-1">
-            <div className={`${cardClass} flex flex-row items-center justify-between p-10 ring-1 ring-inset ring-black/[0.02]`}>
-              <div className="z-10 w-1/2">
-                <h3 className={`${titleClass} text-[26px] md:text-[32px]`}>
-                  スキルに<br />不安がある
+          {/* Card 2: Medium - Horizontal layout on tablet+, vertical on mobile if needed (kept row-span 1 here) */}
+          <AnimatedStaggerItem className="col-span-1 sm:col-span-2 md:col-span-2 row-span-1">
+            <div className={`${cardClass} flex flex-row items-center justify-between p-6 sm:p-8 md:p-10`}>
+              <div className="z-10 w-3/5 sm:w-1/2">
+                <h3 className={`${titleClass} text-[20px] sm:text-[24px] md:text-[32px]`}>
+                  スキルに<br className="hidden sm:block" />不安がある
                 </h3>
               </div>
-              <div className="w-1/2 h-full flex items-center justify-end">
-                <div className="w-[180px] h-full flex items-center justify-center relative">
+              <div className="w-2/5 sm:w-1/2 h-full flex items-center justify-end">
+                <div className="w-full max-w-[120px] sm:max-w-[180px] h-auto flex items-center justify-center relative">
                   <PenToolIllustration />
                 </div>
               </div>
@@ -205,39 +210,43 @@ export default function PainSection() {
           </AnimatedStaggerItem>
 
           {/* Card 3: Small */}
-          <AnimatedStaggerItem className="col-span-1 md:col-span-1 md:row-span-1">
-            <div className={`${cardClass} flex flex-col items-center justify-between p-8 ring-1 ring-inset ring-black/[0.02]`}>
+          <AnimatedStaggerItem className="col-span-1 sm:col-span-1 md:col-span-1 row-span-1">
+            <div className={`${cardClass} flex flex-col items-center justify-between p-6 md:p-8`}>
               <div className="z-10 text-center mt-2">
-                <h3 className={`${titleClass} text-[20px]`}>
+                <h3 className={`${titleClass} text-[18px] sm:text-[20px] md:text-[20px]`}>
                   SNSで<br />伸ばしきれない
                 </h3>
               </div>
-              <div className="w-full flex-grow flex items-center justify-center mt-4 relative">
-                <GraphIllustration />
+              <div className="w-full flex-grow flex items-center justify-center mt-3 md:mt-4 relative">
+                <div className="w-full max-w-[140px] md:max-w-none">
+                  <GraphIllustration />
+                </div>
               </div>
             </div>
           </AnimatedStaggerItem>
 
           {/* Card 4: Small */}
-          <AnimatedStaggerItem className="col-span-1 md:col-span-1 md:row-span-1">
-            <div className={`${cardClass} flex flex-col items-center justify-between p-8 ring-1 ring-inset ring-black/[0.02]`}>
+          <AnimatedStaggerItem className="col-span-1 sm:col-span-1 md:col-span-1 row-span-1">
+            <div className={`${cardClass} flex flex-col items-center justify-between p-6 md:p-8`}>
               <div className="z-10 text-center mt-2">
-                <h3 className={`${titleClass} text-[20px]`}>
+                <h3 className={`${titleClass} text-[18px] sm:text-[20px] md:text-[20px]`}>
                   外注費が<br />高すぎる
                 </h3>
               </div>
-              <div className="w-full flex-grow flex items-center justify-center mt-4 relative">
-                <BalanceIllustration />
+              <div className="w-full flex-grow flex items-center justify-center mt-3 md:mt-4 relative">
+                <div className="w-full max-w-[140px] md:max-w-none">
+                  <BalanceIllustration />
+                </div>
               </div>
             </div>
           </AnimatedStaggerItem>
 
         </AnimatedStaggerContainer>
 
-        {/* Bottom Bridge */}
-        <AnimatedSection className="mt-32 mb-16 px-4">
+        {/* Bottom Bridge - Significant font scaling for mobile */}
+        <AnimatedSection className="mt-20 sm:mt-24 md:mt-32 mb-12 sm:mb-16 px-4">
           <div className="flex justify-center items-center w-full">
-            <h2 className={`${titleClass} text-[36px] md:text-[56px] lg:text-[68px] leading-[1.15] text-center max-w-[1000px] whitespace-pre-line`}>
+            <h2 className={`${titleClass} text-[28px] sm:text-[42px] md:text-[56px] lg:text-[68px] leading-[1.2] md:leading-[1.15] text-center max-w-[1000px]`}>
               配信に集中できる環境を、<br className="md:hidden" />
               LilQがつくる。
             </h2>
