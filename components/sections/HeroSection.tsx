@@ -132,7 +132,7 @@ export default function HeroSection() {
                     <c.icon size={24} weight="fill" className={colors[i]} />
                     <div>
                       <div className="font-bold text-zinc-900 leading-none mb-1">{c.text}</div>
-                      <div className="text-zinc-500 text-sm">{i === 0 ? "スピード納品" : i === 1 ? "納得いくまで" : "品質への自信"}</div>
+                      <div className="text-zinc-500 text-sm">{i === 0 ? "スピード納品" : i === 1 ? "柔軟な対応" : "品質への自信"}</div>
                     </div>
                   </div>
                 );
