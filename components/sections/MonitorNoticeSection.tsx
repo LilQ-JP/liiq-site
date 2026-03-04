@@ -23,9 +23,9 @@ export default function MonitorNoticeSection() {
                             モニター価格は2026年3月31日をもって終了します
                         </h3>
                         <div className="space-y-1.5 font-medium text-sm" style={{ color: "rgba(26,26,26,0.75)" }}>
-                            <p>4月1日以降はショート動画¥3,000〜、切り抜き動画¥8,000〜の通常価格に改定されます。</p>
+                            <p>4月1日以降はショート動画¥2,000〜、切り抜き動画¥5,000〜の通常価格に改定されます。</p>
                             <p className="font-bold border-b-2 border-[#1a1a1a] inline-block" style={{ color: "#1a1a1a" }}>
-                                現在ご依頼いただいた方は、継続依頼に限り特別価格を適用いたします。
+                                3月31日までに新規ご依頼いただいた方は、継続依頼に限り特別価格を適用いたします。
                             </p>
                         </div>
                     </div>

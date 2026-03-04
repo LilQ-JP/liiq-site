@@ -1,0 +1,4 @@
+:HL["/liiq-site/_next/static/chunks/01de2020c3a97c6b.css","style"]
+:HL["/liiq-site/_next/static/chunks/e6f03360ccc76f91.css","style"]
+:HL["/liiq-site/_next/static/chunks/23d030b2165b4615.css","style"]
+0:{"buildId":"fqPKUwFfuYNrLy3BtAs0a","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

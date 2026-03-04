@@ -14,9 +14,9 @@ type WorkItem =
 
 const allWorks: WorkItem[] = [
   { type: "mp4", url: "/videos_01.mp4", channel: "ココマルハピー", label: "Short" },
-  { type: "mp4", url: "/videos_02.mp4", channel: "ココマルハピー", label: "VTuber" },
-  { type: "youtube", id: "a1tT9K_7d1U", channel: "とみたけかれる", label: "Highlight" },
-  { type: "youtube", id: "GZibrcuxyMY", channel: "松野アマネ", label: "Vlog" }
+  { type: "mp4", url: "/videos_02.mp4", channel: "ココマルハピー", label: "Short" },
+  { type: "mp4", url: "/videos_03.mp4", channel: "とみたけかれる", label: "Short" },
+  { type: "mp4", url: "/videos_04.mp4", channel: "松野アマネ", label: "Short" }
 ];
 
 export default function HeroSection() {
