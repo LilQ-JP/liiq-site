@@ -34,7 +34,7 @@ export default function LegalPage() {
                   <td className="px-6 py-4 bg-muted text-sm text-foreground w-1/3 align-top font-medium">
                     {item.label}
                   </td>
-                  <td className="px-6 py-4 text-sm text-muted-foreground leading-relaxed">
+                  <td className="px-6 py-4 text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                     {item.value}
                   </td>
                 </tr>

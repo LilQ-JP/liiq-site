@@ -9,11 +9,9 @@ import WorksSection from "@/components/sections/WorksSection";
 import NewsSection from "@/components/sections/NewsSection";
 import FlowSection from "@/components/sections/FlowSection";
 import ProfileSection from "@/components/sections/ProfileSection";
-import ClipGeniusSection from "@/components/sections/ClipGeniusSection";
 import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
 import ApplySection from "@/components/sections/ApplySection";
-import ContactSection from "@/components/sections/ContactSection";
 import MonitorNoticeSection from "@/components/sections/MonitorNoticeSection";
 import PriceReasonSection from "@/components/sections/PriceReasonSection";
 
@@ -33,11 +31,9 @@ export default function Home() {
         <NewsSection />
         <FlowSection />
         <ProfileSection />
-        <ClipGeniusSection />
         <CTABanner />
         <FAQSection />
         <ApplySection />
-        <ContactSection />
       </main>
       <Footer />
     </>

@@ -70,24 +70,6 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3 shrink-0">
-            <Link
-              href={homeHref("#contact")}
-              onClick={(e) => handleHashClick(e, "#contact")}
-              className="whitespace-nowrap"
-              style={{
-                border: "1.5px solid rgba(0,0,0,0.15)",
-                borderRadius: "100px",
-                background: "white",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-                padding: "8px 20px",
-                fontSize: "13px",
-                fontWeight: 600,
-                color: "#1a1a1a",
-                transition: "all 0.25s cubic-bezier(0.22,1,0.36,1)",
-              }}
-            >
-              {site.nav.cta.consult}
-            </Link>
             <button
               onClick={() => document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" })}
               className="btn-primary-gradient text-[13px] !py-2 !px-5 whitespace-nowrap"
@@ -138,12 +120,6 @@ export default function Navbar() {
                 </div>
               </nav>
               <div className="shrink-0 p-5 space-y-3 border-t border-black/[0.06]">
-                <button
-                  className="w-full h-12 rounded-full border-[1.5px] border-black/15 bg-white font-semibold text-sm shadow-sm"
-                  onClick={() => { document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); setOpen(false); }}
-                >
-                  {site.nav.cta.consult}
-                </button>
                 <button
                   className="w-full h-12 btn-primary-gradient text-sm"
                   onClick={() => { document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" }); setOpen(false); }}

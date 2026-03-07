@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { PaperPlaneTilt, EnvelopeSimple } from "@phosphor-icons/react";
 import { XLogo } from "@/components/ui/x-logo";
-import { formspreeContactId, basePath } from "@/lib/constants";
+import { gasUrl, basePath } from "@/lib/constants";
 import site from "@/content/site.json";
 
 type ContactForm = { name: string; email: string; message: string };
@@ -24,18 +24,23 @@ export default function ContactSection() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    if (!formspreeContactId) { setSubmitting(false); alert(site.contact.form.alertNoForm); return; }
+
+    if (!gasUrl) {
+      setSubmitting(false);
+      alert("システム設定中です。設定完了までしばらくお待ちください。");
+      return;
+    }
+
+    const searchParams = new URLSearchParams();
+    searchParams.append("type", "contact");
+    Object.entries(form).forEach(([key, value]) => searchParams.append(key, value));
+
     try {
-      const res = await fetch(`https://formspree.io/f/${formspreeContactId}`, {
+      await fetch(gasUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...form,
-          _replyto: form.email,
-          _subject: `${site.contact.form.subjectPrefix}${form.name || site.contact.form.subjectFallbackName}${site.contact.form.subjectSuffix}`,
-        }),
+        body: searchParams,
+        mode: "no-cors"
       });
-      if (!res.ok) throw new Error(site.contact.form.errorSend);
       router.push(`${basePath}/contact/thanks`);
     } catch {
       setSubmitting(false);

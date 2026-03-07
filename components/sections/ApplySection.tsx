@@ -6,7 +6,7 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { PaperPlaneTilt, Check } from "@phosphor-icons/react";
-import { formspreeApplyId, basePath } from "@/lib/constants";
+import { gasUrl, basePath } from "@/lib/constants";
 import site from "@/content/site.json";
 
 type FormData = {
@@ -39,19 +39,27 @@ export default function ApplySection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    if (!formspreeApplyId) { setSubmitting(false); alert(site.apply.form.alertNoForm); return; }
+
+    if (!gasUrl) {
+      setSubmitting(false);
+      alert("システム設定中です。設定完了までしばらくお待ちください。");
+      return;
+    }
+
+    const searchParams = new URLSearchParams();
+    searchParams.append("type", "apply");
+    Object.entries(form).forEach(([key, value]) => searchParams.append(key, value));
+
     try {
-      const res = await fetch(`https://formspree.io/f/${formspreeApplyId}`, {
+      // GASのCORS制約を回避するため no-cors モードで送信
+      await fetch(gasUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...form,
-          _replyto: form.email,
-          _subject: `${site.apply.form.subjectPrefix}${form.name || site.apply.form.subjectFallbackName}${site.apply.form.subjectSuffix}`,
-        }),
+        body: searchParams,
+        mode: "no-cors"
       });
-      if (!res.ok) throw new Error(site.apply.form.errorSend);
-      router.push(`${basePath}/apply/thanks`);
+
+      // no-corsの場合レスポンスステータスは取得不可だが、到達すれば成功とする
+      router.push(`${basePath}/apply/thanks?plan=${encodeURIComponent(form.serviceType)}`);
     } catch {
       setSubmitting(false);
       alert(site.apply.form.alertFailed);
@@ -183,6 +191,11 @@ export default function ApplySection() {
                     placeholder={site.apply.form.streamUrlPlaceholder}
                     className="input-forma mt-2"
                   />
+                </div>
+
+                <div className="min-w-0 bg-[#f5f5f5] p-5 rounded-xl border border-black/[0.04]">
+                  <Label className="text-foreground font-bold text-sm mb-2 block">{site.apply.form.fileUploadNoticeTitle}</Label>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{site.apply.form.fileUploadNoticeText}</p>
                 </div>
 
                 <div className="min-w-0">
