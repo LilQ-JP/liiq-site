@@ -68,7 +68,7 @@ export default function AboutSection() {
               <AnimatedStaggerItem key={r.title}>
                 <div className="card-glass !p-8 h-full">
                   <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center mb-5">
-                    <Icon size={28} weight="duotone" className="text-foreground" />
+                    <Icon size={28} className="text-foreground" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2">{r.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">{r.desc}</p>

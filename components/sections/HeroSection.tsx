@@ -129,7 +129,7 @@ export default function HeroSection() {
                 ];
                 return (
                   <div key={i} className="flex items-start gap-3">
-                    <c.icon size={24} weight="fill" className={colors[i]} />
+                    <c.icon size={24} className={colors[i]} />
                     <div>
                       <div className="font-bold text-zinc-900 leading-none mb-1">{c.text}</div>
                       <div className="text-zinc-500 text-sm">{i === 0 ? "スピード納品" : i === 1 ? "業界最安クラス" : "安心サポート"}</div>

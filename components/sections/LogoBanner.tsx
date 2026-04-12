@@ -91,7 +91,7 @@ export default function LogoBanner() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="text-zinc-800 bg-zinc-100/80 w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-100">
-                  <card.icon size={22} weight="regular" />
+                  <card.icon size={22} className="opacity-80" />
                 </div>
                 <div>
                   <h5 className="font-bold text-zinc-900 text-base sm:text-lg mb-1.5">{card.title}</h5>
