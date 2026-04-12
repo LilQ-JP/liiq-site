@@ -127,7 +127,7 @@ export default function PremiumHeroSection() {
             </button>
 
             <button
-              onClick={() => window.open(site.social.twitter, "_blank")}
+              onClick={() => window.open(site.site.twitterUrl, "_blank")}
               className="group relative flex items-center justify-center gap-4 bg-white text-zinc-950 border border-zinc-200 px-12 py-6 rounded-2xl font-black text-xl transition-all duration-500 hover:bg-zinc-50 hover:border-zinc-300 hover:shadow-lg active:scale-[0.98]"
             >
               <span>お問い合わせ</span>
