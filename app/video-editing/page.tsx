@@ -38,7 +38,7 @@ export default function VideoEditing() {
                 <div className="flex flex-wrap gap-4">
                   {[
                     { value: "¥1,000〜", label: "ショート動画" },
-                    { value: "最短24h", label: "スピード納品" },
+                    { value: "~48h", label: "スピード納品" },
                     { value: "2回無料", label: "修正対応" },
                   ].map((stat, i) => (
                     <div key={i} className="group bg-white border border-zinc-200 rounded-3xl px-8 py-5 shadow-sm transition-all duration-500 hover:shadow-xl hover:shadow-zinc-200/50 hover:-translate-y-1">
