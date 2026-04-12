@@ -42,6 +42,12 @@ export const works = [
     channel: "松野アマネ / Matsuno Amane",
     url: "https://www.youtube.com/shorts/GZibrcuxyMY",
     tags: ["Shorts"],
+  },
+  {
+    title: "【実績追加予定】白雪聖奈様 制作動画",
+    channel: "白雪聖奈 / Sena Shirayuki",
+    url: "https://www.youtube.com/watch?v=xxxxxxxxxxx", // TODO: 動画URLをここに差し替えてください
+    tags: ["Shorts"],
   }
   // ▼ 新しい実績を追加する場合はここにペースト ▼
 ];

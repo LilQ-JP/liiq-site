@@ -1,97 +1,65 @@
-# YouTubeサムネ生成MVP（社内用）
+# LilQ 公式サイト (lilq-website)
 
-ソシャゲ翻訳動画（実況者なし・ゲーム画面のみ）から、**キャラ切り抜き必須**のYouTubeサムネを自動生成するWebアプリです。
+このリポジトリは、LilQの公式サイト（ポートフォリオ・コーポレートサイト）のソースコードです。
 
-- フロント: Next.js (App Router) + Tailwind + Canvas編集
-- バックエンド: FastAPI
-- 動画処理: ffmpeg
-- 切り抜き: rembg
-- 合成: Pillow + OpenCV
+## 概要
 
-## 構成
+Next.js (App Router) を使用して構築された、高速でモダンなウェブ制作・動画編集エージェンシー「LilQ」の公式サイトです。制作実績やニュース、お問い合わせフォームなどの機能を備えています。
 
-- `/apps/web` : Next.js フロントエンド
-- `/apps/api` : FastAPI APIサーバー
-- `/scripts` : 開発補助スクリプト
+## 技術スタック
 
-## セットアップ（macOS）
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/), [Phosphor Icons](https://phosphoricons.com/)
+- **Infrastructure**: GitHub Pages / GitHub Actions
 
-### 1. 依存関係
+## ディレクトリ構成
 
-```bash
-brew install ffmpeg
-```
+- `app/`: Next.js App Router のページとレイアウト
+- `components/`: 再利用可能なUIコンポーネント
+- `content/`: サイトのテキスト、制作実績、ニュースを管理するJSON/TSファイル
+- `lib/`: 共通のユーティリティ関数
+- `public/`: 画像、フォントなどの静的アセット
+- `scripts/`: ビルド・開発補助スクリプト
+- `apps/`: サブアプリケーション（開発ツールなど）
 
-Node.js 18+ / Python 3.10+ を利用してください。
+## セットアップ
 
-### 2. APIサーバー
-
-```bash
-cd /Users/haru/Desktop/lilq-website/apps/api
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-
-> 初回の rembg 実行時にモデルがダウンロードされます。時間がかかる場合があります。
-
-ffmpeg が見つからない場合は以下を確認してください。
+### 1. 依存関係のインストール
 
 ```bash
-/Users/haru/Desktop/lilq-website/scripts/check_ffmpeg.sh
-```
-
-### 3. フロントエンド
-
-```bash
-cd /Users/haru/Desktop/lilq-website/apps/web
 npm install
+```
+
+### 2. 環境変数の設定
+
+`.env.local` ファイルを作成し、必要な環境変数を設定します。
+
+```env
+# Google Apps Script (GAS) のお問い合わせ送信用URL
+NEXT_PUBLIC_GAS_URL=https://script.google.com/macros/s/xxxxxxxxxxxxx/exec
+```
+
+詳細な設定手順は [HOW_TO_SETUP_GAS.md](./HOW_TO_SETUP_GAS.md) を参照してください。
+
+### 3. 開発サーバーの起動
+
+```bash
 npm run dev
 ```
 
-`NEXT_PUBLIC_API_URL` を変更したい場合は、`/Users/haru/Desktop/lilq-website/apps/web/.env.local` に以下を追加してください。
+ブラウザで `http://localhost:3000` を開きます。
 
-```bash
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
+## コンテンツの更新方法
 
-### 4. 起動確認
+サイトのテキスト、実績、ニュースなどの更新は `content/` 配下のファイルを編集することで行えます。
+具体的な手順については [CONTENT_MANUAL.md](./CONTENT_MANUAL.md) を確認してください。
 
-- Web: http://localhost:3000
-- API: http://localhost:8000/api/health
+## デプロイ
 
-## 使い方
+GitHub Actions を利用して、GitHub Pages に自動デプロイされるよう設定されています。`main` ブランチにプッシュすると自動ビルドとデプロイが行われます。
 
-1. 動画(mp4/mov)をアップロード
-2. 5案生成 → 一覧から1案選択
-3. Canvasでキャラ位置・スケール・背景調整
-4. Export で PNG + JPG をダウンロード
-
-## 出力仕様
-
-- 1280x720 / sRGB
-- PNG（編集用）
-- JPG（2MB以下になるよう自動圧縮）
-
-## API（最低限）
-
-- `POST /api/upload` → 動画アップロード
-- `POST /api/generate?video_id=...` → 5案生成
-- `GET /api/result/{id}` → 生成画像取得
-- `GET /api/result/{id}?meta=1` → 編集用メタ取得
-- `POST /api/export/{id}` → 編集パラメータでPNG/JPG生成
-
-## テスト（簡易）
-
-```bash
-cd /Users/haru/Desktop/lilq-website/apps/api
-pytest
-```
-
-対象: フレームスコアリング、品質ゲート、JPG圧縮
-
-## 保存先
-
-生成結果は `/Users/haru/Desktop/lilq-website/apps/api/storage` 配下に保存されます。
-
+---
+© 2026 LilQ

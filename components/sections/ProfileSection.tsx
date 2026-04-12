@@ -1,7 +1,6 @@
 "use client";
 
-import { EnvelopeSimple, ArrowRight } from "@phosphor-icons/react";
-import { XLogo } from "@/components/ui/x-logo";
+import { Mail, ArrowRight, Twitter } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
 
@@ -34,11 +33,11 @@ export default function ProfileSection() {
                   </div>
                   <div className="flex flex-col gap-2 mt-4">
                     <a href={site.site.twitterUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-foreground/70 hover:text-foreground">
-                      <XLogo className="w-4 h-4" />
+                      <Twitter className="w-4 h-4" />
                       {site.site.twitterHandle}
                     </a>
                     <a href={`mailto:${site.site.email}`} className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground">
-                      <EnvelopeSimple size={16} weight="bold" />
+                      <Mail size={16} strokeWidth={3} />
                       {site.site.email}
                     </a>
                   </div>
@@ -58,7 +57,7 @@ export default function ProfileSection() {
                   </div>
                   <div className="mt-6 pt-5 border-t border-border">
                     <button onClick={() => go("#contact")} className="btn-secondary-glass text-sm">
-                      {site.profile.ctaLabel} <ArrowRight size={14} weight="bold" />
+                      {site.profile.ctaLabel} <ArrowRight size={14} strokeWidth={3} />
                     </button>
                   </div>
                 </div>

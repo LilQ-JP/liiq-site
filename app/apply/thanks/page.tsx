@@ -11,12 +11,8 @@ import site from "@/content/site.json";
 
 /** プラン別 PayPal 決済リンク */
 const paypalLinks: Record<string, { label: string; url: string }> = {
-  "short-monitor": {
-    label: "モニター価格・ショート（¥500）",
-    url: "https://www.paypal.com/ncp/payment/G5XT4L2AS9VVC",
-  },
   "short-regular": {
-    label: "ショート動画制作（¥2,000）",
+    label: "ショート動画制作（¥1,000〜）",
     url: "https://www.paypal.com/ncp/payment/CVY4BELDWVJCJ",
   },
   "clip-short": {
@@ -140,7 +136,7 @@ function ThanksContent() {
                 <StepConnector done={step2Done} />
                 <StepBadge num="2" label="素材アップロード" done={step2Done} active={!step2Done} />
                 <StepConnector done={step3Done} />
-                <StepBadge num="3" label="お支払い" done={step3Done} active={step2Done && !step3Done} />
+                <StepBadge num="3" label="納品・お支払い" done={step3Done} active={step2Done && !step3Done} />
               </div>
 
               {/* ── Step 2: 素材アップロード ── */}
@@ -176,9 +172,7 @@ function ThanksContent() {
                     ※ 素材のアップロードは必須です。
                   </p>
                   <p className="text-xs text-amber-800 font-semibold">
-                    ⚠️ アップロード完了後、必ずこのページに戻って「Step 3：お支払い」へお進みください。
-                    <br />
-                    （このページはブックマークしておくと安心です）
+                    ⚠️ アップロードが完了しましたら、担当者からのご連絡をお待ちください。
                   </p>
                 </div>
               </div>
@@ -194,7 +188,7 @@ function ThanksContent() {
               >
                 <h2 className="text-lg font-bold text-foreground mb-1 flex items-center justify-center gap-2">
                   <CreditCard size={20} className="text-primary" />
-                  Step 3：お支払い
+                  Step 3：納品・お支払い
                   {step3Done && <span className="text-primary text-sm">✓ 完了</span>}
                 </h2>
                 {paypal ? (
@@ -203,7 +197,8 @@ function ThanksContent() {
                       選択プラン：<span className="font-semibold text-foreground">{paypal.label}</span>
                     </p>
                     <p className="text-sm text-muted-foreground mb-5">
-                      お支払い確認後、制作を開始いたします。
+                      制作完了後、データ（Googleドライブ等）をご案内します。
+                      <br />納品物のご確認が完了しましたら、お支払いをお願いいたします。
                     </p>
                     {step2Done ? (
                       <a
@@ -222,7 +217,7 @@ function ThanksContent() {
                       </a>
                     ) : (
                       <p className="text-sm text-muted-foreground italic">
-                        Step 2 の素材アップロード完了後にお支払いいただけます。
+                        制作完了後にお支払いいただけます。現在は担当者からのご連絡をお待ちください。
                       </p>
                     )}
                   </>

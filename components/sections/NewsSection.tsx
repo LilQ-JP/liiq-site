@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CaretRight } from "@phosphor-icons/react";
+import { ChevronRight } from "lucide-react";
 import { news } from "@/content/news";
 import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
@@ -47,7 +47,7 @@ export default function NewsSection() {
                         <p className="text-xs text-muted-foreground mt-1 line-clamp-1 hidden sm:block">{item.body}</p>
                       )}
                     </div>
-                    <CaretRight size={16} weight="bold" className="text-muted-foreground shrink-0" />
+                    <ChevronRight size={16} className="text-muted-foreground shrink-0 stroke-[3px]" />
                   </Link>
                 </AnimatedStaggerItem>
               ))}
@@ -59,7 +59,7 @@ export default function NewsSection() {
           <AnimatedSection>
             <div className="text-center">
               <Link href="/news" className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-foreground/70 transition-colors">
-                {site.news.more} <CaretRight size={14} weight="bold" />
+                {site.news.more} <ChevronRight size={14} className="stroke-[3px]" />
               </Link>
             </div>
           </AnimatedSection>

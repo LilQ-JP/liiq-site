@@ -9,6 +9,7 @@ export const gasUrl = process.env.NEXT_PUBLIC_GAS_URL;
 
 /** ロゴ画像の正しいパス（basePath を含む） */
 export const logoPath = `${basePath}/lilq-logo.png`;
+export const logoPathDark = `${basePath}/lilq-logo-dark.png`;
 
 /** ヒーローセクションのキャラクター画像 */
 export const heroImagePath = `${basePath}/hero-characters.png`;

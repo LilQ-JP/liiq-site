@@ -1,14 +1,14 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { Lightning, CurrencyJpy, ChatCircle } from "@phosphor-icons/react";
+import { Zap, JapaneseYen, MessageCircle } from "lucide-react";
 import { AnimatedSection, AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
 import site from "@/content/site.json";
 
-const reasonIconMap = { Zap: Lightning, DollarSign: CurrencyJpy, MessageCircle: ChatCircle };
+const reasonIconMap = { Zap: Zap, JapaneseYen: JapaneseYen, MessageCircle: MessageCircle };
 const reasons = site.about.reasons.items.map((item) => ({
   ...item,
-  icon: reasonIconMap[item.icon as keyof typeof reasonIconMap] || Lightning,
+  icon: reasonIconMap[item.icon as keyof typeof reasonIconMap] || Zap,
 }));
 
 export default function AboutSection() {

@@ -1,16 +1,67 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Play, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ExternalLink, X, PlayCircle } from "lucide-react";
 import { works } from "@/content/works";
 import { getYouTubeVideoId, getYouTubeThumbnailUrl } from "@/lib/youtube";
-import { AnimatedStaggerContainer, AnimatedStaggerItem } from "@/components/ui/animated-section";
-import { cn } from "@/lib/utils";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import site from "@/content/site.json";
+
+function SpotlightWorkCard({ 
+  children, 
+  videoId, 
+  onClick, 
+  isShorts = false 
+}: { 
+  children: React.ReactNode, 
+  videoId: string, 
+  onClick: () => void,
+  isShorts?: boolean
+}) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
+
+  return (
+    <motion.div
+      layout
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex flex-col bg-white rounded-[2.5rem] border border-zinc-200 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-zinc-200/50 hover:-translate-y-2"
+    >
+      <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition duration-300 z-10"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, rgba(0,0,0,0.03), transparent 40%)`
+          ),
+        }}
+      />
+      {children}
+    </motion.div>
+  );
+}
 
 export default function WorksGrid({ className = "" }: { className?: string }) {
   const [openVideoId, setOpenVideoId] = useState<string | null>(null);
+  const [filter, setFilter] = useState("すべて");
+
+  const allTags = Array.from(new Set(works.flatMap(w => w.tags)));
+  const filters = ["すべて", ...allTags];
+
+  const filteredWorks = filter === "すべて" 
+    ? works 
+    : works.filter(w => w.tags.includes(filter));
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -18,104 +69,159 @@ export default function WorksGrid({ className = "" }: { className?: string }) {
     };
     if (openVideoId) {
       window.addEventListener("keydown", onKey);
-      return () => window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+      return () => {
+        window.removeEventListener("keydown", onKey);
+        document.body.style.overflow = "unset";
+      };
     }
   }, [openVideoId]);
 
   return (
-    <>
-      <AnimatedStaggerContainer
-        className={cn("grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", className)}
-      >
-        {works.map((w) => {
-          const videoId = getYouTubeVideoId(w.url);
-          if (!videoId) return null;
-          const thumbUrl = getYouTubeThumbnailUrl(videoId);
-          return (
-            <AnimatedStaggerItem key={videoId}>
-            <div className="card-surface p-4 sm:p-5 card-hover group h-full flex flex-col">
-              <div className="relative rounded-xl overflow-hidden border border-border bg-muted aspect-[9/16]">
-                {openVideoId === videoId ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => setOpenVideoId(null)}
-                      className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-black/80 text-white flex items-center justify-center shadow-lg"
-                      aria-label={site.works.closeAria}
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                    <iframe
-                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
-                      title={w.title}
-                      className="absolute inset-0 w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setOpenVideoId(videoId)}
-                    className="absolute inset-0 w-full h-full"
-                    aria-label={`${w.title}${site.works.playAria}`}
-                  >
-                    <img
-                      src={thumbUrl}
-                      alt={w.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/25 hover:bg-black/35 transition-colors">
-                      <div className="w-16 h-11 sm:w-18 sm:h-12 rounded-xl bg-[#ff0000] flex items-center justify-center shadow-xl hover:scale-110 transition-transform pointer-events-none">
-                        <svg
-                          viewBox="0 0 68 48"
-                          aria-hidden="true"
-                          className="w-7 h-7 sm:w-8 sm:h-8"
-                        >
-                          <path
-                            d="M66.52 7.02a8 8 0 0 0-5.62-5.66C56.02 0 34 0 34 0S11.98 0 7.1 1.36A8 8 0 0 0 1.48 7.02C0 12 0 24 0 24s0 12 1.48 16.98a8 8 0 0 0 5.62 5.66C11.98 48 34 48 34 48s22.02 0 26.9-1.36a8 8 0 0 0 5.62-5.66C68 36 68 24 68 24s0-12-1.48-16.98z"
-                            fill="#FF0000"
-                          />
-                          <path d="M45 24 27 14v20l18-10z" fill="#fff" />
-                        </svg>
-                      </div>
-                    </div>
-                  </button>
-                )}
-              </div>
+    <div className={className}>
+      {/* Premium Filter Tabs */}
+      <div className="flex flex-wrap justify-center gap-3 mb-16 px-4">
+        <div className="p-1.5 bg-zinc-100/80 backdrop-blur-md rounded-full border border-zinc-200/50 flex flex-wrap gap-1 shadow-inner">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 ${
+                filter === f
+                  ? "bg-zinc-950 text-white shadow-xl scale-105"
+                  : "text-zinc-500 hover:text-zinc-900 hover:bg-white/50"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
 
-                <div className="mt-4 space-y-2.5">
-                  <div className="flex flex-wrap gap-2">
+      {/* Grid */}
+      <motion.div layout className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4">
+        <AnimatePresence mode="popLayout">
+          {filteredWorks.map((w, index) => {
+            const videoId = getYouTubeVideoId(w.url);
+            if (!videoId) return null;
+            const thumbUrl = getYouTubeThumbnailUrl(videoId);
+            const isShorts = w.tags.includes("Shorts");
+            
+            return (
+              <SpotlightWorkCard 
+                key={videoId} 
+                videoId={videoId} 
+                onClick={() => setOpenVideoId(videoId)}
+                isShorts={isShorts}
+              >
+                {/* Thumbnail Area */}
+                <div 
+                  className={`relative ${isShorts ? "aspect-[9/16]" : "aspect-[16/9]"} bg-zinc-950 overflow-hidden cursor-pointer`}
+                  onClick={() => setOpenVideoId(videoId)}
+                >
+                  <img
+                    src={thumbUrl}
+                    alt={w.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-premium group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                    loading="lazy"
+                  />
+                  {/* High-end Hover Overlay */}
+                  <div className="absolute inset-0 bg-zinc-950/0 group-hover:bg-zinc-950/40 transition-all duration-700 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[4px]">
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-zinc-950 shadow-2xl"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1.1 }}
+                      animate={{ scale: openVideoId === videoId ? 0 : 1, opacity: 1 }}
+                    >
+                      <PlayCircle className="w-8 h-8 fill-current" />
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Content Area */}
+                <div className="p-8 flex-1 flex flex-col bg-white">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {w.tags.map((t) => (
-                      <Badge
+                      <span
                         key={t}
-                        className="text-xs bg-black text-white border border-black/10 px-2 py-0.5"
+                        className="text-[9px] uppercase tracking-[0.2em] font-black text-zinc-400 bg-zinc-50 border border-zinc-100 px-3 py-1 rounded-full"
                       >
                         {t}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug">
+                  
+                  <h3 className="text-xl font-black text-zinc-950 leading-[1.2] mb-6 line-clamp-2 tracking-tight transition-all duration-500 group-hover:tracking-tighter">
                     {w.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    {site.works.channelLabel} {w.channel}
-                  </p>
-                  <a
-                    href={w.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                  >
-                    {site.works.watchLabel} <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                  
+                  <div className="mt-auto pt-6 border-t border-zinc-100 flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-[9px] uppercase font-bold text-zinc-400 tracking-[0.2em] mb-1">Creator</span>
+                      <p className="text-xs font-black text-zinc-950 truncate max-w-[140px]">
+                        {w.channel}
+                      </p>
+                    </div>
+                    <a
+                      href={w.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-2xl bg-zinc-50 flex items-center justify-center text-zinc-400 hover:bg-zinc-950 hover:text-white transition-all duration-500 border border-zinc-200/50 hover:scale-110 active:scale-90"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </AnimatedStaggerItem>
-          );
-        })}
-      </AnimatedStaggerContainer>
-    </>
+              </SpotlightWorkCard>
+            );
+          })}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Video Modal - Ultra Minimal */}
+      <AnimatePresence>
+        {openVideoId && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950/95 p-4 sm:p-10 backdrop-blur-2xl"
+            onClick={() => setOpenVideoId(null)}
+          >
+            <button
+              onClick={() => setOpenVideoId(null)}
+              className="absolute top-6 right-6 text-white/40 hover:text-white transition-all duration-500 p-4 bg-white/5 rounded-full hover:bg-white/10"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 40 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className={`relative w-full overflow-hidden bg-black rounded-[2.5rem] shadow-[0_0_100px_rgba(0,0,0,0.8)] ring-1 ring-white/10 ${
+                works.find(w => getYouTubeVideoId(w.url) === openVideoId)?.tags.includes("Shorts") 
+                  ? "max-w-[450px] aspect-[9/16]" 
+                  : "max-w-6xl aspect-video"
+              }`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${openVideoId}?autoplay=1&rel=0&playsinline=1`}
+                title="Video player"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <p className="text-center text-[10px] uppercase font-bold tracking-[0.3em] text-zinc-400 mt-24 pb-12">
+        {site.pages.works.note}
+      </p>
+    </div>
   );
 }

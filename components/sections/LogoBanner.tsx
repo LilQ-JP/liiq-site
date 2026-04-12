@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, ShieldCheck, Lightning } from "@phosphor-icons/react";
+import { Clock, ShieldCheck, Zap as Lightning } from "lucide-react";
 import site from "@/content/site.json";
 
-const clients = ["ココマルハピー", "とみたけかれる", "松野アマネ"];
+const clients = ["ココマルハピー", "とみたけかれる", "松野アマネ", "白雪聖奈"];
 
 // Repeat clients enough times to fill a continuous marquee
 const repeatedClients = Array.from({ length: 12 }).map((_, i) => clients[i % clients.length]);

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Lightning, ShieldCheck, CaretRight, DeviceMobile } from "@phosphor-icons/react";
+import { Clock, Zap, ShieldCheck, ChevronRight, Smartphone } from "lucide-react";
 import site from "@/content/site.json";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -34,7 +34,7 @@ export default function HeroSection() {
 
   const chips = [
     { icon: Clock, text: site.hero.featureChips[0] },
-    { icon: Lightning, text: site.hero.featureChips[1] },
+    { icon: Zap, text: site.hero.featureChips[1] },
     { icon: ShieldCheck, text: site.hero.featureChips[2] },
   ];
 
@@ -104,7 +104,7 @@ export default function HeroSection() {
                 className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/20"
               >
                 {site.hero.buttons.apply}
-                <CaretRight weight="bold" />
+                <ChevronRight strokeWidth={3} />
               </button>
               <button
                 onClick={() => go("#works")}
@@ -180,7 +180,7 @@ export default function HeroSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
                     <div className="absolute bottom-4 left-4 z-20 text-white">
                       <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold tracking-widest uppercase opacity-80 mb-1">
-                        <DeviceMobile size={14} />
+                        <Smartphone size={14} />
                         {work.label}
                       </div>
                       <div className="text-xs sm:text-sm font-bold leading-tight line-clamp-1">{work.channel}</div>

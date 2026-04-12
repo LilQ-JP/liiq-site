@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { List, X } from "@phosphor-icons/react";
-import { logoPath } from "@/lib/constants";
+import { Menu, X, ChevronRight } from "lucide-react";
+import { logoPath, logoPathDark } from "@/lib/constants";
 import site from "@/content/site.json";
 
 const navItems = site.nav.items;
@@ -30,28 +30,45 @@ export default function Navbar() {
   const homeHref = (hash: string) => `/${hash}`;
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background: "rgba(242,242,240,0.85)",
-        backdropFilter: "blur(20px) saturate(180%)",
-        WebkitBackdropFilter: "blur(20px) saturate(180%)",
-        borderBottom: "1px solid rgba(0,0,0,0.06)",
-      }}
-    >
-      <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 min-w-0">
-        <div className="flex items-center justify-between h-14">
-          <Link href="/" className="flex items-center gap-3">
-            <img src={logoPath} alt="LilQ" className="h-8 w-auto" />
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <header
+        className={`pointer-events-auto flex items-center gap-4 transition-all duration-700 ease-premium ${
+          scrolled 
+            ? "px-4 py-2 bg-zinc-950/80 rounded-[2rem] border-zinc-800/50 shadow-2xl backdrop-blur-2xl" 
+            : "px-6 py-4 bg-white/60 rounded-[2.5rem] border-zinc-200 shadow-xl backdrop-blur-xl"
+        } border ring-1 ring-white/10`}
+        style={{
+          width: scrolled ? "auto" : "min(1200px, 95vw)",
+        }}
+      >
+        <div className="flex items-center gap-6 w-full">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            {/*
+              【画像差し替えガイド: ロゴ画像】
+              - 実体ファイル: `public/lilq-logo.png` (通常時/白背景用) および `public/lilq-logo-dark.png` (スクロール時/黒背景用)
+              - 推奨フォーマット：SVG または 高画質PNG
+              - 推奨サイズ：高さを基準に表示されるため、横幅は自動で調整されます。
+            */}
+            <img 
+              src={scrolled ? logoPathDark : logoPath} 
+              alt="LilQ" 
+              className={`transition-all duration-700 ${scrolled ? "h-6" : "h-8"}`} 
+            />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) =>
-              item.hash ? (
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
+            {navItems.map((item) => {
+              const isActive = false; // logic for active state could be added
+              return item.hash ? (
                 <Link
                   key={item.href}
                   href={homeHref(item.href)}
-                  className="px-4 py-2 text-[13px] font-medium text-foreground/60 hover:text-foreground rounded-full transition-colors"
+                  className={`px-4 py-2 text-sm font-bold transition-all duration-500 rounded-full ${
+                    scrolled 
+                      ? "text-zinc-400 hover:text-white" 
+                      : "text-zinc-500 hover:text-zinc-950"
+                  }`}
                   onClick={(e) => handleHashClick(e, item.href)}
                 >
                   {item.label}
@@ -60,77 +77,71 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-4 py-2 text-[13px] font-medium text-foreground/60 hover:text-foreground rounded-full transition-colors"
+                  className={`px-4 py-2 text-sm font-bold transition-all duration-500 rounded-full ${
+                    scrolled 
+                      ? "text-zinc-400 hover:text-white" 
+                      : "text-zinc-500 hover:text-zinc-950"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
-              )
-            )}
+              );
+            })}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
             <button
-              onClick={() => document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-primary-gradient text-[13px] !py-2 !px-5 whitespace-nowrap"
+              onClick={() => window.open("https://twitter.com/LilQ_officialJP", "_blank")}
+              className={`relative overflow-hidden group transition-all duration-700 font-bold px-6 py-2.5 rounded-full text-sm ${
+                scrolled 
+                  ? "bg-white text-zinc-950 hover:bg-zinc-100" 
+                  : "bg-zinc-950 text-white hover:bg-zinc-800"
+              }`}
             >
+              <div className="absolute inset-0 w-full h-full animate-shimmer pointer-events-none opacity-20" />
               {site.nav.cta.apply}
             </button>
-          </div>
 
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <button
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-black/[0.06] shadow-sm"
-                aria-label="menu"
-              >
-                {open ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
-              </button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-80 max-w-[85vw] flex flex-col p-0 gap-0 border-0 bg-white/95 backdrop-blur-xl"
-            >
-              <div className="flex items-center px-6 pt-6 pb-4 pr-14 shrink-0">
-                <img src={logoPath} alt="LilQ" className="h-8 w-auto" />
-              </div>
-              <nav className="flex-1 overflow-y-auto px-4 py-4">
-                <div className="flex flex-col gap-1">
-                  {navItems.map((item) =>
-                    item.hash ? (
-                      <Link
-                        key={item.href}
-                        href={homeHref(item.href)}
-                        onClick={(e) => handleHashClick(e, item.href)}
-                        className="px-4 py-3.5 text-base font-semibold text-foreground/80 rounded-2xl hover:bg-black/[0.04] transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="px-4 py-3.5 text-base font-semibold text-foreground/80 rounded-2xl hover:bg-black/[0.04] transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    )
-                  )}
-                </div>
-              </nav>
-              <div className="shrink-0 p-5 space-y-3 border-t border-black/[0.06]">
+            {/* Mobile Menu Trigger */}
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
                 <button
-                  className="w-full h-12 btn-primary-gradient text-sm"
-                  onClick={() => { document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth" }); setOpen(false); }}
+                  className={`md:hidden flex items-center justify-center w-10 h-10 rounded-full transition-all duration-700 ${
+                    scrolled ? "bg-white text-zinc-950" : "bg-zinc-100 text-zinc-500"
+                  }`}
+                  aria-label="menu"
                 >
-                  {site.nav.cta.apply}
+                  {open ? <X size={20} strokeWidth={3} /> : <Menu size={20} strokeWidth={3} />}
                 </button>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent
+                side="top"
+                className="w-full h-fit flex flex-col p-6 gap-6 border-b border-zinc-200 bg-white/95 backdrop-blur-3xl rounded-b-[2rem] pt-24"
+              >
+                <nav className="flex flex-col gap-2">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.hash ? homeHref(item.href) : item.href}
+                      onClick={(e) => {
+                        if (item.hash) handleHashClick(e, item.href);
+                        else setOpen(false);
+                      }}
+                      className="px-6 py-4 text-2xl font-black text-zinc-950 rounded-2xl hover:bg-zinc-100 transition-all flex items-center justify-between group"
+                    >
+                      {item.label}
+                      <div className="w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center group-hover:bg-zinc-950 group-hover:text-white transition-all">
+                        <ChevronRight size={16} strokeWidth={3} />
+                      </div>
+                    </Link>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
