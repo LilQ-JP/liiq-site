@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ExternalLink, X, PlayCircle } from "lucide-react";
+import { ExternalLink, X, PlayCircle, Play } from "lucide-react";
 import { works } from "@/content/works";
 import { getYouTubeVideoId, getYouTubeThumbnailUrl } from "@/lib/youtube";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
@@ -125,15 +125,13 @@ export default function WorksGrid({ className = "" }: { className?: string }) {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-premium group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     loading="lazy"
                   />
-                  {/* High-end Hover Overlay */}
-                  <div className="absolute inset-0 bg-zinc-950/0 group-hover:bg-zinc-950/40 transition-all duration-700 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[4px]">
+                  {/* Always-visible YouTube Overlay */}
+                  <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-zinc-950/40 transition-all duration-700 flex items-center justify-center backdrop-blur-[0px] group-hover:backdrop-blur-[4px]">
                     <motion.div 
-                      className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-zinc-950 shadow-2xl"
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileHover={{ scale: 1.1 }}
-                      animate={{ scale: openVideoId === videoId ? 0 : 1, opacity: 1 }}
+                      className="w-[68px] h-[48px] rounded-xl bg-[#FF0000] flex items-center justify-center shadow-[0_8px_30px_rgba(255,0,0,0.5)] transition-transform duration-500 group-hover:scale-110"
+                      animate={{ scale: openVideoId === videoId ? 0 : 1, opacity: openVideoId === videoId ? 0 : 1 }}
                     >
-                      <PlayCircle className="w-8 h-8 fill-current" />
+                      <Play className="w-8 h-8 text-white fill-current" />
                     </motion.div>
                   </div>
                 </div>
@@ -169,7 +167,7 @@ export default function WorksGrid({ className = "" }: { className?: string }) {
                       className="w-12 h-12 rounded-2xl bg-zinc-50 flex items-center justify-center text-zinc-400 hover:bg-zinc-950 hover:text-white transition-all duration-500 border border-zinc-200/50 hover:scale-110 active:scale-90"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <ExternalLink className="w-5 h-5" />
+                      <Play className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

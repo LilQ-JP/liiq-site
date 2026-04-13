@@ -81,7 +81,7 @@ export default function PremiumHeroSection() {
             </motion.div>
 
             <motion.h1
-              className="relative z-10 text-[3.2rem] sm:text-[5rem] lg:text-[6.5rem] font-black leading-[1.1] tracking-tighter mb-10 text-zinc-950"
+              className="relative z-10 text-[2.5rem] sm:text-[5rem] lg:text-[6.5rem] font-black leading-[1.1] tracking-tighter mb-10 text-zinc-950"
               initial={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
               animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
@@ -111,7 +111,7 @@ export default function PremiumHeroSection() {
 
           {/* 3D CTA Buttons (Japanese) */}
           <motion.div
-            className="flex flex-wrap gap-6 justify-center"
+            className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 justify-center w-full px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
@@ -119,7 +119,7 @@ export default function PremiumHeroSection() {
           >
             <button
               onClick={() => document.querySelector("#products")?.scrollIntoView({ behavior: "smooth" })}
-              className="group relative flex items-center justify-center gap-4 bg-zinc-950 text-white px-12 py-6 rounded-2xl font-black text-xl transition-all duration-500 hover:scale-[1.05] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-[0.98] overflow-hidden"
+              className="group relative flex items-center justify-center gap-4 bg-zinc-950 text-white px-8 py-5 sm:px-12 sm:py-6 rounded-2xl font-black text-lg sm:text-xl transition-all duration-500 hover:scale-[1.05] hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-[0.98] overflow-hidden w-full sm:w-auto"
             >
               <div className="absolute inset-0 w-full h-full animate-shimmer pointer-events-none opacity-10 bg-white" />
               <span className="relative z-10">サービスを見る</span>
@@ -128,7 +128,7 @@ export default function PremiumHeroSection() {
 
             <button
               onClick={() => window.open(site.site.twitterUrl, "_blank")}
-              className="group relative flex items-center justify-center gap-4 bg-white text-zinc-950 border border-zinc-200 px-12 py-6 rounded-2xl font-black text-xl transition-all duration-500 hover:bg-zinc-50 hover:border-zinc-300 hover:shadow-lg active:scale-[0.98]"
+              className="group relative flex items-center justify-center gap-4 bg-white text-zinc-950 border border-zinc-200 px-8 py-5 sm:px-12 sm:py-6 rounded-2xl font-black text-lg sm:text-xl transition-all duration-500 hover:bg-zinc-50 hover:border-zinc-300 hover:shadow-lg active:scale-[0.98] w-full sm:w-auto"
             >
               <span>お問い合わせ</span>
               <ArrowRight className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-2" />

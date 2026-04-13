@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { logoPath, logoPathDark } from "@/lib/constants";
 import site from "@/content/site.json";
@@ -13,8 +13,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 32);
-    window.addEventListener("scroll", h);
+    let ticking = false;
+    const h = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 32);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
 
@@ -119,6 +128,10 @@ export default function Navbar() {
                 side="top"
                 className="w-full h-fit flex flex-col p-6 gap-6 border-b border-zinc-200 bg-white/95 backdrop-blur-3xl rounded-b-[2rem] pt-24"
               >
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetDescription className="sr-only">
+                  Navigation links for LilQ website
+                </SheetDescription>
                 <nav className="flex flex-col gap-2">
                   {navItems.map((item) => (
                     <Link
