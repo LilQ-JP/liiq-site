@@ -15,13 +15,13 @@ export default function LegalPage() {
       <Navbar />
       <main className="pt-16 min-w-0 overflow-x-hidden">
         {/* Header */}
-        <section className="bg-[#FAFAFA] pt-24 pb-16 border-b border-zinc-200">
+        <section className="bg-[#FAFAFA] pt-20 pb-10 sm:pt-24 sm:pb-16 border-b border-zinc-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link href="/" className="inline-flex items-center text-sm font-bold text-zinc-400 hover:text-zinc-800 transition-colors mb-6">
-              <ArrowLeft className="w-4 h-4 mr-1" />
+            <Link href="/" className="inline-flex items-center text-xs sm:text-sm font-bold text-zinc-400 hover:text-zinc-800 transition-colors mb-4 sm:mb-6">
+              <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
               トップへ戻る
             </Link>
-            <h1 className="text-3xl font-black text-zinc-900">特定商取引法に基づく表記</h1>
+            <h1 className="text-xl sm:text-3xl font-black text-zinc-900">特定商取引法に基づく表記</h1>
           </div>
         </section>
 
@@ -42,12 +42,12 @@ export default function LegalPage() {
                 { term: "サービス提供時期", desc: "【動画制作】\nお申し込み確認後、取り決めた納期までに納品いたします（最短24時間〜）。\n\n【アプリ・デジタルコンテンツ】\nお支払い完了後、即座に、またはアカウント設定完了後にご利用いただけます。" },
                 { term: "キャンセル・返品について", desc: "【動画制作サービス】\n制作着手後のキャンセルや返品は原則としてお受けしておりません。万が一、制作着手後にキャンセルをご希望される場合は、進行状況にかかわらず、お見積り金額の100%をキャンセル料としてご請求させていただきます。\nただし、制作着手前のご連絡に限り、無償でキャンセルが可能です。\n\n【サブスクリプション（月額課金）】\n解約はいつでもマイページ等から可能です。解約手続き後は次回の請求が停止されます。\n\n【不備・修正】\n当方の過失による明白な不備がある場合は、無償で修正対応を行います。" },
               ].map((row, i) => (
-                <div key={i} className="flex flex-col sm:flex-row p-6">
+                <div key={i} className="flex flex-col sm:flex-row p-4 sm:p-6">
                   <div className="sm:w-1/3 shrink-0">
-                    <h3 className="text-sm font-bold text-zinc-500 mb-2 sm:mb-0">{row.term}</h3>
+                    <h3 className="text-xs sm:text-sm font-bold text-zinc-500 mb-1 sm:mb-0">{row.term}</h3>
                   </div>
                   <div className="sm:w-2/3">
-                    <p className="text-sm text-zinc-900 whitespace-pre-line leading-relaxed">{row.desc}</p>
+                    <p className="text-xs sm:text-sm text-zinc-900 whitespace-pre-line leading-relaxed">{row.desc}</p>
                   </div>
                 </div>
               ))}

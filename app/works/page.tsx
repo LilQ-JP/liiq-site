@@ -28,10 +28,10 @@ export default function WorksPage() {
               {site.pages.works.backLabel}
             </Link>
             
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-4 sm:mb-6">
               {site.pages.works.title}
             </h1>
-            <p className="text-lg text-zinc-500 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-lg text-zinc-500 max-w-2xl leading-relaxed">
               {site.pages.works.description}
             </p>
           </div>

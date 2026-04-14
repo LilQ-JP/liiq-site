@@ -30,10 +30,10 @@ export default function NewsPage() {
             {site.pages.news.backLabel}
           </Link>
 
-          <h1 className="text-3xl font-bold text-foreground mb-2">
+          <h1 className="text-xl sm:text-3xl font-bold text-foreground mb-2">
             {site.pages.news.title}
           </h1>
-          <p className="text-sm text-muted-foreground mb-10">
+          <p className="text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-10">
             {site.pages.news.description}
           </p>
 
@@ -46,7 +46,7 @@ export default function NewsPage() {
                 >
                   {formatDate(item.date)}
                 </time>
-                <h2 className="font-bold text-foreground text-lg mb-2">
+                <h2 className="font-bold text-foreground text-base sm:text-lg mb-2">
                   {item.href ? (
                     <a
                       href={item.href}

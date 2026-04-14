@@ -11,8 +11,8 @@ export default function FAQSection() {
         <AnimatedSection>
           <div className="text-center mb-10 sm:mb-12">
             <span className="label-sm mb-3 block">{site.faq.badge}</span>
-            <h2 className="text-3xl sm:text-4xl text-foreground">{site.faq.title}</h2>
-            <p className="text-muted-foreground mt-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground">{site.faq.title}</h2>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2 sm:mt-3">
               {site.faq.descriptionLines[0]}
               {site.faq.descriptionLines[1]}
             </p>
@@ -33,10 +33,10 @@ export default function FAQSection() {
                   boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03)",
                 }}
               >
-                <AccordionTrigger className="text-left text-[15px] font-semibold text-foreground hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-[13px] sm:text-[15px] font-semibold text-foreground hover:no-underline py-4 sm:py-5">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+                <AccordionContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed pb-4 sm:pb-5">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>

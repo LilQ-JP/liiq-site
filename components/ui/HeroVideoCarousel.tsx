@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const videos = [
   "/videos_01.mp4",
@@ -16,31 +16,29 @@ export default function HeroVideoCarousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % videos.length);
-    }, 4500); // 4.5 seconds
+    }, 4500);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative group perspective-1000">
-      {/* Deep Background Glow - 21st.dev / Featured style */}
-      <div className="absolute -inset-20 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-cyan-500/10 rounded-[5rem] blur-[120px] opacity-20 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none" />
+    <div className="relative group">
+      {/* Background Glow - smaller on mobile */}
+      <div className="absolute -inset-10 sm:-inset-20 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-cyan-500/10 rounded-[3rem] sm:rounded-[5rem] blur-[80px] sm:blur-[120px] opacity-20 pointer-events-none" />
       
-      {/* Container for the Phone and Effects */}
       <div className="relative">
-        {/* Smartphone Frame - Sleek, 'Liquid Glass' Inspired */}
-        <div className="relative w-[270px] sm:w-[310px] aspect-[9/16] bg-zinc-950/80 backdrop-blur-3xl rounded-[2.5rem] border-[6px] border-zinc-900/50 shadow-[0_0_80px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 z-10">
+        {/* Smartphone Frame */}
+        <div className="relative w-[200px] sm:w-[270px] md:w-[310px] aspect-[9/16] bg-zinc-950/80 rounded-[1.5rem] sm:rounded-[2.5rem] border-[4px] sm:border-[6px] border-zinc-900/50 shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)] sm:shadow-[0_0_80px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 z-10">
           
-          {/* Extremely Subtle Speaker (Non-intrusive) */}
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 bg-zinc-800 rounded-full z-20 opacity-30" />
-
+          {/* Speaker */}
+          <div className="absolute top-1.5 sm:top-2 left-1/2 -translate-x-1/2 w-8 sm:w-10 h-0.5 sm:h-1 bg-zinc-800 rounded-full z-20 opacity-30" />
 
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
               className="w-full h-full"
             >
               <video
@@ -54,27 +52,12 @@ export default function HeroVideoCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Glossy Overlay Animation */}
-          <motion.div 
-            animate={{ 
-              translateX: ["-100%", "200%"],
-              translateY: ["-100%", "200%"]
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              repeatDelay: 2,
-              ease: "linear"
-            }}
-            className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none z-10" 
-          />
-          
           {/* Subtle Ambient Vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] pointer-events-none z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] pointer-events-none z-10" />
         </div>
 
-        {/* Navigation Dots - Premium aesthetic */}
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+        {/* Navigation Dots */}
+        <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
           {videos.map((_, i) => (
             <button
               key={i}
@@ -89,5 +72,3 @@ export default function HeroVideoCarousel() {
     </div>
   );
 }
-
-

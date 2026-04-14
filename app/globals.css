@@ -84,7 +84,7 @@
   --sidebar-ring: rgba(139, 92, 246, 0.5);
 
   --section-py: 90px;
-  --section-py-mobile: 60px;
+  --section-py-mobile: 48px;
   --card-radius: 20px;
   --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.05), 0 12px 40px rgba(0, 0, 0, 0.03);
   --card-shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.09);
@@ -115,10 +115,15 @@ a {
   }
 
   html {
-    font-size: 18px;
-    /* Increased from 17px for better visibility */
+    font-size: 16px;
     overflow-x: hidden;
     width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
   }
 
   body {
@@ -292,9 +297,9 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 18px 40px;
-  font-size: 1.05rem;
+  gap: 8px;
+  padding: 10px 24px;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   border-radius: 100px;
@@ -307,6 +312,14 @@ a {
   text-decoration: none;
 }
 
+@media (min-width: 640px) {
+  .btn-primary-gradient {
+    padding: 18px 40px;
+    font-size: 1.05rem;
+    gap: 10px;
+  }
+}
+
 .btn-primary-gradient:hover {
   transform: translateY(-2px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -317,9 +330,9 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 18px 40px;
-  font-size: 1.05rem;
+  gap: 8px;
+  padding: 10px 24px;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   border-radius: 100px;
@@ -330,6 +343,14 @@ a {
   transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   text-decoration: none;
+}
+
+@media (min-width: 640px) {
+  .btn-secondary-glass {
+    padding: 18px 40px;
+    font-size: 1.05rem;
+    gap: 10px;
+  }
 }
 
 .btn-secondary-glass:hover {
@@ -663,4 +684,40 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.2);
+}
+
+/* ── Float Animation (replaces heavy framer-motion infinite) ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+/* ── Mobile Performance ── */
+@media (max-width: 640px) {
+  /* Reduce blur on mobile for GPU performance */
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Disable heavy box-shadows on mobile */
+  .shadow-2xl {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Reduce transition durations on mobile */
+  .transition-all,
+  .transition-transform {
+    transition-duration: 300ms !important;
+  }
 }

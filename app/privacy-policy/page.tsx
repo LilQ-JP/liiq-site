@@ -15,20 +15,20 @@ export default function PrivacyPolicyPage() {
       <Navbar />
       <main className="pt-16 min-w-0 overflow-x-hidden">
         {/* Header */}
-        <section className="bg-[#FAFAFA] pt-24 pb-16 border-b border-zinc-200">
+        <section className="bg-[#FAFAFA] pt-20 pb-10 sm:pt-24 sm:pb-16 border-b border-zinc-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link href="/" className="inline-flex items-center text-sm font-bold text-zinc-400 hover:text-zinc-800 transition-colors mb-6">
-              <ArrowLeft className="w-4 h-4 mr-1" />
+            <Link href="/" className="inline-flex items-center text-xs sm:text-sm font-bold text-zinc-400 hover:text-zinc-800 transition-colors mb-4 sm:mb-6">
+              <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
               トップへ戻る
             </Link>
-            <h1 className="text-3xl font-black text-zinc-900">プライバシーポリシー</h1>
+            <h1 className="text-xl sm:text-3xl font-black text-zinc-900">プライバシーポリシー</h1>
           </div>
         </section>
 
         {/* Content */}
         <section className="bg-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="prose prose-zinc max-w-none prose-headings:font-bold prose-headings:text-zinc-900 prose-p:text-zinc-600 prose-p:leading-relaxed">
+            <div className="prose prose-zinc prose-sm sm:prose max-w-none prose-headings:font-bold prose-headings:text-zinc-900 prose-p:text-zinc-600 prose-p:leading-relaxed prose-headings:text-base sm:prose-headings:text-lg prose-p:text-xs sm:prose-p:text-base prose-li:text-xs sm:prose-li:text-base">
               <p>
                 LilQ（以下「当事業」）は、お客様の個人情報保護の重要性について認識し、個人情報の取り扱いに関する基本方針（プライバシーポリシー）を以下のように定めます。
               </p>
