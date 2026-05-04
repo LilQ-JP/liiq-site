@@ -43,7 +43,7 @@ export default function TCGAppPage() {
                     className="w-32 h-32 sm:w-56 sm:h-56 rounded-2xl sm:rounded-[2rem] shadow-2xl shadow-purple-500/30 border border-zinc-100"
                   />
                 </div>
-                <p className="text-zinc-400 font-black tracking-widest text-lg sm:text-2xl mb-2">COMING SOON</p>
+                <p className="text-purple-600 font-black tracking-widest text-lg sm:text-2xl mb-2">PLAY NOW</p>
               </div>
             </div>
           </div>
@@ -53,16 +53,16 @@ export default function TCGAppPage() {
         <section className="bg-white py-10 sm:py-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6 sm:mb-10 text-center">
-              <h3 className="text-lg sm:text-2xl font-black mb-2 sm:mb-3 text-zinc-900 tracking-tight">ただいま一般公開に向けて準備中です。</h3>
-              <p className="text-zinc-500 text-sm sm:text-base font-medium">一般公開の開始は、X（旧Twitter）およびYouTubeにて後日お知らせいたします。<br className="hidden sm:block" />続報を楽しみにお待ちください。</p>
+              <h3 className="text-lg sm:text-2xl font-black mb-2 sm:mb-3 text-zinc-900 tracking-tight">プレリリース版を限定公開中</h3>
+              <p className="text-zinc-500 text-sm sm:text-base font-medium">現在はプレリリース版としてお試しいただけます。<br className="hidden sm:block" />以下のボタンからブラウザですぐに対戦をはじめられます。</p>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <button
-                disabled
-                className="w-full sm:w-auto px-5 sm:px-8 py-2.5 sm:py-3 bg-zinc-200 text-zinc-400 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm text-center cursor-not-allowed"
+              <a
+                href="https://lilq.jp/tcg-nexus/"
+                className="w-full sm:w-auto px-5 sm:px-8 py-2.5 sm:py-3 bg-purple-600 text-white rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/30 text-center flex items-center justify-center gap-2"
               >
-                🔒 プレリリース中
-              </button>
+                🚀 アプリを開く
+              </a>
               <a
                 href="https://twitter.com/LilQ_officialJP"
                 target="_blank"
