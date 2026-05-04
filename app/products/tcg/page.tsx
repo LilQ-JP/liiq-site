@@ -58,7 +58,7 @@ export default function TCGAppPage() {
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <a
-                href="https://lilq.jp/tcg-nexus/"
+                href="https://lilq-jp.github.io/tcg-nexus/"
                 className="w-full sm:w-auto px-5 sm:px-8 py-2.5 sm:py-3 bg-purple-600 text-white rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm hover:bg-purple-700 transition-colors shadow-lg shadow-purple-600/30 text-center flex items-center justify-center gap-2"
               >
                 🚀 アプリを開く
